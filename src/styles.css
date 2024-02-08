@@ -1,1 +1,11 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #f7f7f7;
+  font-family: "Roboto Light", "Roboto Medium", "Roboto";
+}
+
 /* You can add global styles to this file, and also import other style files */
