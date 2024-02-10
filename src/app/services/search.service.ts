@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
-private sum = new Subject<string>();
+question = 'Na co masz dzisiaj ochotę?';
 
-  constructor() { }
+private searchString = new BehaviorSubject<string>('');
 
-  question = 'Na co masz dzisiaj ochotę?';
-  searchString = '';
+getSearchString() {
+  return this.searchString.asObservable();
+}
 
-  sumFun() {
-    this.sum.next(this.searchString);
+setSearchString(text: string) {
+  this.searchString.next(text);
+}
 
-  };
-
-  getSum(): Observable<string> {
-
-    return this.sum.asObservable();
-  }
 }

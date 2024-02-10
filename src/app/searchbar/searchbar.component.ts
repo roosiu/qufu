@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchService } from '../services/search.service';
 
@@ -10,11 +10,12 @@ import { SearchService } from '../services/search.service';
   styleUrl: './searchbar.component.css'
 })
 export class SearchbarComponent {
-  constructor(private searchService: SearchService){}
-  searchString = this.searchService.searchString;
+  inputText: string = '';
 
-  logkonsoli = (value: string) => {
-    console.log(value);
+  constructor(private searchService: SearchService){}
+  sendText() {
+    this.searchService.setSearchString(this.inputText);
+    this.inputText = '';
   }
 
 }

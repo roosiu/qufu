@@ -11,11 +11,6 @@ import { SearchService } from '../services/search.service';
 export class NavbarComponent {
 constructor(private searchService: SearchService){}
 
-ngOnInit(): void{
- this.searchService.getSum().subscribe(data => {
-   console.log(data);
- });
-}
 
 
 }

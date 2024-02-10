@@ -21,7 +21,8 @@
   background-color: #e56b6f;
   border-radius: 50px;
   color: #fff;
-  user-select: none;
+  font-size: 16px;
+  border: none;
 }
 
 .search-button:hover {

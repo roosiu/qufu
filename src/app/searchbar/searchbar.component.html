@@ -1,10 +1,13 @@
 <div class="search-bar">
   <input
-    [(ngModel)]="searchString"
+    [(ngModel)]="inputText"
     class="search-input"
     type="text"
     placeholder="Szukaj w QuFu..."
+    (keyup.enter)="sendText()"
   />
 </div>
 
-<div (click)="logkonsoli(searchString)" class="search-button">SZUKAJ</div>
+<button (click)="sendText()" [disabled]="!inputText" class="search-button">
+  SZUKAJ
+</button>

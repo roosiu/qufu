@@ -21,5 +21,6 @@ export class AppComponent {
   constructor(private searchService: SearchService) {
   }
 
+string = this.searchService.getSearchString(); //// do poprawki jutro
 
 }
