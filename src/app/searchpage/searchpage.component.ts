@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { SearchbarComponent } from '../searchbar/searchbar.component';
 import { SearchService } from '../services/search.service';
 import { CardComponent } from '../card/card.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-searchpage',
   standalone: true,
-  imports: [SearchbarComponent, CardComponent],
+  imports: [SearchbarComponent, CardComponent, CommonModule],
   templateUrl: './searchpage.component.html',
   styleUrl: './searchpage.component.css'
 })
