@@ -1,0 +1,11 @@
+.card {
+    width: 150px;
+    height: 200px;
+    background-color: #fff;
+
+}
+
+.card .title {
+    font-weight: bold;
+    font-size: 1.2em;
+}

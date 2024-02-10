@@ -10,7 +10,7 @@ question = 'Na co masz dzisiaj ochotę?';
 
 private searchString = new BehaviorSubject<string>('');
 
-getSearchString() {
+getSearchString(): Observable<string>{
   return this.searchString.asObservable();
 }
 
