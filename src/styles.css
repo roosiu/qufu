@@ -8,4 +8,14 @@ body {
   font-family: "Roboto Light", "Roboto Medium", "Roboto";
 }
 
+:root {
+  --primary-color: #e56b6f;
+  --primary-color-hover: #cf595d;
+  --secondary-color: #355070;
+  --accent-color: #b56576;
+  --background-color: #feeadf;
+  --background-color2: #eaac8b;
+  --grey-color1: #808080;
+  --grey-color2: #363636;
+}
 /* You can add global styles to this file, and also import other style files */

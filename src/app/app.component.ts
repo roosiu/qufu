@@ -6,28 +6,35 @@ import { HerosectionComponent } from './herosection/herosection.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchService } from './services/search.service';
 import { SearchpageComponent } from './searchpage/searchpage.component';
-
-
+import { RecipepageComponent } from './recipepage/recipepage.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavbarComponent, HerosectionComponent,FooterComponent, SearchpageComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    NavbarComponent,
+    HerosectionComponent,
+    FooterComponent,
+    SearchpageComponent,
+    RecipepageComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers: [SearchService]
+  providers: [SearchService],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'qufu';
-  constructor(private searchService: SearchService) {
-  }
-   lastText : string = '';
-
+  constructor(private searchService: SearchService) {}
+  lastText: string = '';
+  idRecipe: any;
   ngOnInit(): void {
-    this.searchService.getSearchString().subscribe(text => {
+    this.searchService.getSearchString().subscribe((text) => {
       this.lastText = text;
     });
+    this.searchService.getrecipeClick().subscribe((text) => {
+      this.idRecipe = text;
+    });
   }
-
-
 }

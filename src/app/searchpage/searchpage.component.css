@@ -19,8 +19,12 @@
 }
 
 .searched-text {
-  height: 50px;
-  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  color: #355070;
 }
 
 @media only screen and (max-width: 600px) {

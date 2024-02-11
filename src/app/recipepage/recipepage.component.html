@@ -1,0 +1,28 @@
+<div class="recipepage">
+    <div class="recipepage__main">
+        <div class="title">
+            {{recipe.title}}
+        </div>
+        <div class="body">
+            {{recipe.body}}
+        </div>
+        <hr>
+        <div class="ingredients">
+            <div class="ingredients-text">Składniki</div>
+            <ul>
+                <li *ngFor="let ingredient of recipe.ingredients">
+                    {{ingredient}}
+                </li>
+            </ul>
+        </div>
+        <div class="time">
+            <img class="time-img" src="assets/images/time_icon.svg" alt="time_img" />
+            <div class="time__text">Czas przygotowania <div class="time__text__min">{{recipe.time}} min</div>
+            </div>
+        </div>
+        <div class="steps">Ilość etapów: {{recipe.steps.length}}</div>
+        <button>Rozpocznij</button>
+    </div>
+    <div class="recipepage__img" [ngStyle]="{'background-image': 'url(\'assets/images/' + recipe.img + '\')'}"></div>
+
+</div>
