@@ -3,13 +3,13 @@ import { SearchService } from '../services/search.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-recipepage',
+  selector: 'app-cookpage',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './recipepage.component.html',
-  styleUrl: './recipepage.component.css',
+  templateUrl: './cookpage.component.html',
+  styleUrl: './cookpage.component.css',
 })
-export class RecipepageComponent implements OnInit {
+export class CookpageComponent implements OnInit {
   constructor(private searchService: SearchService) {}
   id: any = '';
   recipe: any = [];
@@ -19,9 +19,12 @@ export class RecipepageComponent implements OnInit {
       this.id = text;
       this.recipe = this.searchService.recipes[this.id - 1];
     });
+    this.searchService.getcookStep().subscribe((text) => {
+      this.cookStep = text;
+    });
   }
-  getClickedStart() {
-    this.searchService.setcookStep(1);
+  getClickedStep(step: number) {
+    this.searchService.setcookStep(this.cookStep + step);
   }
   getClickedClose() {
     this.searchService.setcookStep(0);

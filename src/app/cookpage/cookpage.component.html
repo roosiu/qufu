@@ -1,0 +1,33 @@
+<div class="foodpage">
+    <div class="foodpage__progbar">
+        <div class="foodpage__progbar__line" [ngStyle]="{'width': ''+ (100/recipe.steps.length)*cookStep +'%'}"></div>
+    </div>
+    <div class="foodpage__main">
+        <div class="title">
+            Krok {{cookStep}} z {{recipe.steps.length}}
+        </div>
+        <div class="body">
+            {{recipe.steps[cookStep-1]}}
+        </div>
+        <hr />
+        <div class="ingredients">
+            <div class="ingredients-text">Składniki</div>
+            dsads
+        </div>
+        <div class="button-section">
+            <button (click)="getClickedStep(-1)"><span class="material-symbols-outlined">
+                    arrow_left_alt
+                </span> Poprzedni</button>
+            <button *ngIf="cookStep != recipe.steps.length" (click)="getClickedStep(1)">Następny <span
+                    class="material-symbols-outlined">
+                    arrow_right_alt
+                </span></button>
+            <button *ngIf="cookStep == recipe.steps.length" (click)="getClickedClose()">Zakończ <span
+                    class="material-symbols-outlined">
+                    restaurant
+                </span></button>
+        </div>
+    </div>
+    <div class="foodpage__img">
+    </div>
+</div>
