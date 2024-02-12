@@ -1,17 +1,26 @@
 <ng-container *ngIf="filteredRecipes && filteredRecipes.length">
-
-  <div *ngFor="let recipe of filteredRecipes" class="card" (click)="getClicked(recipe.id)">
-    <div class="img-div">
-      <img class="img-div__img" src="assets/images/{{recipe.img}}" alt="image" />
-    </div>
-    <div class="title padding">{{recipe.title}}</div>
-    <div class="body padding">
-    </div>
-    <div class="footer padding"><img class="footer__time-img" src="assets/images/time_icon.svg" alt="time_img" />
-      {{recipe.time}} min
+  <div
+    *ngFor="let recipe of filteredRecipes"
+    class="card"
+    (click)="getClicked(recipe.id)"
+  >
+    <div
+      class="img-div"
+      [ngStyle]="{
+        'background-image': 'url(\'assets/images/' + recipe.img + '\')'
+      }"
+    ></div>
+    <div class="title padding">{{ recipe.title }}</div>
+    <div class="body padding"></div>
+    <div class="footer padding">
+      <img
+        class="footer__time-img"
+        src="assets/images/time_icon.svg"
+        alt="time_img"
+      />
+      {{ recipe.time }} min
     </div>
   </div>
-
 </ng-container>
 <ng-container *ngIf="!filteredRecipes || !filteredRecipes.length">
   <div class="no-recipes">Brak przepisów do wyświetlenia.</div>

@@ -23,13 +23,15 @@
   transition: all 300ms;
 }
 
+
+
 .card .img-div {
   width: 100%;
-}
-
-.card .img-div .img-div__img {
-  width: 250px;
+  height: 220px;
   border-radius: 10px 10px 0 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .card .title {
   color: var(--secondary-color);

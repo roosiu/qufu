@@ -5,9 +5,9 @@
 .recipepage {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: 20px;
-  width: 70%;
-  height: 70vh;
+  width: 80%;
   padding-left: 20px;
   background-color: #fff;
   border: solid 1px rgb(232, 232, 232);
@@ -15,12 +15,26 @@
   box-shadow: 0px 4px 6px 0px rgb(0, 0, 0, 0.1);
 }
 
+@media only screen and (max-width: 600px) {
+  .recipepage {
+    width: 100%;
+    flex-direction: column;
+  }
+  .recipepage__main {
+    width: 100%;
+  }
+  .recipepage__img {
+    width: 100%;
+  }
+}
+
 .recipepage .recipepage__main {
   color: var(--grey-color2);
   line-height: 1.5;
   padding-top: 40px;
-  flex-basis: 45%;
+  width: 45%;
   margin: 0 10px;
+  padding-bottom: 40px;
 }
 .recipepage .recipepage__main hr {
   color: var(--primary-color);
@@ -51,8 +65,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: right;
+  gap: 10px;
   align-items: center;
-  height: 100px;
 }
 .recipepage .recipepage__main .time .time__text {
   font-size: 0.8rem;
@@ -81,9 +95,10 @@
   background-color: var(--primary-color-hover);
 }
 .recipepage .recipepage__img {
-  flex-basis: 45%;
+  width: 45%;
   height: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  border-radius: 0 10px 10px 0;
 }

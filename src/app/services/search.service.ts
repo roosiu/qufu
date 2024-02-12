@@ -9,6 +9,7 @@ export class SearchService {
   question = 'Na co masz dzisiaj ochotę?';
 
   // wyszukiwana fraza
+  // private searchString = new BehaviorSubject<string>('kur');
   private searchString = new BehaviorSubject<string>('');
 
   getSearchString(): Observable<string> {
