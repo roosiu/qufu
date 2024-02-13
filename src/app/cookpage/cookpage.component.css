@@ -53,10 +53,11 @@
   .foodpage__main {
     width: 90%;
     border-radius: 0 0 0 0 !important;
+    padding-left: 0 !important;
   }
   .foodpage__img {
     width: 100%;
-    padding-top: 300px;
+    padding-top: 20px;
     border-radius: 0 0 0 0 !important;
   }
 }
@@ -64,6 +65,7 @@
 .foodpage .foodpage__main {
   color: var(--grey-color2);
   line-height: 1.5;
+  padding-left: 20px;
   padding-top: 40px;
   flex: 1;
   margin: 0 10px;
@@ -80,7 +82,11 @@
   color: var(--secondary-color);
   margin-bottom: 10px;
 }
+.foodpage .foodpage__main .body {
+  font-size: 20px;
+}
 .foodpage .foodpage__main .button-section {
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -105,9 +111,16 @@
 }
 
 .foodpage .foodpage__img {
+  display: flex;
   flex: 1;
+  align-items: center;
+  justify-content: center;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   border-radius: 0 10px 10px 0;
+}
+.foodpage .foodpage__img img {
+  width: 60%;
+  opacity: 0.8;
 }
