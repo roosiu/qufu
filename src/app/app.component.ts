@@ -8,6 +8,7 @@ import { SearchService } from './services/search.service';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { RecipepageComponent } from './recipepage/recipepage.component';
 import { CookpageComponent } from './cookpage/cookpage.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import { CookpageComponent } from './cookpage/cookpage.component';
     SearchpageComponent,
     RecipepageComponent,
     CookpageComponent,
+    HttpClientModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

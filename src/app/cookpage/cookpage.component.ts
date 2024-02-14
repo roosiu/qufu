@@ -30,4 +30,7 @@ export class CookpageComponent implements OnInit {
     this.searchService.setcookStep(0);
     this.searchService.setrecipeClick(0);
   }
+  getStepsLength(): number {
+    return Object.keys(this.recipe.steps).length;
+  }
 }

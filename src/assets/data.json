@@ -1,157 +1,446 @@
 [
-    {
-      "id": 1,
-      "title": "Skrzydełka z kurczaka w marynacie BBQ",
-      "body": "Skrzydełka z kurczaka w marynacie BBQ to pyszna i aromatyczna przekąska, która idealnie nadaje się na imprezy lub jako danie główne. Prosta w przygotowaniu, a zarazem niezwykle smaczna!",
-      "ingredients": [
-        "Skrzydełka z kurczaka - 1 kg",
-        "Sos BBQ - 1/2 szklanki",
-        "Miód - 2 łyżki",
-        "Sok z cytryny - 2 łyżki",
-        "Papryka słodka - 1 łyżeczka",
-        "Czosnek granulowany - 1 łyżeczka",
-        "Sól i pieprz do smaku"
-      ],
-      "steps": [
-        "1. W dużym naczyniu wymieszaj sos BBQ, miód, sok z cytryny, paprykę słodką, czosnek granulowany, sól i pieprz.",
-        "2. Dodaj skrzydełka z kurczaka do marynaty i dokładnie wymieszaj, aby pokryły się z każdej strony.",
-        "3. Odstaw marynowane skrzydełka do lodówki na co najmniej 2 godziny lub najlepiej na całą noc, aby nabierały aromatu.",
-        "4. Rozgrzej piekarnik do 200°C i przygotuj blaszkę wyłożoną folią aluminiową.",
-        "5. Wyjmij skrzydełka z marynaty i ułóż je na blaszce.",
-        "6. Piecz skrzydełka w rozgrzanym piekarniku przez około 25-30 minut, aż będą rumiane i dobrze przypieczone.",
-        "7. Podawaj skrzydełka z dodatkowym sosem BBQ oraz ulubionymi dodatkami, np. sałatką czy frytkami."
-      ],
-      "steps_icon": ["cutting", "", "", "", "", "", ""],
-      "img": "1.jpg",
-      "time": 120
+  {
+    "id": 1,
+    "title": "Skrzydełka z kurczaka w marynacie BBQ",
+    "body": "Skrzydełka z kurczaka w marynacie BBQ to pyszna i aromatyczna przekąska, która idealnie nadaje się na imprezy lub jako danie główne. Prosta w przygotowaniu, a zarazem niezwykle smaczna!",
+    "ingredients": [
+      "Skrzydełka z kurczaka - 1 kg",
+      "Sos BBQ - 1/2 szklanki",
+      "Miód - 2 łyżki",
+      "Sok z cytryny - 2 łyżki",
+      "Papryka słodka - 1 łyżeczka",
+      "Czosnek granulowany - 1 łyżeczka",
+      "Sól i pieprz do smaku"
+    ],
+    "steps": {
+      "1": {
+        "text": "1. W dużym naczyniu wymieszaj sos BBQ, miód, sok z cytryny, paprykę słodką, czosnek granulowany, sól i pieprz.",
+        "icon": "miska_i_trzepaczka",
+        "material": ["miod", "papryka", "czosnek", "przyprawy", "sos"]
+      },
+      "2": {
+        "text": "2. Dodaj skrzydełka z kurczaka do marynaty i dokładnie wymieszaj, aby pokryły się z każdej strony.",
+        "icon": "miska_i_trzepaczka",
+        "material": ["skrzydelka"]
+      },
+      "3": {
+        "text": "3. Odstaw marynowane skrzydełka do lodówki na co najmniej 2 godziny lub najlepiej na całą noc, aby nabierały aromatu.",
+        "icon": "lodowka",
+        "material": ["miska", "noc"]
+      },
+      "4": {
+        "text": "4. Rozgrzej piekarnik do 200°C i przygotuj blaszkę wyłożoną folią aluminiową.",
+        "icon": "piekarnik",
+        "material": ["temp"]
+      },
+      "5": {
+        "text": "5. Wyjmij skrzydełka z marynaty i ułóż je na blaszce.",
+        "icon": "blacha",
+        "material": ["skrzydelka"]
+      },
+      "6": {
+        "text": "6. Piecz skrzydełka w rozgrzanym piekarniku przez około 25-30 minut, aż będą rumiane i dobrze przypieczone.",
+        "icon": "piekarnik",
+        "material": ["timer"]
+      },
+      "7": {
+        "text": "7. Podawaj skrzydełka z dodatkowym sosem BBQ oraz ulubionymi dodatkami, np. sałatką czy frytkami.",
+        "icon": "koniec2",
+        "material": []
+      }
     },
-    {
-      "id": 2,
-      "title": "Sałatka grecka z dodatkiem serka feta",
-      "body": "Sałatka grecka to klasyczne połączenie świeżych warzyw, oliwek i sera feta. Jest idealna na letnie dni!",
-      "ingredients": [
-        "Pomidory - 2 sztuki",
-        "Ogórek - 1 sztuka",
-        "Czerwona cebula - 1 sztuka",
-        "Papryka czerwona - 1 sztuka",
-        "Oliwki - 1/2 szklanki",
-        "Ser feta - 150g",
-        "Oliwa z oliwek - 3 łyżki",
-        "Sól i pieprz do smaku"
-      ],
-      "steps": [
-        "1. Pokrój pomidory, ogórka, cebulę i paprykę w kostkę.",
-        "2. Wymieszaj warzywa w misce.",
-        "3. Dodaj oliwki i pokruszony ser feta.",
-        "4. Polej wszystko oliwą z oliwek.",
-        "5. Dopraw solą i pieprzem.",
-        "6. Delikatnie wymieszaj i odstaw do lodówki na chwilę przed podaniem."
-      ],
-      "steps_icon": ["", "", "", "", "", ""],
-      "img": "2.jpg",
-      "time": 20
+    "img": "1.jpg",
+    "time": 120
+  },
+  {
+    "id": 2,
+    "title": "Sałatka grecka z serem fetą",
+    "body": "Sałatka grecka to klasyczne połączenie świeżych warzyw, oliwek, sera feta i aromatycznego dressingu. Ta sałatka jest idealna jako lekki posiłek lub przystawka, bogata w smaki i odżywcze składniki.",
+    "ingredients": [
+      "Pomidory - 4 sztuki, pokrojone w kostkę",
+      "Ogórek - 1 sztuka, pokrojony w kostkę",
+      "Czerwona cebula - 1 sztuka, pokrojona w cienkie piórka",
+      "Oliwki greckie - 1/2 szklanki, odsączone",
+      "Papryka czerwona - 1 sztuka, pokrojona w kostkę",
+      "Ser feta - 200 g, pokrojony w kostkę",
+      "Oliwa z oliwek - 3 łyżki",
+      "Sok z cytryny - 2 łyżki",
+      "Suszone oregano - 1 łyżeczka",
+      "Sól i pieprz do smaku"
+    ],
+    "steps": {
+      "1": {
+        "text": "1. W dużej misce wymieszaj pokrojone pomidory, ogórek, czerwoną cebulę, oliwki, paprykę i ser fetę.",
+        "icon": "miska_i_trzepaczka",
+        "material": [
+          "pomidor",
+          "ogorek",
+          "cebula",
+          "oliwka",
+          "papryka",
+          "feta",
+          "deska_i_noz"
+        ]
+      },
+      "2": {
+        "text": "2. W osobnej miseczce przygotuj dressing, mieszając oliwę z oliwek, sok z cytryny, suszone oregano, sól i pieprz.",
+        "icon": "miska_i_trzepaczka",
+        "material": ["oliwa", "cytryna", "przyprawy"]
+      },
+      "3": {
+        "text": "3. Polej sałatkę przygotowanym dressingiem i delikatnie wymieszaj, aby składniki się połączyły.",
+        "icon": "miska_i_trzepaczka",
+        "material": ["sos"]
+      },
+      "4": {
+        "text": "4. Sałatkę możesz podać od razu lub schłodzić w lodówce przez kilka godzin przed podaniem, aby aromaty się przegryzły.",
+        "icon": "lodowka",
+        "material": ["miska", "timer"]
+      },
+      "5": {
+        "text": "5. Przed podaniem posyp sałatkę dodatkowo świeżym pieprzem i listkami świeżej bazylii.",
+        "icon": "miska",
+        "material": ["przyprawy"]
+      }
     },
-    {
-      "id": 3,
-      "title": "Pasta Carbonara",
-      "body": "Pasta Carbonara to klasyczne danie kuchni włoskiej, które zachwyca prostotą i smakiem.",
-      "ingredients": [
-        "Makaron spaghetti - 200g",
-        "Boczek - 100g",
-        "Żółtka jaj - 2 sztuki",
-        "Ser parmezan - 50g",
-        "Śmietanka 30% - 100ml",
-        "Czosnek - 2 ząbki",
-        "Sól i pieprz do smaku"
-      ],
-      "steps": [
-        "1. Ugotuj makaron al dente według instrukcji na opakowaniu.",
-        "2. Podsmaż na patelni boczek pokrojony w paski.",
-        "3. W osobnej misce wymieszaj żółtka, starty ser parmezan, śmietankę oraz przeciśnięty przez praskę czosnek.",
-        "4. Odcedź makaron i dodaj go do patelni z boczkiem.",
-        "5. Zmniejsz ogień i dodaj mieszankę żółtek i sera, cały czas mieszając.",
-        "6. Dopraw solą i pieprzem, mieszaj jeszcze przez chwilę.",
-        "7. Podawaj posypane dodatkowym serem i świeżym pieprzem."
-      ],
-      "steps_icon": ["🍝", "🥓", "🍳", "🥄", "🧂"],
-      "img": "3.jpg",
-      "time": 30
+    "img": "2.jpg",
+    "time": 20
+  },
+  {
+    "id": 3,
+    "title": "Pasta Carbonara",
+    "body": "Pasta Carbonara to klasyczne włoskie danie, które zachwyca swoją prostotą i bogactwem smaku. Z sosu carbonara wykonanego z jajek, bekonu, sera parmezan i świeżych ziół powstaje aromatyczna i kremowa mieszanka, która doskonale komponuje się z makaronem spaghetti.",
+    "ingredients": [
+      "Makaron spaghetti - 400 g",
+      "Boczek - 200 g, pokrojony w kostkę",
+      "Jajka - 4 sztuki",
+      "Ser parmezan - 100 g, starty",
+      "Czosnek - 2 ząbki, posiekane",
+      "Świeżo zmielony pieprz",
+      "Sól do smaku",
+      "Natka pietruszki - do dekoracji"
+    ],
+    "steps": {
+      "1": {
+        "text": "1. Gotuj makaron spaghetti według instrukcji na opakowaniu, aż będzie al dente. Odcedź, zachowując odrobinę wody z gotowania.",
+        "icon": "garnek",
+        "material": ["makaron"]
+      },
+      "2": {
+        "text": "2. Na patelni podsmaż boczek na złocisty kolor. Dodaj posiekany czosnek i smaż przez około 1-2 minuty.",
+        "icon": "patelnia",
+        "material": ["boczek", "czosnek"]
+      },
+      "3": {
+        "text": "3. W misce roztrzep jajka. Dodaj do nich starty ser parmezan i wymieszaj.",
+        "icon": "miska_i_trzepaczka",
+        "material": ["jajko", "ser_zolty", "tarka"]
+      },
+      "4": {
+        "text": "4. Dodaj ugotowany makaron do patelni z boczkiem i czosnkiem. Zmniejsz ogień.",
+        "icon": "patelnia",
+        "material": ["makaron"]
+      },
+      "5": {
+        "text": "5. Wlej mieszankę jajeczną na makaron na patelni i szybko wymieszaj, aby jajka ścięły się i pokryły makaron.",
+        "icon": "patelnia",
+        "material": ["miska_i_trzepaczka"]
+      },
+      "6": {
+        "text": "6. Jeśli sos jest zbyt gęsty, dodaj odrobinę wody z gotowania makaronu, aby uzyskać odpowiednią konsystencję.",
+        "icon": "patelnia",
+        "material": ["woda"]
+      },
+      "7": {
+        "text": "7. Dopraw makaron solą i świeżo zmielonym pieprzem do smaku.",
+        "icon": "przyprawy",
+        "material": []
+      },
+      "8": {
+        "text": "8. Podawaj pastę Carbonara posypaną świeżo zmielonym pieprzem i posiekaną natką pietruszki do dekoracji.",
+        "icon": "reka_z_miska",
+        "material": ["pieprz", "natka_pietruszki"]
+      }
     },
-    {
-      "id": 4,
-      "title": "Sałatka z kurczakiem i awokado",
-      "body": "Sałatka z kurczakiem i awokado to świetny wybór na lekkie i pożywne danie.",
-      "ingredients": [
-        "Filet z kurczaka - 200g",
-        "Awokado - 1 sztuka",
-        "Mix sałat - 100g",
-        "Pomidory koktajlowe - 100g",
-        "Cytryna - 1 sztuka",
-        "Oliwa z oliwek - 2 łyżki",
-        "Sól i pieprz do smaku"
-      ],
-      "steps": [
-        "1. Pokrój kurczaka w kostkę i usmaż na patelni.",
-        "2. Pokrój awokado, pomidory i dodaj do miski z sałatą.",
-        "3. Dodaj usmażonego kurczaka.",
-        "4. Skrop sałatkę sokiem z cytryny i oliwą z oliwek.",
-        "5. Dopraw solą i pieprzem, delikatnie wymieszaj."
-      ],
-      "steps_icon": ["🐔", "🥑", "🍅", "🍋", "🧂"],
-      "img": "4.jpg",
-      "time": 25
+    "img": "3.jpg",
+    "time": 30
+  },
+  {
+    "id": 4,
+    "title": "Sałatka z kurczakiem i awokado",
+    "body": "Sałatka z kurczakiem i awokado to pyszne i zdrowe danie, które świetnie sprawdzi się jako lekki posiłek lub przekąska. Połączenie soczystego kurczaka, kremowego awokado i świeżych warzyw sprawia, że ta sałatka będzie idealna na każdą okazję!",
+    "ingredients": [
+      "Piersi z kurczaka - 2 sztuki",
+      "Awokado - 2 sztuki",
+      "Pomidory koktajlowe - 1 szklanka, przekrojone na pół",
+      "Ogórek - 1 sztuka, pokrojony w kostkę",
+      "Czerwona cebula - 1 sztuka, pokrojona w cienkie piórka",
+      "Rukola - 2 garście",
+      "Oliwa z oliwek - 2 łyżki",
+      "Sok z cytryny - 2 łyżki",
+      "Sól i pieprz do smaku"
+    ],
+    "steps": {
+      "1": {
+        "text": "1. Składniki marynaty do kurczaka: w małej misce wymieszaj oliwę z oliwek, sok z cytryny, sól i pieprz.",
+        "icon": "miska_i_trzepaczka",
+        "material": ["oliwa", "cytryna", "przyprawy"]
+      },
+      "2": {
+        "text": "2. Pokrój piersi z kurczaka na plastry i umieść je w marynacie. Odstaw na 15-30 minut, aby się przegryzły.",
+        "icon": "deska_i_noz",
+        "material": ["mieso", "miska"]
+      },
+      "3": {
+        "text": "3. Na rozgrzaną patelnię wlej trochę oliwy i podsmaż kurczaka przez około 5-7 minut z każdej strony, aż będą złociste i dobrze przypieczone.",
+        "icon": "patelnia",
+        "material": ["mieso", "oliwa"]
+      },
+      "4": {
+        "text": "4. Pokrój awokado na plasterki i pomidory koktajlowe na pół.",
+        "icon": "deska_i_noz",
+        "material": ["awokado", "pomidor"]
+      },
+      "5": {
+        "text": "5. W dużej misce wymieszaj rukolę, pokrojonego kurczaka, awokado, pomidory koktajlowe, pokrojony ogórek i czerwoną cebulę.",
+        "icon": "miska_i_trzepaczka",
+        "material": ["mieso", "awokado", "pomidor", "ogorek", "cebula"]
+      },
+      "6": {
+        "text": "6. Sałatkę możesz posypać świeżo mielonym pieprzem i odrobiną soli według własnego uznania.",
+        "icon": "przyprawy",
+        "material": ["pieprz", "sol"]
+      },
+      "7": {
+        "text": "7. Podawaj sałatkę od razu, ciepłą lub schłodzoną, w zależności od preferencji.",
+        "icon": "koniec2",
+        "material": []
+      }
     },
-    {
-      "id": 5,
-      "title": "Tortilla z warzywami",
-      "body": "Tortilla z warzywami to szybki i zdrowy posiłek, który zaspokoi głód i dostarczy niezbędnych składników odżywczych.",
-      "ingredients": [
-        "Tortille - 4 sztuki",
-        "Papryka czerwona - 1 sztuka",
-        "Papryka żółta - 1 sztuka",
-        "Cebula - 1 sztuka",
-        "Czosnek - 2 ząbki",
-        "Oliwa z oliwek - 2 łyżki",
-        "Sól i pieprz do smaku",
-        "Guacamole i salsa do podania"
-      ],
-      "steps": [
-        "1. Pokrój paprykę i cebulę w paski.",
-        "2. Rozgrzej oliwę na patelni i podsmaż warzywa z czosnkiem.",
-        "3. Rozgrzej tortille na suchej patelni.",
-        "4. Nałóż na każdą tortillę część smażonych warzyw.",
-        "5. Dopraw solą i pieprzem, zwiń tortille.",
-        "6. Podawaj z guacamole i salsą."
-      ],
-      "steps_icon": ["🌯", "🌶️", "🧅", "🍳", "🥑"],
-      "img": "5.jpg",
-      "time": 20
+    "img": "4.jpg",
+    "time": 30
+  },
+  {
+    "id": 5,
+    "title": "Tortilla z warzywami",
+    "body": "Tortilla z warzywami to pyszne i sycące danie, które idealnie nadaje się na szybki obiad lub kolację. Połączenie kolorowych warzyw, jajek i przypraw tworzy smaczną i zdrową potrawę, która zadowoli nawet najbardziej wymagających smakoszy.",
+    "ingredients": [
+      "Jajka - 6 sztuk",
+      "Cebula - 1 duża sztuka, pokrojona w kostkę",
+      "Papryka czerwona - 1 sztuka, pokrojona w kostkę",
+      "Papryka żółta - 1 sztuka, pokrojona w kostkę",
+      "Marchew - 1 sztuka, starta",
+      "Cukinia - 1 sztuka, pokrojona w kostkę",
+      "Oliwa z oliwek - 2 łyżki",
+      "Sól i pieprz do smaku",
+      "Tortille - 6 sztuk"
+    ],
+    "steps": {
+      "1": {
+        "text": "1. Na patelni rozgrzej oliwę z oliwek. Dodaj pokrojoną cebulę i smaż, aż będzie miękka i lekko złocista.",
+        "icon": "patelnia",
+        "material": ["deska_i_noz", "oliwa", "cebula"]
+      },
+      "2": {
+        "text": "2. Dodaj pokrojone papryki, startą marchew i pokrojoną cukinię. Smaż warzywa przez około 5-7 minut, aż będą miękkie.",
+        "icon": "patelnia",
+        "material": ["deska_i_noz", "papryka", "marchew", "cukinia"]
+      },
+      "3": {
+        "text": "3. W misce roztrzep jajka i dopraw je solą i pieprzem.",
+        "icon": "miska_i_trzepaczka",
+        "material": ["jajko", "sol", "pieprz"]
+      },
+      "4": {
+        "text": "4. Dodaj roztrzepane jajka do warzyw na patelnię i smaż, mieszając, aż jajka się zetną.",
+        "icon": "patelnia",
+        "material": ["miska_i_trzepaczka"]
+      },
+      "5": {
+        "text": "5. Na osobnej patelni lekko podsmaż tortille, aby były ciepłe i elastyczne.",
+        "icon": "patelnia",
+        "material": []
+      },
+      "6": {
+        "text": "6. Na każdej tortilli rozłóż warzywa z jajkami. Zwiń je w ruloniki.",
+        "icon": "koniec",
+        "material": []
+      }
     },
-    {
-      "id": 6,
-      "title": "Mojito",
-      "body": "Mojito to orzeźwiający drink na bazie białego rumu, soku z limonki, świeżej mięty i syropu cukrowego. Idealny na letnie dni!",
-      "ingredients": [
-        "Biały rum - 50 ml",
-        "Sok z limonki - 30 ml",
-        "Syrop cukrowy - 20 ml",
-        "Świeża mięta - kilka listków",
-        "Woda gazowana - do uzupełnienia",
-        "Lod cubes - do podania",
-        "Plastry limonki i gałązki mięty - do dekoracji"
-      ],
-      "steps": [
-        "1. W szklance typu highball umieść kilka listków mięty.",
-        "2. Zgnieć miętę za pomocą tłuczka do drinków, aby uwolnić jej aromat.",
-        "3. Dodaj do szklanki sok z limonki i syrop cukrowy.",
-        "4. Napełnij szklankę lodem.",
-        "5. Wlej rum.",
-        "6. Delikatnie wymieszaj składniki za pomocą mieszadła.",
-        "7. Uzupełnij szklankę wodą gazowaną.",
-        "8. Ukraszaj drink plasterkami limonki i gałązkami mięty.",
-        "9. Podawaj z rurką do picia."
-      ],
-      "img": "6.jpg",
-      "time": 10
-    }
-  ]
+    "img": "5.jpg",
+    "time": 25
+  },
+  {
+    "id": 6,
+    "title": "Mojito",
+    "body": "Mojito to klasyczny koktajl z kubańskiego rumu, świeżej mięty, limonki, cukru i wody sodowej. To orzeźwiający i aromatyczny drink, który świetnie sprawdza się jako napój na letnie dni lub podczas imprez. Prosty w przygotowaniu, a jednocześnie niezwykle smaczny!",
+    "ingredients": [
+      "Kubański rum - 50 ml",
+      "Świeża mięta - 8-10 listków",
+      "Cukier - 2 łyżeczki",
+      "Limonka - 1 sztuka, pokrojona na ćwiartki",
+      "Woda sodowa - około 100 ml",
+      "Lód - do podania",
+      "Kawałki limonki i listki mięty - do dekoracji"
+    ],
+    "steps": {
+      "1": {
+        "text": "1. W szklance rozgnieć listki mięty razem z cukrem i kawałkami limonki, aby uwolnić aromaty.",
+        "icon": "mozdziez",
+        "material": ["mieta", "cukier", "limonka"]
+      },
+      "2": {
+        "text": "2. Dodaj rum i dokładnie wymieszaj.",
+        "icon": "szejk",
+        "material": ["alkohol"]
+      },
+      "3": {
+        "text": "3. Napełnij szklankę lodem.",
+        "icon": "szklanka",
+        "material": ["lod"]
+      },
+      "4": {
+        "text": "4. Wlej wodę sodową i delikatnie wymieszaj.",
+        "icon": "szejk",
+        "material": ["woda_gazowana"]
+      },
+      "5": {
+        "text": "5. Ukraszaj koktajl kawałkami limonki i listkami mięty.",
+        "icon": "limonka",
+        "material": ["mieta"]
+      },
+      "6": {
+        "text": "6. Podawaj mojito od razu, ciepłe lub schłodzone, w zależności od preferencji.",
+        "icon": "alkohol",
+        "material": ["woda_gazowana"]
+      }
+    },
+    "img": "6.jpg",
+    "time": 10
+  },
+  {
+    "id": 7,
+    "title": "Sałatka z grillowanym kurczakiem i mango",
+    "body": "Sałatka z grillowanym kurczakiem i mango to połączenie soczystego kurczaka z egzotycznym smakiem mango, które tworzy lekkie i orzeźwiające danie. Idealne na letnie dni!",
+    "ingredients": [
+      "Piersi z kurczaka - 2 sztuki",
+      "Mango - 1 sztuka, obrane i pokrojone w kostkę",
+      "Pomidory koktajlowe - 1 szklanka, przekrojone na pół",
+      "Ogórek - 1 sztuka, pokrojony w kostkę",
+      "Czerwona cebula - 1 sztuka, pokrojona w cienkie piórka",
+      "Sałata mieszana - 1 garść",
+      "Oliwa z oliwek - 2 łyżki",
+      "Sok z limonki - 2 łyżki",
+      "Mieszanka przypraw do grilla - 2 łyżeczki",
+      "Sól i pieprz do smaku"
+    ],
+    "steps": {
+      "1": {
+        "text": "1. Składniki marynaty do kurczaka: w małej misce wymieszaj oliwę z oliwek, sok z limonki i mieszankę przypraw do grilla.",
+        "icon": "miska_i_trzepaczka",
+        "material": ["oliwa", "limonka", "przyprawy"]
+      },
+      "2": {
+        "text": "2. Pokrój piersi z kurczaka na plastry i umieść je w marynacie. Odstaw na 15-30 minut, aby się przegryzły.",
+        "icon": "deska_i_noz",
+        "material": ["mieso", "miska"]
+      },
+      "3": {
+        "text": "3. Rozgrzej grill lub patelnię grillową. Grilluj kurczaka przez około 5-7 minut z każdej strony, aż będą złociste i dobrze przypieczone.",
+        "icon": "grill",
+        "material": ["mieso"]
+      },
+      "4": {
+        "text": "4. W dużej misce wymieszaj sałatę, pokrojonego kurczaka, mango, pomidory koktajlowe, pokrojony ogórek i czerwoną cebulę.",
+        "icon": "miska_i_trzepaczka",
+        "material": ["mieso", "mango", "pomidor", "ogorek", "cebula"]
+      },
+      "5": {
+        "text": "5. Skrop sałatkę oliwą z oliwek, dopraw solą i pieprzem, delikatnie wymieszaj.",
+        "icon": "przyprawy",
+        "material": ["oliwa", "sol", "pieprz"]
+      },
+      "6": {
+        "text": "6. Podawaj sałatkę od razu, ciepłą lub schłodzoną, na liściach sałaty lub jako samodzielne danie.",
+        "icon": "koniec2",
+        "material": []
+      }
+    },
+    "img": "7.jpg",
+    "time": 30
+  },
+  {
+    "id": 8,
+    "title": "Gulasz wołowy",
+    "body": "Prosty i aromatyczny gulasz wołowy to idealne danie na chłodne dni. Miękkie kawałki mięsa, soczyste warzywa i głęboki smak sprawiają, że ten tradycyjny gulasz zadowoli każde podniebienie.",
+    "ingredients": [
+      "600 g mięsa wołowego (np. łopatka lub polędwica), pokrojonego w kostkę",
+      "2 duże cebule, posiekane",
+      "2 marchewki, obrane i pokrojone w plasterki",
+      "2 ząbki czosnku, posiekane",
+      "2 łyżki mąki pszennej",
+      "2 łyżki koncentratu pomidorowego",
+      "500 ml bulionu wołowego",
+      "1 szklanka czerwonego wina (opcjonalnie)",
+      "2 łyżki oleju roślinnego",
+      "1 łyżeczka słodkiej papryki",
+      "1 łyżeczka suszonego majeranku",
+      "Sól i pieprz do smaku",
+      "Opcjonalnie: natka pietruszki do dekoracji"
+    ],
+    "steps": {
+      "1": {
+        "text": "1. Na dużym garnku rozgrzej olej na średnim ogniu.",
+        "icon": "garnek",
+        "material": ["olej"]
+      },
+      "2": {
+        "text": "2. Dodaj posiekane cebule i smaż je przez około 5 minut, aż staną się miękkie i lekko złociste.",
+        "icon": "garnek",
+        "material": ["cebula"]
+      },
+      "3": {
+        "text": "3. Dodaj pokrojone mięso wołowe i smaż je przez około 5-7 minut, aż zewsząd się zrumieni.",
+        "icon": "garnek",
+        "material": ["mieso"]
+      },
+      "4": {
+        "text": "4. Dodaj posiekany czosnek i marchewki, smaż przez kolejne 2-3 minuty.",
+        "icon": "garnek",
+        "material": ["czosnek", "marchewka"]
+      },
+      "5": {
+        "text": "5. Posyp wszystko mąką i wymieszaj, aby mięso i warzywa były pokryte.",
+        "icon": "maka",
+        "material": []
+      },
+      "6": {
+        "text": "6. Wlej bulion wołowy i koncentrat pomidorowy, dodaj czerwone wino (jeśli używasz) oraz przyprawy: słodką paprykę, majeranek, sól i pieprz.",
+        "icon": "miska_i_trzepaczka",
+        "material": [
+          "bulion",
+          "koncentrat_pomidorowy",
+          "czerwone wino",
+          "przyprawy"
+        ]
+      },
+      "7": {
+        "text": "7. Doprowadź do wrzenia, a następnie zmniejsz ogień, przykryj i gotuj na wolnym ogniu przez około 1,5 - 2 godziny, aż mięso będzie miękkie i gulasz zgęstnieje.",
+        "icon": "garnek",
+        "material": []
+      },
+      "8": {
+        "text": "8. Sprawdź i dopraw gulasz do smaku solą i pieprzem.",
+        "icon": "przyprawy",
+        "material": ["sol", "pieprz"]
+      },
+      "9": {
+        "text": "9. Podawaj gorący, posypany posiekaną natką pietruszki, jako dodatek do klusek, ziemniaków lub pieczywa.",
+        "icon": "reka_z_miska",
+        "material": ["natka_pietruszki"]
+      }
+    },
+    "img": "8.jpg",
+    "time": 150
+  }
+]

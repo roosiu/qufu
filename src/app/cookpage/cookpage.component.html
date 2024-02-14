@@ -1,37 +1,36 @@
 <div class="foodpage">
   <div class="foodpage__progbar">
-    <div
-      class="foodpage__progbar__line"
-      [ngStyle]="{ width: '' + (100 / recipe.steps.length) * cookStep + '%' }"
-    ></div>
+    <div class="foodpage__progbar__line"
+      [ngStyle]="{ width: getStepsLength() ? '' + (100 / getStepsLength()) * cookStep + '%' : '0%' }">
+    </div>
   </div>
   <div class="foodpage__main">
-    <div class="title">Krok {{ cookStep }} z {{ recipe.steps.length }}</div>
+    <div class="title">Krok {{ cookStep }} z {{ getStepsLength() ? getStepsLength() : '0'
+      }}</div>
     <hr />
     <div class="body">
-      {{ recipe.steps[cookStep - 1] }}
+      {{recipe.steps[cookStep].text}}
     </div>
     <div class="button-section">
       <button (click)="getClickedStep(-1)">
         <span class="material-symbols-outlined"> arrow_left_alt </span>
         Poprzedni
       </button>
-      <button
-        *ngIf="cookStep != recipe.steps.length"
-        (click)="getClickedStep(1)"
-      >
+      <button *ngIf="recipe && recipe.steps && cookStep !== getStepsLength()" (click)="getClickedStep(1)">
         Następny
         <span class="material-symbols-outlined"> arrow_right_alt </span>
       </button>
-      <button
-        *ngIf="cookStep == recipe.steps.length"
-        (click)="getClickedClose()"
-      >
+      <button *ngIf="recipe && recipe.steps && cookStep === getStepsLength()" (click)="getClickedClose()">
         Zakończ <span class="material-symbols-outlined"> restaurant </span>
       </button>
     </div>
   </div>
-  <div class="foodpage__img" *ngIf="recipe.steps_icon[cookStep - 1]">
-    <img src="assets/steps_icons/{{ recipe.steps_icon[cookStep - 1] }}.png" />
+  <div class="foodpage__img" *ngIf="recipe.steps[cookStep].icon">
+    <ng-container *ngFor="let material of recipe.steps[cookStep].material">
+      <img class="foodpage__img-material" src="assets/steps_icons/{{ material }}.png" />
+    </ng-container>
+
+    <img class="foodpage__img-job"
+      src="assets/steps_icons/{{ recipe && recipe.steps[cookStep].icon && recipe.steps[cookStep].icon }}.png" />
   </div>
 </div>
