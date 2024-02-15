@@ -12,6 +12,7 @@ import { RouterLink } from '@angular/router';
 export class CardComponent implements OnInit {
   searched = '';
   recipes = this.searchService.recipes;
+  imgLocation = this.searchService.imgLocation;
   filteredRecipes: any[];
   constructor(private searchService: SearchService) {
     this.filteredRecipes = this.recipes;

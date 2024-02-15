@@ -26,18 +26,18 @@ export class SearchService {
   }
 
   // tablica z przepisami
-  getJsonData(): Observable<any[]> {
-    return this.http.get<any>('assets/data.json');
+  getJsonData(text: string): Observable<any[]> {
+    return this.http.get<any>('http://pwksm.ovh/qufu/' + text);
   }
 
   /// pobieranie jsona
   initialize(): void {
-    this.getJsonData().subscribe((data) => {
+    this.getJsonData('').subscribe((data) => {
       this.recipes = data;
     });
   }
   recipes: any[] = [];
-
+  imgLocation: string = 'http://pwksm.ovh/qufu/assets/images/';
   // kliknięcie w przepis
   private recipeClick = new BehaviorSubject<any>(null);
   // private recipeClick = new BehaviorSubject<any>(1); // po przerobieniu templatki zmienić na linie wyżej

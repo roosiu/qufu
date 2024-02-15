@@ -1,14 +1,19 @@
 <ng-container *ngIf="filteredRecipes && filteredRecipes.length">
-  <div *ngFor="let recipe of filteredRecipes" class="card" (click)="getClicked(recipe.id)">
-    <div class="img-div" [ngStyle]="{
-        'background-image': 'url(\'assets/images/' + recipe.img + '\')'
-      }"></div>
+  <div
+    *ngFor="let recipe of filteredRecipes"
+    class="card"
+    (click)="getClicked(recipe.id)"
+  >
+    <div
+      class="img-div"
+      [ngStyle]="{
+        'background-image': 'url(' + imgLocation + recipe.img + ')'
+      }"
+    ></div>
     <div class="title padding">{{ recipe.title }}</div>
     <div class="body padding"></div>
     <div class="footer padding">
-      <span class="material-symbols-outlined">
-        pace
-      </span>
+      <span class="material-symbols-outlined"> pace </span>
       {{ recipe.time }} min
     </div>
   </div>

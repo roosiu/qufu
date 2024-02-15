@@ -1,8 +1,6 @@
 <div class="recipepage">
   <div (click)="getClickedClose()" class="recipage__close">
-    <span class="material-symbols-outlined">
-      close
-    </span>
+    <span class="material-symbols-outlined"> close </span>
   </div>
   <div class="recipepage__main">
     <div class="title">
@@ -21,21 +19,21 @@
       </ul>
     </div>
     <div class="time">
-      <span class="material-symbols-outlined">
-        pace
-      </span>
+      <span class="material-symbols-outlined"> pace </span>
       <div class="time__text">
         Czas przygotowania
         <div class="time__text__min">{{ recipe.time }} min</div>
       </div>
       <!-- <div class="steps">Ilość etapów: {{ recipe.steps.length }}</div> -->
-      <button (click)="getClickedStart()">Rozpocznij <span class="material-symbols-outlined">
-          skillet
-        </span></button>
+      <button (click)="getClickedStart()">
+        Rozpocznij <span class="material-symbols-outlined"> skillet </span>
+      </button>
     </div>
   </div>
-  <div class="recipepage__img" [ngStyle]="{
-      'background-image': 'url(\'assets/images/' + recipe.img + '\')'
-    }">
-  </div>
+  <div
+    class="recipepage__img"
+    [ngStyle]="{
+      'background-image': 'url(' + imgLocation + recipe.img + ')'
+    }"
+  ></div>
 </div>

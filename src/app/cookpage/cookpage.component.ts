@@ -14,6 +14,7 @@ export class CookpageComponent implements OnInit {
   id: any = '';
   recipe: any = [];
   cookStep: any = '';
+  imgLocation = this.searchService.imgLocation;
   ngOnInit(): void {
     this.searchService.getrecipeClick().subscribe((text) => {
       this.id = text;
@@ -22,15 +23,15 @@ export class CookpageComponent implements OnInit {
     this.searchService.getcookStep().subscribe((text) => {
       this.cookStep = text;
     });
+    this.searchService.getJsonData('?steps=' + this.id).subscribe((data) => {
+      this.recipe.steps = data;
+    });
   }
   getClickedStep(step: number) {
     this.searchService.setcookStep(this.cookStep + step);
   }
   getClickedClose() {
     this.searchService.setcookStep(0);
-    this.searchService.setrecipeClick(0);
-  }
-  getStepsLength(): number {
-    return Object.keys(this.recipe.steps).length;
+    this.searchService.setrecipeClick(this.recipe.id);
   }
 }

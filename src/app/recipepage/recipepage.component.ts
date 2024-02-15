@@ -14,10 +14,23 @@ export class RecipepageComponent implements OnInit {
   id: any = '';
   recipe: any = [];
   cookStep: any = '';
+  imgLocation = this.searchService.imgLocation;
   ngOnInit(): void {
     this.searchService.getrecipeClick().subscribe((text) => {
       this.id = text;
       this.recipe = this.searchService.recipes[this.id - 1];
+      if (this.id) {
+        this.searchService
+          .getJsonData('?ingredients=' + this.id)
+          .subscribe((data) => {
+            this.recipe.ingredients = data;
+          });
+        this.searchService
+          .getJsonData('?steps=' + this.id)
+          .subscribe((data) => {
+            this.recipe.steps = data;
+          });
+      }
     });
   }
   getClickedStart() {
