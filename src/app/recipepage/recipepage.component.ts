@@ -45,13 +45,30 @@ export class RecipepageComponent implements OnInit {
             .subscribe((data) => {
               this.recipe.steps = data;
             });
+          this.searchService
+            .getJsonData('?ratings=' + this.id)
+            .subscribe((data) => {
+              this.recipe.rating = data[0].average_rating;
+            });
         });
       }
     });
   }
+
+  /// oceny
+  getStarsArray(rating: number): number[] {
+    const fullStarsCount = 6 - Math.floor(rating / 2);
+    return Array(fullStarsCount).fill(0);
+  }
+
+  getEmptyStarsArray(rating: number): number[] {
+    const emptyStarsCount = Math.floor(rating / 2);
+    return Array(emptyStarsCount).fill(0);
+  }
+
+  ///
   getClickedStart() {
     this.searchService.setcookStep(1);
-    this.searchService.setrecipeClick(this.id);
   }
   getClickedClose() {
     this.searchService.getSearchString().subscribe((text) => {

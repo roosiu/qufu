@@ -24,6 +24,5 @@ export class CookpageComponent implements OnInit {
   }
   getClickedClose() {
     this.searchService.setcookStep(0);
-    this.searchService.setrecipeClick(this.recipe.id);
   }
 }

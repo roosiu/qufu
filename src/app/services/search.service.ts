@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,7 +10,6 @@ export class SearchService {
   question = 'Na co masz dzisiaj ochotę?';
 
   // wyszukiwana fraza
-  // private searchString = new BehaviorSubject<string>('kur');
   private searchString = new BehaviorSubject<string>('');
 
   getSearchString(): Observable<string> {
@@ -22,7 +21,7 @@ export class SearchService {
   }
 
   constructor(private http: HttpClient) {
-    this.initialize();
+    // this.initialize();
   }
 
   // tablica z przepisami
@@ -31,24 +30,14 @@ export class SearchService {
   }
 
   /// pobieranie wszystkich przepisów
-  initialize(): void {
-    this.getJsonData('').subscribe((data) => {
-      this.recipes = data;
-    });
-  }
+  // initialize(): void {
+  //   this.getJsonData('').subscribe((data) => {
+  //     this.recipes = data;
+  //   });
+  // }
   recipes: any[] = [];
   imgLocation: string = 'http://pwksm.ovh/qufu/assets/images/';
   // kliknięcie w przepis
-  private recipeClick = new BehaviorSubject<any>(null);
-  // private recipeClick = new BehaviorSubject<any>(1); // po przerobieniu templatki zmienić na linie wyżej
-
-  getrecipeClick(): Observable<number> {
-    return this.recipeClick.asObservable();
-  }
-
-  setrecipeClick(text: number) {
-    this.recipeClick.next(text);
-  }
 
   //rozpoczęcie gotowania
   private cookStep = new BehaviorSubject<any>(null);

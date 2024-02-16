@@ -3,6 +3,28 @@
     <span class="material-symbols-outlined"> close </span>
   </div>
   <div class="recipepage__main">
+    <div class="rating">
+      <ng-container *ngIf="recipe && recipe.rating; else noRating">
+        <ng-container *ngFor="let star of getStarsArray(recipe.rating)">
+          <span class="star">&#9733;</span>
+        </ng-container>
+        <ng-container *ngFor="let emptyStar of getEmptyStarsArray(recipe.rating)">
+          <span class="star">&#9734;</span>
+        </ng-container>
+      </ng-container>
+      <ng-template #noRating>
+        <span *ngFor="let star of [1, 2, 3, 4, 5, 6]; let i = index" class="star">&#9734;</span>
+        <span class="norating">brak ocen</span>
+      </ng-template>
+
+      <span class="material-symbols-outlined">
+        thumb_down
+      </span>
+      <span class="material-symbols-outlined">
+        thumb_up
+      </span>
+
+    </div>
     <div class="title">
       {{ recipe.title }}
     </div>

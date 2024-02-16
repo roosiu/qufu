@@ -78,6 +78,23 @@
   margin: 0 10px;
   padding-bottom: 40px;
 }
+.recipepage .recipepage__main .rating {
+  font-size: 30px;
+  color: var(--primary-color-hover);
+}
+.recipepage .recipepage__main .rating .material-symbols-outlined {
+  color: var(--secondary-color);
+  vertical-align: middle;
+}
+.recipepage .recipepage__main .rating .material-symbols-outlined:hover {
+  cursor: pointer;
+  color: var(--primary-color-hover);
+}
+.recipepage .recipepage__main .norating {
+  font-size: 16px;
+  color: var(--primary-color-hover);
+}
+
 .recipepage .recipepage__main hr {
   color: var(--primary-color);
   margin: 10px 0;
