@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +10,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  username: string = '';
+  email: string = '';
   password: string = '';
+
   onSubmit() {
     // Call authentication service to log in
-    console.log(this.username, this.password);
+    console.log(this.email, this.password);
   }
 }

@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchService {
   // pytanie z herosection
-  question = 'Na co masz dzisiaj ochotę?';
+  question =
+    'Na co masz dzisiaj ochotę?/Może kurczak?/Może rosół?/Wyszukaj idealny przepis';
 
   // wyszukiwana fraza
   private searchString = new BehaviorSubject<string>('');
