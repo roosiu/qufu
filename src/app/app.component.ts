@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HerosectionComponent } from './herosection/herosection.component';
 import { FooterComponent } from './footer/footer.component';
@@ -28,21 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './app.component.css',
   providers: [SearchService],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'qufu';
-  constructor(private searchService: SearchService) {}
-  lastText: string = '';
-  idRecipe: any;
-  cookStep: any = '';
-  ngOnInit(): void {
-    this.searchService.getSearchString().subscribe((text) => {
-      this.lastText = text;
-    });
-    this.searchService.getrecipeClick().subscribe((text) => {
-      this.idRecipe = text;
-    });
-    this.searchService.getcookStep().subscribe((text) => {
-      this.cookStep = text;
-    });
-  }
+  constructor() {}
 }

@@ -3,22 +3,27 @@ import { SearchbarComponent } from '../searchbar/searchbar.component';
 import { SearchService } from '../services/search.service';
 import { CardComponent } from '../card/card.component';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-searchpage',
   standalone: true,
   imports: [SearchbarComponent, CardComponent, CommonModule],
   templateUrl: './searchpage.component.html',
-  styleUrl: './searchpage.component.css'
+  styleUrl: './searchpage.component.css',
 })
-export class SearchpageComponent implements OnInit{
-  constructor(private searchService: SearchService) {
-  }
-  searched : string = '';
+export class SearchpageComponent implements OnInit {
+  constructor(
+    private searchService: SearchService,
+    private activatedRoute: ActivatedRoute
+  ) {}
+  searched: string = '';
 
   ngOnInit(): void {
-    this.searchService.getSearchString().subscribe(text => {
-      this.searched = text;
-  });
+    this.activatedRoute.paramMap.subscribe((params) => {
+      const inputText: any = params.get('inputText');
+      this.searchService.setSearchString(inputText);
+      this.searched = inputText;
+    });
   }
 }

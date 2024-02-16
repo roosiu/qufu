@@ -1,15 +1,8 @@
 <ng-container *ngIf="filteredRecipes && filteredRecipes.length">
-  <div
-    *ngFor="let recipe of filteredRecipes"
-    class="card"
-    (click)="getClicked(recipe.id)"
-  >
-    <div
-      class="img-div"
-      [ngStyle]="{
+  <div [routerLink]="['/id', recipe.id]" *ngFor="let recipe of filteredRecipes" class="card">
+    <div class="img-div" [ngStyle]="{
         'background-image': 'url(' + imgLocation + recipe.img + ')'
-      }"
-    ></div>
+      }"></div>
     <div class="title padding">{{ recipe.title }}</div>
     <div class="body padding"></div>
     <div class="footer padding">

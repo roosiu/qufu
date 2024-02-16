@@ -2,6 +2,18 @@
   <div class="navbar-logo">
     <img src="assets/images/logo_t.svg" alt="QuFu Logo" />
   </div>
-  <!-- Add login/logout buttons or user-related actions here -->
-  <div class="navbar-actions"></div>
+  <div class="navbar-actions">
+    <div class="menu">
+      <button class="button" [routerLink]="['/']" id="start"><span class="material-symbols-outlined">
+          home</span> Start</button>
+      <button class="button" id="start"><span class="material-symbols-outlined">
+          trending_up
+        </span> Top przepisy</button>
+    </div>
+  </div>
+  <div class="navbar-logpanel">
+    <button class="signup" id="start">Rejestracja
+    </button>
+    <button class="login" id="start">Logowanie</button>
+  </div>
 </nav>

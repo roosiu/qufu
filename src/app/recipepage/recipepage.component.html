@@ -1,4 +1,4 @@
-<div class="recipepage">
+<div *ngIf="!cookStep" class="recipepage">
   <div (click)="getClickedClose()" class="recipage__close">
     <span class="material-symbols-outlined"> close </span>
   </div>
@@ -30,10 +30,8 @@
       </button>
     </div>
   </div>
-  <div
-    class="recipepage__img"
-    [ngStyle]="{
+  <div class="recipepage__img" [ngStyle]="{
       'background-image': 'url(' + imgLocation + recipe.img + ')'
-    }"
-  ></div>
+    }"></div>
 </div>
+<app-cookpage [recipe]="recipe" *ngIf="cookStep"></app-cookpage>

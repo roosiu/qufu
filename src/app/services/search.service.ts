@@ -30,7 +30,7 @@ export class SearchService {
     return this.http.get<any>('http://pwksm.ovh/qufu/' + text);
   }
 
-  /// pobieranie jsona
+  /// pobieranie wszystkich przepisów
   initialize(): void {
     this.getJsonData('').subscribe((data) => {
       this.recipes = data;

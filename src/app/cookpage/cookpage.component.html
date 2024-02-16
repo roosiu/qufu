@@ -1,61 +1,43 @@
 <div class="foodpage">
   <div class="foodpage__progbar">
-    <div
-      class="foodpage__progbar__line"
-      [ngStyle]="{
+    <div class="foodpage__progbar__line" [ngStyle]="{
         width: recipe.steps.length
           ? '' + (100 / recipe.steps.length) * cookStep + '%'
           : '0%'
-      }"
-    ></div>
+      }"></div>
   </div>
   <div class="foodpage__main">
     <div class="title">
       Krok {{ cookStep }} z
-      {{ recipe.steps.length ? recipe.steps.length : "0" }}
+      {{ recipe && recipe.steps.length ? recipe.steps.length : "0" }}
     </div>
     <hr />
     <div class="body">
-      {{ recipe.steps[cookStep - 1].text }}
+      {{ recipe && recipe.steps[cookStep - 1].text }}
     </div>
     <div class="button-section">
       <button (click)="getClickedStep(-1)">
         <span class="material-symbols-outlined"> arrow_left_alt </span>
         Poprzedni
       </button>
-      <button
-        *ngIf="recipe && recipe.steps && cookStep !== recipe.steps.length"
-        (click)="getClickedStep(1)"
-      >
+      <button *ngIf="recipe && recipe.steps && cookStep !== recipe.steps.length" (click)="getClickedStep(1)">
         Następny
         <span class="material-symbols-outlined"> arrow_right_alt </span>
       </button>
-      <button
-        *ngIf="recipe && cookStep === recipe.steps.length"
-        (click)="getClickedClose()"
-      >
+      <button *ngIf="recipe && cookStep === recipe.steps.length" (click)="getClickedClose()">
         Zakończ <span class="material-symbols-outlined"> restaurant </span>
       </button>
     </div>
   </div>
   <div class="foodpage__img" *ngIf="recipe.steps[cookStep - 1].icon">
-    <ng-container
-      *ngFor="let material of recipe.steps[cookStep - 1].material.split(',')"
-    >
-      <img
-        *ngIf="material"
-        class="foodpage__img-material"
-        src="{{ imgLocation }}{{ material }}.png"
-      />
+    <ng-container *ngFor="let material of recipe.steps[cookStep - 1].material.split(',')">
+      <img *ngIf="material" class="foodpage__img-material" src="{{ imgLocation }}{{ material }}.png" />
     </ng-container>
 
-    <img
-      class="foodpage__img-job"
-      src="{{ imgLocation }}{{
+    <img class="foodpage__img-job" src="{{ imgLocation }}{{
         recipe &&
           recipe.steps[cookStep - 1].icon &&
           recipe.steps[cookStep - 1].icon
-      }}.png"
-    />
+      }}.png" />
   </div>
 </div>
