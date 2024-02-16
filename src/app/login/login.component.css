@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+
+  background: rgb(247, 247, 247);
+  background: linear-gradient(
+    0deg,
+    rgba(247, 247, 247, 1) 0%,
+    rgba(255, 246, 246, 1) 34%,
+    rgba(254, 234, 223, 1) 44%,
+    rgba(247, 247, 247, 1) 44%,
+    rgba(255, 255, 255, 1) 44%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.login-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 400px;
+  padding: 15px;
+  flex-direction: column;
+}
+
+.button {
+  width: 130px;
+  padding: 15px;
+}

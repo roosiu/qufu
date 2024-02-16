@@ -1,9 +1,9 @@
-import { Routes, provideRouter, withRouterConfig } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HerosectionComponent } from './herosection/herosection.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { RecipepageComponent } from './recipepage/recipepage.component';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   { path: '', component: HerosectionComponent },
@@ -12,5 +12,6 @@ export const routes: Routes = [
     component: SearchpageComponent,
   },
   { path: 'id/:inputText', component: RecipepageComponent },
-  { path: '**', component: HerosectionComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: PagenotfoundComponent },
 ];

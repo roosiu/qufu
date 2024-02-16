@@ -23,11 +23,13 @@
   color: #fff;
   font-size: 16px;
   border: none;
+  transition: all 0.2s;
 }
 
 .search-button:hover {
   cursor: pointer;
   background-color: var(--primary-color-hover);
+  transition: all 0.2s;
 }
 .search-input {
   padding-left: 20px;
