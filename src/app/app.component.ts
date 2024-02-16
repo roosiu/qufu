@@ -9,10 +9,14 @@ import { SearchpageComponent } from './searchpage/searchpage.component';
 import { RecipepageComponent } from './recipepage/recipepage.component';
 import { CookpageComponent } from './cookpage/cookpage.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+  providers: [SearchService],
   imports: [
     CommonModule,
     RouterOutlet,
@@ -23,10 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     RecipepageComponent,
     CookpageComponent,
     HttpClientModule,
+    SpinnerComponent,
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  providers: [SearchService],
 })
 export class AppComponent {
   title = 'qufu';

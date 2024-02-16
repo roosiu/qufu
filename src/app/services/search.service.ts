@@ -29,19 +29,12 @@ export class SearchService {
     return this.http.get<any>('http://pwksm.ovh/qufu/' + text);
   }
 
-  /// pobieranie wszystkich przepisów
-  // initialize(): void {
-  //   this.getJsonData('').subscribe((data) => {
-  //     this.recipes = data;
-  //   });
-  // }
   recipes: any[] = [];
   imgLocation: string = 'http://pwksm.ovh/qufu/assets/images/';
   // kliknięcie w przepis
 
   //rozpoczęcie gotowania
   private cookStep = new BehaviorSubject<any>(null);
-  // private cookStep = new BehaviorSubject<any>(1);
 
   getcookStep(): Observable<number> {
     return this.cookStep.asObservable();
