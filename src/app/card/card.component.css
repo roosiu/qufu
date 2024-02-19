@@ -2,13 +2,16 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  min-height: 80vh;
+  min-height: calc(100vh - 149px);
 }
 .card {
+  position: relative;
   margin: 15px;
   display: flex;
   justify-content: left;
+  align-items: flex-start;
   flex-wrap: wrap;
+  flex-direction: column;
   width: 250px;
   height: 320px;
   background-color: #fff;
@@ -38,17 +41,41 @@
   background-size: cover;
 }
 .card .title {
+  padding-top: 13px;
   color: var(--secondary-color);
   font-weight: normal;
   font-size: 1.1em;
 }
 .card .body {
 }
-.card .footer {
+.card .diff-bar {
   width: 100%;
+  height: 3px;
+  background-color: var(--backroung-color4);
   display: flex;
-  justify-content: right;
-  align-items: center;
+  justify-content: start;
+}
+.card .diff-bar .easy {
+  width: 33.33%;
+  height: 100%;
+  background-color: green;
+  border-radius: 0 0 0 100%;
+}
+.card .diff-bar .medium {
+  width: 33.33%;
+  height: 100%;
+  background-color: orange;
+}
+.card .diff-bar .hard {
+  width: 33.33%;
+  height: 100%;
+  background-color: red;
+  border-radius: 0 0 100% 0;
+}
+.card .footer {
+  right: 15px;
+  bottom: 15px;
+  position: absolute;
   font-size: 0.9em;
 }
 
@@ -56,6 +83,7 @@
   color: var(--grey-color2);
 }
 .footer span {
+  vertical-align: bottom;
   font-size: 20px;
 }
 

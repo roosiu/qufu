@@ -11,7 +11,7 @@
   align-content: center;
   justify-content: center;
   color: #feeadf;
-  height: 90vh;
+  min-height: calc(100vh - 149px);
   width: 100%;
 }
 

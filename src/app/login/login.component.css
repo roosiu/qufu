@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  min-height: calc(100vh - 149px);
 
   background: rgb(247, 247, 247);
   background: linear-gradient(
@@ -17,6 +17,11 @@
 }
 
 .login-box {
+  background-color: var(--primary-color);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/assets/images/fire.svg");
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,10 +33,11 @@
 
 .title {
   font-size: 1.8em;
-  color: var(--secondary-color);
+  color: var(--background-color4);
   font-weight: bold;
 }
 .title-lower {
+  color: var(--background-color4);
   font-size: 1.3em;
   font-weight: 300;
   padding-top: 15px;
@@ -47,20 +53,52 @@
   padding-top: 20px;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 80%;
+}
 input {
-  width: 90%;
+  font-size: 1em;
+  width: 100%;
   padding: 13px;
   margin-bottom: 20px;
+  box-sizing: border-box;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-bottom: solid 2px var(--primary-color);
+  border-bottom: solid 3px var(--secondary-color);
   outline: none;
+  background-color: var(--background-color4);
+}
+label {
+  display: block;
+  font-size: 0.9em;
+  padding-top: 5px;
+  padding-left: 5px;
+  background-color: var(--background-color4);
+  color: var(--secondary-color);
+  border-radius: 5px 5px 0 0;
+  font-weight: 300;
 }
 
 input:focus {
   outline: none;
 }
-label {
-  font-weight: 300;
+
+.form-group {
+  position: relative;
+}
+.pass_rem {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: var(--secondary-color);
+  font-size: 0.9em;
+  text-decoration: underline;
+}
+.pass_rem:hover {
+  cursor: pointer;
 }

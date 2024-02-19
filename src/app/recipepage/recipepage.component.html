@@ -32,7 +32,17 @@
     <div class="body">
       {{ recipe.body }}
     </div>
-    <hr />
+    <div class="diff-bar">
+      <div class="diff-bar__label">Poziom trudności:
+        <ng-container *ngIf="recipe.difficulty==1"><b>łatwy</b></ng-container>
+        <ng-container *ngIf="recipe.difficulty==2"><b>średni</b></ng-container>
+        <ng-container *ngIf="recipe.difficulty==3"><b>trudny</b></ng-container>
+      </div>
+      <div *ngIf="recipe.difficulty>=1" class="easy"></div>
+      <div *ngIf="recipe.difficulty>=2" class="medium"></div>
+      <div *ngIf="recipe.difficulty==3" class="hard"></div>
+
+    </div>
     <div class="ingredients">
       <div class="ingredients-text">Składniki</div>
       <ul>
@@ -49,7 +59,7 @@
       </div>
       <!-- <div class="steps">Ilość etapów: {{ recipe.steps.length }}</div> -->
       <button (click)="getClickedStart()">
-        Rozpocznij <span class="material-symbols-outlined"> skillet </span>
+        <img src="/assets/images/start.svg"> Rozpocznij
       </button>
     </div>
   </div>

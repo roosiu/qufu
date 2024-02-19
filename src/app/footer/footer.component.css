@@ -2,7 +2,8 @@
   padding: 15px;
   display: flex;
   justify-content: end;
-  color: #eaac8b;
+  color: var(--background-color4);
+  background-color: var(--secondary-color);
 }
 .footer {
   z-index: 9999;

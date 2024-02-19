@@ -1,8 +1,8 @@
-<div class="search-bar">
-  <input [(ngModel)]="inputText" class="search-input" type="text" placeholder="Szukaj w QuFu..."
+<div (click)="searchInput.focus()" class="search-bar">
+  <input #searchInput [(ngModel)]="inputText" class="search-input" type="text" placeholder="Szukaj w QuFu..."
     (keyup.enter)="searchButtonClick.click()" />
 </div>
 
 <button #searchButtonClick [routerLink]="['/search', inputText]" [disabled]="!inputText" class="search-button">
-  SZUKAJ
+  Szukaj
 </button>

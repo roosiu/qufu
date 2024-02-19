@@ -3,9 +3,14 @@
     <div class="img-div" [ngStyle]="{
         'background-image': 'url(' + imgLocation + recipe.img + ')'
       }"></div>
+    <div class="diff-bar">
+      <div class="easy"></div>
+      <div *ngIf="recipe.difficulty>=2" class="medium"></div>
+      <div *ngIf="recipe.difficulty==3" class="hard"></div>
+    </div>
     <div class="title padding">{{ recipe.title }}</div>
     <div class="body padding"></div>
-    <div class="footer padding">
+    <div class="footer">
       <span class="material-symbols-outlined"> pace </span>
       {{ recipe.time }} min
     </div>

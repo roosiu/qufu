@@ -11,6 +11,7 @@
   --background-color: #feeadf;
   --background-color2: #eaac8b;
   --background-color3: #f7f7f7;
+  --background-color4: #fff2eb;
   --grey-color1: #808080;
   --grey-color2: #363636;
 }
@@ -52,6 +53,28 @@ body {
   background-color: var(--primary-color-hover);
   transition: all 0.2s;
 }
+.button-standard2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  background-color: var(--secondary-color);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  transition: all 0.2s;
+}
+.button-standard2:hover {
+  cursor: pointer;
+  background-color: var(--primary-color-hover);
+  transition: all 0.2s;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
