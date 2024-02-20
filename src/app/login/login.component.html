@@ -1,9 +1,13 @@
-<div class="box-standard login-box">
+<div *ngIf="!isLogged; else alredyLoggedDiv" class="box-standard login-box">
     <!-- <div class="logo"><img src="/assets/images/logo_t.svg" alt="logo" srcset=""></div> -->
     <div class="title">
         Zaloguj się</div>
-    <div class="title-lower">Wprowadź adres e-mail i hasło</div>
-    <form (ngSubmit)="onSubmit()">
+    <div class="title-lower">
+        <ng-container *ngIf="!errorMessage">Wprowadź adres e-mail i hasło</ng-container>
+        <div *ngIf="errorMessage" class="error">{{errorMessage}}</div>
+    </div>
+
+    <form (ngSubmit)="login()">
         <div class="form-group">
             <label for="email">Adres e-mail:</label>
             <input type="email" id="email" name="email" placeholder="wprowadź e-mail" [(ngModel)]="email" required>
@@ -12,7 +16,7 @@
             <label for="password">Hasło:</label>
             <input type="password" id="password" name="password" placeholder="wprowadź hasło" [(ngModel)]="password"
                 required>
-            <div class="pass_rem">Zapomniałem hasła</div>
+            <div *ngIf="errorMessage" class="pass_rem"> Zapomniałem hasła</div>
         </div>
         <div class="button_div">
             <button class="button-standard2 button" type="submit">Loguj
@@ -24,3 +28,9 @@
     </form>
 
 </div>
+
+<ng-template #alredyLoggedDiv>
+    <div class="box-standard login-box">
+        <div class="title">jesteś już zalogowany</div>
+    </div>
+</ng-template>

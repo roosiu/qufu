@@ -12,8 +12,20 @@
     </div>
   </div>
   <div class="navbar-logpanel">
-    <button class="signup">Rejestracja
-    </button>
-    <button class="login" [routerLink]="['/login']">Logowanie</button>
+    <ng-container *ngIf="!logged; else profile">
+      <button class="signup">Rejestracja
+      </button>
+      <button class="login" [routerLink]="['/login']">Logowanie</button>
+    </ng-container>
+    <ng-template #profile>
+      <button class="profile" [routerLink]="['/profile']"><span class="material-symbols-outlined">
+          account_circle
+        </span>{{name}}</button>
+      <button (click)="logout()" class="logout"><span class="material-symbols-outlined">
+          logout
+        </span></button>
+    </ng-template>
   </div>
+
+
 </nav>

@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +11,29 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
-  email: string = 'poczta@poczta.pl';
-  password: string = 'haslo123';
+export class LoginComponent implements OnInit {
+  email: string = '';
+  password: string = '';
   errorMessage: string = '';
-  constructor(private authService: AuthService) {}
+  isLogged = this.authService.GetIsLoggedFromToken();
+  constructor(private authService: AuthService, private router: Router) {}
+  ngOnInit(): void {
+    if (this.isLogged) {
+      this.router.navigate(['/profile']);
+    } else {
+    }
+  }
   login() {
-    console.log(this.email);
     this.authService.login(this.email, this.password).subscribe({
       next: (response) => {
         if (response.success) {
+          localStorage.setItem('name', response.username);
           localStorage.setItem('token', response.token);
-          console.log('Logowanie udane');
+          this.authService.SetIsLogged(true);
+          this.router.navigate(['']);
         } else {
           // Logowanie nieudane - wyświetl komunikat błędu
+
           this.errorMessage = response.message;
         }
       },
@@ -32,10 +42,5 @@ export class LoginComponent {
         console.error('Błąd logowania:', err);
       },
     });
-  }
-
-  onSubmit() {
-    this.login();
-    // Call authentication service to log in
   }
 }

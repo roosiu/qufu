@@ -98,6 +98,47 @@
   transition: all 0.2s;
 }
 
+/*  */
+.navbar .navbar-logpanel .profile {
+  padding: 5px 15px;
+  z-index: 9;
+  height: 50%;
+  background-color: var(--accent-color);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+}
+.navbar .navbar-logpanel .profile span {
+  vertical-align: middle;
+}
+.navbar .navbar-logpanel .profile:hover {
+  cursor: pointer;
+  background-color: var(--primary-color-hover);
+  transition: all 0.2s;
+}
+.navbar .navbar-logpanel .logout {
+  margin-left: -30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 15px;
+  padding-left: 38px;
+  height: 50%;
+  background-color: var(--secondary-color);
+  border-radius: 0 50px 50px 0;
+  color: #fff;
+  font-size: 0.9em;
+  border: none;
+  transition: all 0.2s;
+}
+.navbar .navbar-logpanel .logout span {
+  vertical-align: middle;
+}
+.navbar .navbar-logpanel .logout:hover {
+  cursor: pointer;
+  background-color: var(--primary-color-hover);
+  transition: all 0.2s;
+}
 @media only screen and (max-width: 800px) {
   .navbar {
     padding: 0 5px;
