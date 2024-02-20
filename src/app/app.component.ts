@@ -10,13 +10,14 @@ import { RecipepageComponent } from './recipepage/recipepage.component';
 import { CookpageComponent } from './cookpage/cookpage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers: [SearchService],
+  providers: [SearchService, AuthService],
   imports: [
     CommonModule,
     RouterOutlet,
