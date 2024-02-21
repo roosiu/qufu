@@ -68,33 +68,6 @@ form {
   flex-direction: column;
   width: 80%;
 }
-input {
-  font-size: 1em;
-  width: 100%;
-  padding: 13px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-bottom: solid 3px var(--secondary-color);
-  outline: none;
-  background-color: var(--background-color4);
-}
-label {
-  display: block;
-  font-size: 0.9em;
-  padding-top: 5px;
-  padding-left: 5px;
-  background-color: var(--background-color4);
-  color: var(--secondary-color);
-  border-radius: 5px 5px 0 0;
-  font-weight: 300;
-}
-
-input:focus {
-  outline: none;
-}
 
 .form-group {
   position: relative;
@@ -109,4 +82,15 @@ input:focus {
 }
 .pass_rem:hover {
   cursor: pointer;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.label {
+  background-color: var(--secondary-color);
+  font-size: 0.9em;
+  color: var(--background-color4);
+  text-align: center;
 }

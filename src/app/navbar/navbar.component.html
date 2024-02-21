@@ -18,10 +18,11 @@
       <button class="login" [routerLink]="['/login']">Logowanie</button>
     </ng-container>
     <ng-template #profile>
-      <button class="profile" [routerLink]="['/profile']"><span class="material-symbols-outlined">
+      <button class="profile" matTooltip="Twój profil" [routerLink]="['/profile']"><span
+          class="material-symbols-outlined">
           account_circle
         </span>{{name}}</button>
-      <button (click)="logout()" class="logout"><span class="material-symbols-outlined">
+      <button matTooltip="Wyloguj" (click)="logout()" class="logout"><span class="material-symbols-outlined">
           logout
         </span></button>
     </ng-template>

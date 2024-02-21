@@ -1,4 +1,4 @@
-<div *ngIf="!isLogged; else alredyLoggedDiv" class="box-standard login-box">
+<mat-card *ngIf="!isLogged; else alredyLoggedDiv" class="box-standard login-box">
     <!-- <div class="logo"><img src="/assets/images/logo_t.svg" alt="logo" srcset=""></div> -->
     <div class="title">
         Zaloguj się</div>
@@ -9,8 +9,17 @@
 
     <form (ngSubmit)="login()">
         <div class="form-group">
-            <label for="email">Adres e-mail:</label>
-            <input type="email" id="email" name="email" placeholder="wprowadź e-mail" [(ngModel)]="email" required>
+            <mat-form-field class="full-width">
+                <mat-label>Adres e-mail:</mat-label>
+                <input type="email" matInput [formControl]="email" id="email" name="email" placeholder="wprowadź e-mail"
+                    required>
+                @if (email.hasError('email') && !email.hasError('required')) {
+                <mat-error class="label">Nieprawidłowy adres e-mail</mat-error>
+                }
+                @if (email.hasError('required')) {
+                <mat-error class="label">e-mail jest <strong>wymagany</strong></mat-error>
+                }
+            </mat-form-field>
         </div>
         <div class="form-group">
             <label for="password">Hasło:</label>
@@ -27,7 +36,7 @@
         </div>
     </form>
 
-</div>
+</mat-card>
 
 <ng-template #alredyLoggedDiv>
     <div class="box-standard login-box">

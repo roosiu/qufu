@@ -1,18 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, FormControl, Validators } from '@angular/forms';
+import {
+  FormsModule,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { MatModule } from '../mat/mat.module';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MatModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent implements OnInit {
-  email: string = '';
+  email: any = new FormControl('', [Validators.required, Validators.email]);
   password: string = '';
   errorMessage: string = '';
   isLogged = this.authService.GetIsLoggedFromToken();
@@ -24,7 +30,7 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
-    this.authService.login(this.email, this.password).subscribe({
+    this.authService.login(this.email.value, this.password).subscribe({
       next: (response) => {
         if (response.success) {
           localStorage.setItem('name', response.username);

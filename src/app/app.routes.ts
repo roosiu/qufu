@@ -5,6 +5,7 @@ import { RecipepageComponent } from './recipepage/recipepage.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
 import { LoginGuard } from './services/loginguard.service';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
   { path: '', component: HerosectionComponent },
@@ -14,6 +15,6 @@ export const routes: Routes = [
   },
   { path: 'id/:inputText', component: RecipepageComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: LoginComponent, canActivate: [LoginGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
   { path: '**', component: PagenotfoundComponent },
 ];

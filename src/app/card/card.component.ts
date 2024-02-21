@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../services/search.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { MatModule } from '../mat/mat.module';
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, MatModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
 })
@@ -23,6 +24,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.searchService.setcookStep(0);
     this.activatedRoute.paramMap.subscribe((params) => {
       const inputText: any = params.get('inputText');
       this.searchService.setSearchString(inputText);

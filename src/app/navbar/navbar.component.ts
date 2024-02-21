@@ -3,11 +3,12 @@ import { SearchService } from '../services/search.service';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth.service';
+import { MatModule } from '../mat/mat.module';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, MatModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })

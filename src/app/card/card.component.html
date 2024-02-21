@@ -1,5 +1,5 @@
 <ng-container *ngIf="filteredRecipes && filteredRecipes.length">
-  <div [routerLink]="['/id', recipe.id]" *ngFor="let recipe of filteredRecipes" class="card">
+  <mat-card [routerLink]="['/id', recipe.id]" *ngFor="let recipe of filteredRecipes" class="card">
     <div class="img-div" [ngStyle]="{
         'background-image': 'url(' + imgLocation + recipe.img + ')'
       }"></div>
@@ -14,7 +14,7 @@
       <span class="material-symbols-outlined"> pace </span>
       {{ recipe.time }} min
     </div>
-  </div>
+  </mat-card>
 </ng-container>
 <ng-container *ngIf="!filteredRecipes || !filteredRecipes.length">
   <div class="no-recipes">Brak przepisów do wyświetlenia.</div>
