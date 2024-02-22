@@ -103,3 +103,7 @@
 .reviews {
   color: var(--secondary-color);
 }
+.panel-title {
+  font-weight: bold;
+  color: var(--secondary-color);
+}

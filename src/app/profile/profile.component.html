@@ -1,57 +1,66 @@
 <div class="box-primary">
-    <mat-card class="box-standard box-profile">
-        <div class="icon">
-            <span class="material-symbols-outlined">
-                <button matTooltip="Edycja dostępna wkrótce" class="button-standard button-edit">Edytuj</button>
-                account_circle
-            </span>
-        </div>
-        <div class="title">Profil:</div>
-        <div class="name">Joanna</div>
-        <div class="email">poczta_poczta.pl</div>
-
-    </mat-card>
-    <mat-card class="box-standard box-recipe">
-        <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Ulubione
-                    </mat-panel-title>
-                    <mat-panel-description class="mat-expansion-panel-header-description">
-                        Twoje ulubione przepisy {{panelOpenState ? 'open' : 'closed'}}
-                        <mat-icon class="fav">favorite</mat-icon>
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Oceny i komentarze
-                    </mat-panel-title>
-                    <mat-panel-description class="mat-expansion-panel-header-description">
-                        Twoje oceny i komentarze
-                        <mat-icon class="reviews">reviews</mat-icon>
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Wiadomości
-                    </mat-panel-title>
-                    <mat-panel-description class="mat-expansion-panel-header-description">
-                        Twoje wiadomości
-                        <mat-icon>mail</mat-icon>
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
-
-        </mat-accordion>
-
-
-    </mat-card>
+  <mat-card *ngIf="profile" class="box-standard box-profile">
+    <div class="icon">
+      <span class="material-symbols-outlined">
+        <button
+          matTooltip="Edycja dostępna wkrótce"
+          class="button-standard button-edit"
+        >
+          Edytuj
+        </button>
+        account_circle
+      </span>
+    </div>
+    <div class="title">Profil:</div>
+    <div class="name">{{ profile[0].name }}</div>
+    <div class="email">{{ profile[0].email }}</div>
+  </mat-card>
+  <mat-card class="box-standard box-recipe">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title class="panel-title"> Ulubione </mat-panel-title>
+          <mat-panel-description class="mat-expansion-panel-header-description">
+            Twoje ulubione przepisy {{ panelOpenState ? "open" : "closed" }}
+            <mat-icon class="fav">favorite</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="panel-title">
+            Oceny i komentarze
+          </mat-panel-title>
+          <mat-panel-description class="mat-expansion-panel-header-description">
+            Twoje oceny i komentarze
+            <mat-icon class="reviews">reviews</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ng-container *ngIf="profile">
+          <ng-container *ngFor="let comment of profile[0].comments">
+            <p>
+              {{ comment.date_time | date : "d.M.yyyy, H:mm" }}
+              {{ comment.recipe_id }}
+              {{ comment.rating }}
+              {{ comment.comment }}
+            </p>
+          </ng-container></ng-container
+        >
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="panel-title"> Wiadomości </mat-panel-title>
+          <mat-panel-description class="mat-expansion-panel-header-description">
+            Twoje wiadomości
+            <mat-icon>mail</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Brak wiadomości</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
 </div>

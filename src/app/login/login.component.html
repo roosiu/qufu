@@ -1,45 +1,69 @@
-<mat-card *ngIf="!isLogged; else alredyLoggedDiv" class="box-standard login-box">
-    <!-- <div class="logo"><img src="/assets/images/logo_t.svg" alt="logo" srcset=""></div> -->
-    <div class="title">
-        Zaloguj się</div>
-    <div class="title-lower">
-        <ng-container *ngIf="!errorMessage">Wprowadź adres e-mail i hasło</ng-container>
-        <div *ngIf="errorMessage" class="error">{{errorMessage}}</div>
+<mat-card
+  *ngIf="!isLogged; else alredyLoggedDiv"
+  class="box-standard login-box"
+>
+  <!-- <div class="logo"><img src="/assets/images/logo_t.svg" alt="logo" srcset=""></div> -->
+  <div class="title">Zaloguj się</div>
+  <div class="title-lower">
+    <ng-container *ngIf="!errorMessage"
+      >Wprowadź adres e-mail i hasło</ng-container
+    >
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  </div>
+
+  <form (ngSubmit)="login()">
+    <div class="form-group">
+      <mat-form-field class="full-width">
+        <mat-label>Adres e-mail:</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="email"
+          id="email"
+          name="email"
+          placeholder="wprowadź e-mail"
+          required
+        />
+        @if (email.hasError('email') && !email.hasError('required')) {
+        <mat-error class="label">Nieprawidłowy adres e-mail</mat-error>
+        } @if (email.hasError('required')) {
+        <mat-error class="label"
+          >e-mail jest <strong>wymagany</strong></mat-error
+        >
+        }
+      </mat-form-field>
     </div>
-
-    <form (ngSubmit)="login()">
-        <div class="form-group">
-            <mat-form-field class="full-width">
-                <mat-label>Adres e-mail:</mat-label>
-                <input type="email" matInput [formControl]="email" id="email" name="email" placeholder="wprowadź e-mail"
-                    required>
-                @if (email.hasError('email') && !email.hasError('required')) {
-                <mat-error class="label">Nieprawidłowy adres e-mail</mat-error>
-                }
-                @if (email.hasError('required')) {
-                <mat-error class="label">e-mail jest <strong>wymagany</strong></mat-error>
-                }
-            </mat-form-field>
-        </div>
-        <div class="form-group">
-            <label for="password">Hasło:</label>
-            <input type="password" id="password" name="password" placeholder="wprowadź hasło" [(ngModel)]="password"
-                required>
-            <div *ngIf="errorMessage" class="pass_rem"> Zapomniałem hasła</div>
-        </div>
-        <div class="button_div">
-            <button class="button-standard2 button" type="submit">Loguj
-                <span class="material-symbols-outlined">
-                    login
-                </span>
-            </button>
-        </div>
-    </form>
-
+    <div class="form-group">
+      <mat-form-field class="full-width">
+        <mat-label>Hasło:</mat-label>
+        <input
+          type="password"
+          matInput
+          id="password"
+          name="password"
+          placeholder="wprowadź hasło"
+          [formControl]="password"
+          required
+        />
+        @if (password.hasError('required')) {
+        <mat-error class="label"
+          >hasło jest <strong>wymagane</strong></mat-error
+        >
+        }
+      </mat-form-field>
+      <div *ngIf="errorMessage" class="pass_rem">Zapomniałem hasła</div>
+    </div>
+    <div class="button_div">
+      <button class="button-standard2 button" type="submit">
+        Loguj
+        <span class="material-symbols-outlined"> login </span>
+      </button>
+    </div>
+  </form>
 </mat-card>
 
 <ng-template #alredyLoggedDiv>
-    <div class="box-standard login-box">
-        <div class="title">jesteś już zalogowany</div>
-    </div>
+  <div class="box-standard login-box">
+    <div class="title">jesteś już zalogowany</div>
+  </div>
 </ng-template>

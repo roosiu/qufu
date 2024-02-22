@@ -19,7 +19,7 @@ import { MatModule } from '../mat/mat.module';
 })
 export class LoginComponent implements OnInit {
   email: any = new FormControl('', [Validators.required, Validators.email]);
-  password: string = '';
+  password: any = new FormControl('', [Validators.required]);
   errorMessage: string = '';
   isLogged = this.authService.GetIsLoggedFromToken();
   constructor(private authService: AuthService, private router: Router) {}
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
-    this.authService.login(this.email.value, this.password).subscribe({
+    this.authService.login(this.email.value, this.password.value).subscribe({
       next: (response) => {
         if (response.success) {
           localStorage.setItem('name', response.username);
