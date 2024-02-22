@@ -2,10 +2,7 @@
   <mat-card *ngIf="profile" class="box-standard box-profile">
     <div class="icon">
       <span class="material-symbols-outlined">
-        <button
-          matTooltip="Edycja dostępna wkrótce"
-          class="button-standard button-edit"
-        >
+        <button matTooltip="Edycja dostępna wkrótce" class="button-standard button-edit">
           Edytuj
         </button>
         account_circle
@@ -17,10 +14,7 @@
   </mat-card>
   <mat-card class="box-standard box-recipe">
     <mat-accordion>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-title"> Ulubione </mat-panel-title>
           <mat-panel-description class="mat-expansion-panel-header-description">
@@ -41,17 +35,34 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ng-container *ngIf="profile">
-          <mat-list role="list">
-            @for (comment of profile[0].comments; track comment) {
-            <mat-list-item role="listitem">
-              <img [src]="'url(' + imgLocation + comment.recipe_id + ')'" />
-              {{ comment.date_time | date : "d.M.yyyy, H:mm" }}
-              {{ comment.recipe_id }}
-              {{ comment.rating }}
-              {{ comment.comment }} </mat-list-item
-            >}
-          </mat-list></ng-container
-        >
+
+          @for (comment of profile[0].comments; track comment) {
+          <div class="div-comment">
+
+            <div [routerLink]="['/id', comment.recipe_id]"
+              [style.backgroundImage]="safeImageUrl(imgLocation + comment.recipe_id)" class="list-img">
+            </div>
+            <div class="list-text">
+              <div class="list-date_time">
+                {{ comment.date_time | date : "d.MM.yyyy, H:mm" }}
+              </div>
+              <div class="list-comment">
+                {{ comment.comment }}
+              </div>
+              <div class="list-rating">
+                @if (comment.rating==5) {
+                <mat-icon> thumb_up </mat-icon>
+                }
+                @if (comment.rating==1) {
+                <mat-icon> thumb_down </mat-icon>
+                }
+              </div>
+
+            </div>
+
+          </div>
+          }
+        </ng-container>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>

@@ -57,12 +57,12 @@ export class RecipepageComponent implements OnInit {
 
   /// oceny
   getStarsArray(rating: number): number[] {
-    const fullStarsCount = 6 - Math.floor(rating / 2);
+    const fullStarsCount = Math.floor(rating);
     return Array(fullStarsCount).fill(0);
   }
 
   getEmptyStarsArray(rating: number): number[] {
-    const emptyStarsCount = Math.floor(rating / 2);
+    const emptyStarsCount = 6 - Math.floor(rating);
     return Array(emptyStarsCount).fill(0);
   }
 

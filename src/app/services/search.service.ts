@@ -27,11 +27,11 @@ export class SearchService {
 
   // tablica z przepisami
   getJsonData(text: string): Observable<any[]> {
-    return this.http.get<any>('http://pwksm.ovh/qufu/' + text);
+    return this.http.get<any>('https://pwksm.ovh/qufu/' + text);
   }
 
   recipes: any[] = [];
-  imgLocation: string = 'http://pwksm.ovh/qufu/assets/images/';
+  imgLocation: string = 'https://pwksm.ovh/qufu/assets/images/';
   // kliknięcie w przepis
 
   //rozpoczęcie gotowania

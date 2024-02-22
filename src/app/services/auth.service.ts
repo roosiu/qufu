@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://pwksm.ovh/qufu/login.php';
+  private apiUrl = 'https://pwksm.ovh/qufu/login.php';
   private logged = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient) {
     this.GetIsLoggedFromToken();

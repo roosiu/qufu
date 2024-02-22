@@ -107,3 +107,40 @@
   font-weight: bold;
   color: var(--secondary-color);
 }
+.div-comment {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  padding: 5px 0;
+}
+
+.div-comment div {
+  padding: 0 5px;
+}
+
+.list-img {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-position: center;
+}
+.list-img:hover {
+  cursor: pointer;
+}
+.list-text {
+  width: fit-content;
+}
+.list-date_time {
+  font-weight: bold;
+}
+.list-comment {
+  font-size: 0.9em;
+}
+
+.list-rating {
+  color: var(--secondary-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+}

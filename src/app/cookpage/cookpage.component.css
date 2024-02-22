@@ -20,7 +20,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 20px;
-  width: 70%;
+  min-width: 70vw;
+  max-width: 70vw;
   background-color: #fff;
   border: solid 1px rgb(232, 232, 232);
   border-radius: 10px;
@@ -49,6 +50,7 @@
     align-items: center;
     margin-top: 0;
     padding-left: 0;
+    max-width: 100%;
     width: 100%;
     flex-direction: column;
     border-radius: 0;
