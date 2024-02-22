@@ -41,14 +41,16 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ng-container *ngIf="profile">
-          <ng-container *ngFor="let comment of profile[0].comments">
-            <p>
+          <mat-list role="list">
+            @for (comment of profile[0].comments; track comment) {
+            <mat-list-item role="listitem">
+              <img [src]="'url(' + imgLocation + comment.recipe_id + ')'" />
               {{ comment.date_time | date : "d.M.yyyy, H:mm" }}
               {{ comment.recipe_id }}
               {{ comment.rating }}
-              {{ comment.comment }}
-            </p>
-          </ng-container></ng-container
+              {{ comment.comment }} </mat-list-item
+            >}
+          </mat-list></ng-container
         >
       </mat-expansion-panel>
       <mat-expansion-panel>

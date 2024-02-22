@@ -4,6 +4,7 @@ import { SearchService } from '../services/search.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -16,10 +17,13 @@ export class ProfileComponent implements OnInit {
   constructor(
     private searchService: SearchService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private sanitizer: DomSanitizer
   ) {}
   token: any;
   profile: any;
+
+  imgLocation = this.searchService.imgLocation;
   ngOnInit(): void {
     this.token = localStorage.getItem('token');
     if (this.token) {
