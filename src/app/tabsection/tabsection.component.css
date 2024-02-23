@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  background-color: var(--background-color4);
+  width: 100%;
+  box-sizing: border-box;
+}
+mat-tab-group {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 0 50px;
+}
+
+.tab {
+  padding: 50px;
+  background-color: blue;
+  width: 70%;
+}

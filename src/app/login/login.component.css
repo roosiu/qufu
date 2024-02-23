@@ -73,9 +73,7 @@ form {
   position: relative;
 }
 .pass_rem {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  text-align: center;
   color: var(--secondary-color);
   font-size: 0.9em;
   text-decoration: underline;

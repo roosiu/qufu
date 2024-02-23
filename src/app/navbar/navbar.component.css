@@ -109,7 +109,7 @@
   font-size: 16px;
   border: none;
 }
-.navbar .navbar-logpanel .profile span {
+.navbar .navbar-logpanel .profile mat-icon {
   vertical-align: middle;
 }
 .navbar .navbar-logpanel .profile:hover {

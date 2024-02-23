@@ -1,25 +1,96 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$qufu-primary: mat.define-palette(mat.$indigo-palette);
-$qufu-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$qufu-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
+$warm-palette: (
+  50: #ffeaee,
+  100: #ffcad1,
+  200: #ef9597,
+  300: #e56b6f,
+  400: #ef464c,
+  500: #f33131,
+  600: #e42630,
+  700: #d21a2a,
+  800: #c50f23,
+  900: #b60017,
+  A100: #c2e4ff,
+  A200: #addcff,
+  A400: #1f9eff,
+  A700: #00518f,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+$cold-palette: (
+  50: #e7f2f6,
+  100: #c3dfeb,
+  200: #a3cbdf,
+  300: #86b7d1,
+  400: #73a8c8,
+  500: #639ac0,
+  600: #588db4,
+  700: #4d7ca3,
+  800: #446c91,
+  900: #355070,
+  A100: #f5f5f5,
+  A200: #eaeaeb,
+  A400: #d6d6d7,
+  A700: #838386,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: white,
+  )
+);
+$crimson-palette: (
+  50: #ffebef,
+  100: #ffcdc5,
+  200: #f0999f,
+  300: #e77179,
+  400: #f24e58,
+  500: #f83a40,
+  600: #e9313e,
+  700: #d72638,
+  800: #ca1e30,
+  900: #bb0d24,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+$qufu-primary: mat.define-palette($cold-palette, 700, 300, 900);
+$qufu-accent: mat.define-palette($warm-palette, 300, 100, 500);
+$qufu-warn: mat.define-palette($crimson-palette, 700);
 $qufu-theme: mat.define-light-theme((
   color: (
     primary: $qufu-primary,
@@ -27,9 +98,6 @@ $qufu-theme: mat.define-light-theme((
     warn: $qufu-warn,
   )
 ));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($qufu-theme);
-
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
