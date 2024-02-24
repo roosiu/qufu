@@ -1,11 +1,13 @@
 :host {
   display: block;
+}
+.hero-section {
   background-image: url("hero_bg.jpg");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: border-box;
   box-shadow: inset 0px 19px 4px -12px rgba(0, 0, 0, 0.4);
-}
-.hero-section {
   display: flex;
   flex-wrap: wrap;
   align-content: center;

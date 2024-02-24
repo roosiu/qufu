@@ -22,9 +22,13 @@ export class SearchService {
   }
 
   constructor(private http: HttpClient) {
-    // this.initialize();
+    this.initialize();
   }
-
+  initialize(): void {
+    this.getJsonData('').subscribe((data) => {
+      this.recipes = data;
+    });
+  }
   // tablica z przepisami
   getJsonData(text: string): Observable<any[]> {
     return this.http.get<any>('https://pwksm.ovh/qufu/' + text);

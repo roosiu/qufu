@@ -21,7 +21,16 @@
 }
 @media only screen and (max-width: 600px) {
   .card {
-    width: 90%;
+    width: 40%;
+    margin: 10px;
+    height: 230px;
+  }
+  .card .img-div {
+    height: 130px !important;
+  }
+  .card .title {
+    font-size: 0.9em !important;
+    padding-top: 8px !important;
   }
 }
 

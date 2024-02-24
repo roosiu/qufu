@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SearchService } from '../services/search.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -22,11 +22,12 @@ export class CardComponent implements OnInit {
   ) {
     this.filteredRecipes = this.recipes;
   }
-
+  @Input() showOption: any;
   ngOnInit(): void {
     this.searchService.setcookStep(0);
     this.activatedRoute.paramMap.subscribe((params) => {
       const inputText: any = params.get('inputText');
+
       this.searchService.setSearchString(inputText);
 
       this.searchService.getSearchString().subscribe((text) => {
@@ -35,7 +36,7 @@ export class CardComponent implements OnInit {
       this.searchService.getJsonData('').subscribe((data) => {
         this.recipes = data;
 
-        if (this.searched.trim() === '') {
+        if (this.showOption === 'new') {
           this.filteredRecipes = this.recipes;
         } else {
           this.filteredRecipes = this.recipes.filter((recipe) =>

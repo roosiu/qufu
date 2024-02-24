@@ -1,7 +1,23 @@
 <mat-tab-group>
-    <mat-tab label="Najlepsze przepisy">
-        <div class="tab">Najlepsze przepisy</div>
+    <mat-tab label="Najnowsze przepisy">
+        <div class="tab">
+            <div class="inner">
+                <app-card [showOption]="showOption"></app-card>
+            </div>
+        </div>
     </mat-tab>
-    <mat-tab label="Artykuły"> Artykuły </mat-tab>
-    <mat-tab label="Porady"> Porady </mat-tab>
+    <mat-tab label="Artykuły">
+        <div class="tab">
+            <div class="inner">
+                Dostępne wkrótce...
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Porady">
+        <div class="tab">
+            <div class="inner">
+                Dostępne wkrótce...
+            </div>
+        </div>
+    </mat-tab>
 </mat-tab-group>
