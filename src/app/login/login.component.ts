@@ -9,6 +9,7 @@ import {
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { MatModule } from '../mat/mat.module';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,11 @@ export class LoginComponent implements OnInit {
   password: any = new FormControl('', [Validators.required]);
   errorMessage: string = '';
   isLogged = this.authService.GetIsLoggedFromToken();
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
   ngOnInit(): void {
     if (this.isLogged) {
       this.router.navigate(['/profile']);
@@ -37,6 +42,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', response.token);
           this.authService.SetIsLogged(true);
           this.router.navigate(['']);
+          this._snackBar.open('Zalogowano', 'OK', {
+            duration: 3000,
+          });
         } else {
           // Logowanie nieudane - wyświetl komunikat błędu
 

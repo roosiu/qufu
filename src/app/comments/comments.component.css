@@ -1,0 +1,41 @@
+:host {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+mat-accordion {
+  width: 70%;
+}
+.panel-title {
+  padding: 0 10px;
+  font-weight: bold;
+  color: var(--secondary-color);
+  font-size: 1.2em;
+}
+.comment {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.comment-body {
+  padding: 5px 0;
+  font-size: 0.9em;
+}
+
+.list-rating {
+  color: var(--primary-color);
+  text-wrap: nowrap;
+}
+
+.star {
+}
+@media only screen and (max-width: 600px) {
+  mat-accordion {
+    width: 100%;
+  }
+}

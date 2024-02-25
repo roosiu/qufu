@@ -3,11 +3,12 @@ import { SearchService } from '../services/search.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookpageComponent } from '../cookpage/cookpage.component';
+import { CommentsComponent } from '../comments/comments.component';
 
 @Component({
   selector: 'app-recipepage',
   standalone: true,
-  imports: [CommonModule, CookpageComponent],
+  imports: [CommonModule, CookpageComponent, CommentsComponent],
   templateUrl: './recipepage.component.html',
   styleUrl: './recipepage.component.css',
 })

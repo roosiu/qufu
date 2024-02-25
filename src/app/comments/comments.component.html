@@ -1,0 +1,40 @@
+<mat-accordion>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="panel-title">
+                Oceny i komentarze
+            </mat-panel-title>
+            <mat-panel-description class="mat-expansion-panel-header-description">
+                <ng-container *ngIf="comments">Ilość ocen i wpisów: {{comments.length}}</ng-container>
+                <mat-icon class="reviews">reviews</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div *ngFor="let comment of comments;">
+            <div class="comment">
+                <div class="name-date">
+
+                    <b>{{comment.name}}</b>, {{ comment.date_time | date : "d.MM.yyyy, H:mm" }}
+                </div>
+                <div class="list-rating">
+                    <ng-container *ngIf="comment && comment.rating">
+                        <ng-container *ngFor="let star of getStarsArray(comment.rating)">
+                            <span class="star">&#9733;</span>
+                        </ng-container>
+                        <ng-container *ngFor="let emptyStar of getEmptyStarsArray(comment.rating)">
+                            <span class="star">&#9734;</span>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <div class="comment-body">
+
+                    <p>{{comment.comment}}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </mat-expansion-panel>
+</mat-accordion>

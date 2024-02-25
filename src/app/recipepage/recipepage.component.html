@@ -16,13 +16,13 @@
         <span *ngFor="let star of [1, 2, 3, 4, 5, 6]; let i = index" class="star">&#9734;</span>
         <span class="norating">brak ocen</span>
       </ng-template>
-      <span class="vote"><span class="material-symbols-outlined">
+      <!-- <span class="vote"><span class="material-symbols-outlined">
           thumb_down
         </span>
         <span class="material-symbols-outlined">
           thumb_up
         </span>
-      </span>
+      </span> -->
 
 
     </div>
@@ -68,3 +68,4 @@
     }"></div>
 </div>
 <app-cookpage [recipe]="recipe" *ngIf="cookStep"></app-cookpage>
+<app-comments [id]="id" *ngIf="!cookStep"></app-comments>
