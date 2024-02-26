@@ -11,10 +11,51 @@
             </mat-panel-description>
         </mat-expansion-panel-header>
 
+        <form *ngIf="logged; else notLogged" [formGroup]="commentForm" class="comments-form">
+            <mat-form-field class="comments-form-full-width">
+                <mat-label>Wpisz komentarz:</mat-label>
+                <textarea matInput formControlName="newComment" maxlength="500" cdkTextareaAutosize
+                    cdkAutosizeMinRows="2" cdkAutosizeMaxRows="4" placeholder="Tu wpisz treść..."></textarea>
+                <!-- <mat-error *ngIf="newComment && newComment.hasError('required')">
+                    Comment is required.
+                </mat-error> -->
+                <mat-error *ngIf="newComment && newComment.hasError('maxlength')">
+                    Maksymalna ilość znaków to 450.
+                </mat-error>
+                <mat-hint align="end">{{newComment.value.length}} / 450</mat-hint>
+            </mat-form-field>
+            <div class="comments-form-button-div">
+                <div class="star">
+                    Twoja ocena:<br>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                </div>
+
+                <button class="button-standard2 button-commit">
+                    Dodaj <mat-icon>maps_ugc</mat-icon>
+                </button>
+
+            </div>
+
+        </form>
+        <ng-template #notLogged>
+            <div class="notLogged">Musisz być zalogowany, aby dokonać wpisu...
+                <a [routerLink]="['/login']" matTooltip="Przejdź do logowania" mat-menu-item>
+
+                    <span>Zaloguj</span>
+                </a>
+            </div>
+        </ng-template>
+
+
+
         <div *ngFor="let comment of comments;">
             <div class="comment">
                 <div class="name-date">
-
                     <b>{{comment.name}}</b>, {{ comment.date_time | date : "d.MM.yyyy, H:mm" }}
                 </div>
                 <div class="list-rating">
@@ -28,12 +69,9 @@
                     </ng-container>
                 </div>
                 <div class="comment-body">
-
                     <p>{{comment.comment}}</p>
                 </div>
-
             </div>
-
         </div>
 
     </mat-expansion-panel>
