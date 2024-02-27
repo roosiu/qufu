@@ -4,11 +4,17 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookpageComponent } from '../cookpage/cookpage.component';
 import { CommentsComponent } from '../comments/comments.component';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
 
 @Component({
   selector: 'app-recipepage',
   standalone: true,
-  imports: [CommonModule, CookpageComponent, CommentsComponent],
+  imports: [
+    CommonModule,
+    CookpageComponent,
+    CommentsComponent,
+    StarRatingComponent,
+  ],
   templateUrl: './recipepage.component.html',
   styleUrl: './recipepage.component.css',
 })
@@ -54,17 +60,6 @@ export class RecipepageComponent implements OnInit {
         });
       }
     });
-  }
-
-  /// oceny
-  getStarsArray(rating: number): number[] {
-    const fullStarsCount = Math.floor(rating);
-    return Array(fullStarsCount).fill(0);
-  }
-
-  getEmptyStarsArray(rating: number): number[] {
-    const emptyStarsCount = 6 - Math.floor(rating);
-    return Array(emptyStarsCount).fill(0);
   }
 
   ///

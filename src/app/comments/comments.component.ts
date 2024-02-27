@@ -11,13 +11,20 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { RouterModule } from '@angular/router';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
 
 @Component({
   selector: 'app-comments',
   standalone: true,
-  imports: [MatModule, CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './comments.component.html',
   styleUrl: './comments.component.css',
+  imports: [
+    MatModule,
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    StarRatingComponent,
+  ],
 })
 export class CommentsComponent implements OnInit {
   @Input() id: any;
@@ -37,16 +44,6 @@ export class CommentsComponent implements OnInit {
     });
   }
 
-  /// oceny
-  getStarsArray(rating: number): number[] {
-    const fullStarsCount = Math.floor(rating);
-    return Array(fullStarsCount).fill(0);
-  }
-
-  getEmptyStarsArray(rating: number): number[] {
-    const emptyStarsCount = 6 - Math.floor(rating);
-    return Array(emptyStarsCount).fill(0);
-  }
   ngOnInit(): void {
     this.authService.GetLogged().subscribe((bol: boolean) => {
       this.logged = bol;

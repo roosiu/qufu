@@ -1,0 +1,10 @@
+.star-rating {
+  /* font-size: 1em; */
+  color: var(--primary-color);
+  text-wrap: nowrap;
+}
+
+.star-rating span {
+  font-size: 0.9em;
+  vertical-align: super;
+}

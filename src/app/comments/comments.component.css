@@ -30,7 +30,7 @@ mat-accordion {
 
 .list-rating {
   color: var(--primary-color);
-  text-wrap: nowrap;
+
   padding-left: 5px;
 }
 
@@ -55,6 +55,9 @@ mat-accordion {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.comments-form-button-div .star {
+  vertical-align: bottom;
 }
 @media only screen and (max-width: 600px) {
   mat-accordion {

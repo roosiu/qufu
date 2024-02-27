@@ -1,0 +1,14 @@
+<div class="star-rating">
+  <ng-container *ngIf="rating > 0; else noRating">
+    <mat-icon *ngFor="let star of stars">star</mat-icon>
+    <mat-icon *ngIf="rating % 1 !== 0">star_half</mat-icon>
+    <mat-icon *ngFor="let star of emptyStars">star_outline</mat-icon>
+    <span>{{ rating }}</span>
+  </ng-container>
+  <ng-template #noRating>
+    <ng-container *ngFor="let star of [1, 2, 3, 4, 5, 6]; let i = index"
+      ><mat-icon>star_outline</mat-icon></ng-container
+    >
+    <span>brak ocen</span>
+  </ng-template>
+</div>

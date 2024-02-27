@@ -1,78 +1,77 @@
 <mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="panel-title">
+        Oceny i komentarze
+      </mat-panel-title>
+      <mat-panel-description class="mat-expansion-panel-header-description">
+        <ng-container *ngIf="comments"
+          >Ilość ocen i wpisów: {{ comments.length }}</ng-container
+        >
+        <mat-icon class="reviews">reviews</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title class="panel-title">
-                Oceny i komentarze
-            </mat-panel-title>
-            <mat-panel-description class="mat-expansion-panel-header-description">
-                <ng-container *ngIf="comments">Ilość ocen i wpisów: {{comments.length}}</ng-container>
-                <mat-icon class="reviews">reviews</mat-icon>
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <form *ngIf="logged; else notLogged" [formGroup]="commentForm" class="comments-form">
-            <mat-form-field class="comments-form-full-width">
-                <mat-label>Wpisz komentarz:</mat-label>
-                <textarea matInput formControlName="newComment" maxlength="500" cdkTextareaAutosize
-                    cdkAutosizeMinRows="2" cdkAutosizeMaxRows="4" placeholder="Tu wpisz treść..."></textarea>
-                <!-- <mat-error *ngIf="newComment && newComment.hasError('required')">
+    <form
+      *ngIf="logged; else notLogged"
+      [formGroup]="commentForm"
+      class="comments-form"
+    >
+      <mat-form-field class="comments-form-full-width">
+        <mat-label>Wpisz komentarz:</mat-label>
+        <textarea
+          matInput
+          formControlName="newComment"
+          maxlength="500"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="2"
+          cdkAutosizeMaxRows="4"
+          placeholder="Tu wpisz treść..."
+        ></textarea>
+        <!-- <mat-error *ngIf="newComment && newComment.hasError('required')">
                     Comment is required.
                 </mat-error> -->
-                <mat-error *ngIf="newComment && newComment.hasError('maxlength')">
-                    Maksymalna ilość znaków to 450.
-                </mat-error>
-                <mat-hint align="end">{{newComment.value.length}} / 450</mat-hint>
-            </mat-form-field>
-            <div class="comments-form-button-div">
-                <div class="star">
-                    Twoja ocena:<br>
-                    <mat-icon>star</mat-icon>
-                    <mat-icon>star</mat-icon>
-                    <mat-icon>star</mat-icon>
-                    <mat-icon>star</mat-icon>
-                    <mat-icon>star</mat-icon>
-                    <mat-icon>star</mat-icon>
-                </div>
-
-                <button class="button-standard2 button-commit">
-                    Dodaj <mat-icon>maps_ugc</mat-icon>
-                </button>
-
-            </div>
-
-        </form>
-        <ng-template #notLogged>
-            <div class="notLogged">Musisz być zalogowany, aby dokonać wpisu...
-                <a [routerLink]="['/login']" matTooltip="Przejdź do logowania" mat-menu-item>
-
-                    <span>Zaloguj</span>
-                </a>
-            </div>
-        </ng-template>
-
-
-
-        <div *ngFor="let comment of comments;">
-            <div class="comment">
-                <div class="name-date">
-                    <b>{{comment.name}}</b>, {{ comment.date_time | date : "d.MM.yyyy, H:mm" }}
-                </div>
-                <div class="list-rating">
-                    <ng-container *ngIf="comment && comment.rating">
-                        <ng-container *ngFor="let star of getStarsArray(comment.rating)">
-                            <span class="star">&#9733;</span>
-                        </ng-container>
-                        <ng-container *ngFor="let emptyStar of getEmptyStarsArray(comment.rating)">
-                            <span class="star">&#9734;</span>
-                        </ng-container>
-                    </ng-container>
-                </div>
-                <div class="comment-body">
-                    <p>{{comment.comment}}</p>
-                </div>
-            </div>
+        <mat-error *ngIf="newComment && newComment.hasError('maxlength')">
+          Maksymalna ilość znaków to 450.
+        </mat-error>
+        <mat-hint align="end">{{ newComment.value.length }} / 450</mat-hint>
+      </mat-form-field>
+      <div class="comments-form-button-div">
+        <div class="star">
+          Twoja ocena:
+          <mat-icon>star_outline</mat-icon>
         </div>
+        <button class="button-standard2 button-commit">
+          Dodaj <mat-icon>maps_ugc</mat-icon>
+        </button>
+      </div>
+    </form>
+    <ng-template #notLogged>
+      <div class="notLogged">
+        Musisz być zalogowany, aby dokonać wpisu...
+        <a
+          [routerLink]="['/login']"
+          matTooltip="Przejdź do logowania"
+          mat-menu-item
+        >
+          <span>Zaloguj</span>
+        </a>
+      </div>
+    </ng-template>
 
-    </mat-expansion-panel>
+    <div *ngFor="let comment of comments">
+      <div class="comment">
+        <div class="name-date">
+          <b>{{ comment.name }}</b
+          >, {{ comment.date_time | date : "d.MM.yyyy, H:mm" }}
+        </div>
+        <div class="list-rating">
+          <app-star-rating [rating]="comment.rating"></app-star-rating>
+        </div>
+        <div class="comment-body">
+          <p>{{ comment.comment }}</p>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
 </mat-accordion>

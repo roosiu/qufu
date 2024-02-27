@@ -74,7 +74,6 @@
   padding-bottom: 40px;
 }
 .recipepage .recipepage__main .rating {
-  font-size: 30px;
   color: var(--primary-color-hover);
 }
 .recipepage .recipepage__main .rating .vote {
@@ -82,7 +81,6 @@
 }
 .recipepage .recipepage__main .rating .vote .material-symbols-outlined {
   color: var(--secondary-color);
-  vertical-align: middle;
 }
 
 .recipepage .recipepage__main .rating .vote .material-symbols-outlined:hover {
