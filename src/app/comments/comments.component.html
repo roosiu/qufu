@@ -5,29 +5,16 @@
         Oceny i komentarze
       </mat-panel-title>
       <mat-panel-description class="mat-expansion-panel-header-description">
-        <ng-container *ngIf="comments"
-          >Ilość ocen i wpisów: {{ comments.length }}</ng-container
-        >
-        <mat-icon class="reviews">reviews</mat-icon>
+        <ng-container *ngIf="comments">Ilość ocen i wpisów: {{ comments.length }}</ng-container>
+        <mat-icon class="reviews">mark_unread_chat_alt</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <form
-      *ngIf="logged; else notLogged"
-      [formGroup]="commentForm"
-      class="comments-form"
-    >
+    <form *ngIf="logged; else notLogged" [formGroup]="commentForm" class="comments-form">
       <mat-form-field class="comments-form-full-width">
         <mat-label>Wpisz komentarz:</mat-label>
-        <textarea
-          matInput
-          formControlName="newComment"
-          maxlength="500"
-          cdkTextareaAutosize
-          cdkAutosizeMinRows="2"
-          cdkAutosizeMaxRows="4"
-          placeholder="Tu wpisz treść..."
-        ></textarea>
+        <textarea matInput formControlName="newComment" maxlength="500" cdkTextareaAutosize cdkAutosizeMinRows="2"
+          cdkAutosizeMaxRows="4" placeholder="Tu wpisz treść..."></textarea>
         <!-- <mat-error *ngIf="newComment && newComment.hasError('required')">
                     Comment is required.
                 </mat-error> -->
@@ -37,11 +24,22 @@
         <mat-hint align="end">{{ newComment.value.length }} / 450</mat-hint>
       </mat-form-field>
       <div class="comments-form-button-div">
-        <div class="star">
+        <!-- ocenianie  -->
+        <div class="star-section">
           Twoja ocena:
-          <mat-icon>star_outline</mat-icon>
+
+          <ng-container *ngFor="let star of [1,2,3,4,5,6]">
+            <mat-icon (click)="getStar(star)" class="new-stars" id="start{{star}}">star_outline</mat-icon>
+          </ng-container>
+          <input class="inputStar" formControlName="starRate" type="number" min="1" max="6" readonly>
+          <mat-error *ngIf="starRate && starRate.hasError('required')">
+            Wymagana ocena
+          </mat-error>
+
         </div>
-        <button class="button-standard2 button-commit">
+        <!-- koniec oceniania  -->
+        <button [disabled]="newComment.hasError('maxlength') || starRate.hasError('required')" (click)="addComment()"
+          class="button-standard2 button-commit">
           Dodaj <mat-icon>maps_ugc</mat-icon>
         </button>
       </div>
@@ -49,11 +47,7 @@
     <ng-template #notLogged>
       <div class="notLogged">
         Musisz być zalogowany, aby dokonać wpisu...
-        <a
-          [routerLink]="['/login']"
-          matTooltip="Przejdź do logowania"
-          mat-menu-item
-        >
+        <a [routerLink]="['/login']" matTooltip="Przejdź do logowania" mat-menu-item>
           <span>Zaloguj</span>
         </a>
       </div>
@@ -62,8 +56,7 @@
     <div *ngFor="let comment of comments">
       <div class="comment">
         <div class="name-date">
-          <b>{{ comment.name }}</b
-          >, {{ comment.date_time | date : "d.MM.yyyy, H:mm" }}
+          <b>{{ comment.name }}</b>, {{ comment.date_time | date : "d.MM.yyyy, H:mm" }}
         </div>
         <div class="list-rating">
           <app-star-rating [rating]="comment.rating"></app-star-rating>

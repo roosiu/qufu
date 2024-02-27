@@ -51,6 +51,7 @@ mat-accordion {
 }
 
 .comments-form-button-div {
+  flex-wrap: wrap;
   padding: 0 15px;
   display: flex;
   justify-content: space-around;
@@ -65,8 +66,11 @@ mat-accordion {
   }
 }
 
-.star {
+.star-section {
   color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .notLogged {
@@ -80,4 +84,17 @@ mat-accordion {
   text-decoration: none;
   font-weight: bold;
   color: var(--primary-color-hover);
+}
+
+.inputStar {
+  border: none;
+  color: var(--primary-color);
+  outline: none;
+  padding-left: 5px;
+}
+.new-stars {
+  vertical-align: top;
+}
+.new-stars:hover {
+  cursor: pointer;
 }
