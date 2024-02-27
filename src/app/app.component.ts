@@ -11,13 +11,14 @@ import { CookpageComponent } from './cookpage/cookpage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { AuthService } from './services/auth.service';
+import { PostService } from './services/post.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers: [SearchService, AuthService],
+  providers: [SearchService, AuthService, PostService],
   imports: [
     CommonModule,
     RouterOutlet,

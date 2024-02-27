@@ -24,7 +24,7 @@ mat-accordion {
   border-bottom: solid 1px var(--background-color3);
 }
 .comment-body {
-  padding: 5px 0;
+  width: 100%;
   font-size: 0.9em;
 }
 

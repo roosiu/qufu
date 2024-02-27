@@ -15,9 +15,7 @@
         <mat-label>Wpisz komentarz:</mat-label>
         <textarea matInput formControlName="newComment" maxlength="500" cdkTextareaAutosize cdkAutosizeMinRows="2"
           cdkAutosizeMaxRows="4" placeholder="Tu wpisz treść..."></textarea>
-        <!-- <mat-error *ngIf="newComment && newComment.hasError('required')">
-                    Comment is required.
-                </mat-error> -->
+
         <mat-error *ngIf="newComment && newComment.hasError('maxlength')">
           Maksymalna ilość znaków to 450.
         </mat-error>

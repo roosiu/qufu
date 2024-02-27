@@ -31,6 +31,9 @@ export class AuthService {
   GetName() {
     return localStorage.getItem('name');
   }
+  GetToken() {
+    return localStorage.getItem('token');
+  }
   GetIsLoggedFromToken() {
     // Odczytaj token z localStorage
     const token = localStorage.getItem('token');

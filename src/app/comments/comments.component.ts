@@ -13,7 +13,10 @@ import { AuthService } from '../services/auth.service';
 import { RouterModule } from '@angular/router';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { PostService } from '../services/post.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Location } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 @Component({
   selector: 'app-comments',
   standalone: true,
@@ -35,12 +38,16 @@ export class CommentsComponent implements OnInit {
   starRate: FormControl; // ocena do nowego komentarza
   logged = false; // status zalogowania
   name: any; // nazwa użytkownika
+
   constructor(
     private searchService: SearchService,
     private fb: FormBuilder,
     private authService: AuthService,
     private elementRef: ElementRef,
-    private postService: PostService
+    private postService: PostService,
+    private _snackBar: MatSnackBar,
+    private location: Location,
+    public dialog: MatDialog
   ) {
     this.newComment = new FormControl('', [Validators.maxLength(450)]);
     this.starRate = new FormControl('', [Validators.required]);
@@ -75,8 +82,43 @@ export class CommentsComponent implements OnInit {
     }, 0); // Ensuring it runs after the elements are rendered
   }
 
+  errorMessage: string = '';
   addComment() {
-    console.log('dodano');
+    const token = this.authService.GetToken() || ''; // Assuming empty string as fallback
+
+    this.postService
+      .post(
+        token,
+        this.name,
+        this.id,
+        this.starRate.value,
+        this.newComment.value
+      )
+      .subscribe({
+        next: (response) => {
+          if (response.success) {
+            const dialogRef = this.dialog.open(DialogComponent, {
+              data: {
+                title: 'Gratulacje!',
+                body: 'Wpis został dodany.',
+                button: 'Zamknij',
+                icon: 'success',
+              },
+            });
+            dialogRef.afterClosed().subscribe(() => window.location.reload());
+          } else {
+            // Dodawanie nieudane - wyświetl komunikat błędu
+            this.errorMessage = response.message;
+            this._snackBar.open('Błąd:' + response.message, 'Ok', {
+              duration: 3000,
+            });
+          }
+        },
+        error: (err) => {
+          // Obsługa błędów po stronie klienta
+          console.error('Błąd :', err);
+        },
+      });
   }
 
   ngOnInit(): void {
