@@ -5,11 +5,16 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { DeleteService } from '../services/delete.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [MatModule, CommonModule, RouterLink],
+  imports: [MatModule, CommonModule, RouterLink, StarRatingComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
@@ -18,14 +23,54 @@ export class ProfileComponent implements OnInit {
     private searchService: SearchService,
     private router: Router,
     private authService: AuthService,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private deleteService: DeleteService,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) {}
   token: any;
   profile: any;
-
+  id_to_delete: number = 0;
   imgLocation = this.searchService.imgLocation;
   safeImageUrl(url: string): SafeStyle {
     return this.sanitizer.bypassSecurityTrustStyle(`url(${url}.jpg)`);
+  }
+  errorMessage: string = '';
+  deleteComment(id_to_delete: number) {
+    const name = this.authService.GetName() || '';
+    const token = this.authService.GetToken() || ''; // Assuming empty string as fallback
+    let elementId = 'comment_' + id_to_delete;
+    let elementToRemove = document.getElementById(elementId);
+    console.log(elementId);
+
+    this.deleteService.delete(token, name, id_to_delete, 'ratings').subscribe({
+      next: (response) => {
+        if (response.success) {
+          if (elementToRemove) {
+            elementToRemove.remove();
+          }
+          const dialogRef = this.dialog.open(DialogComponent, {
+            data: {
+              title: 'Poszło!',
+              body: 'Wpis został Usunięty.',
+              button: 'Zamknij',
+              icon: 'success',
+            },
+          });
+          // dialogRef.afterClosed().subscribe(() => window.location.reload());
+        } else {
+          // Dodawanie nieudane - wyświetl komunikat błędu
+          this.errorMessage = response.message;
+          this._snackBar.open('Błąd:' + response.message, 'Ok', {
+            duration: 3000,
+          });
+        }
+      },
+      error: (err) => {
+        // Obsługa błędów po stronie klienta
+        console.error('Błąd :', err);
+      },
+    });
   }
   ngOnInit(): void {
     this.token = localStorage.getItem('token');

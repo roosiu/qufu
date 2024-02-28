@@ -12,13 +12,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { AuthService } from './services/auth.service';
 import { PostService } from './services/post.service';
+import { DeleteService } from './services/delete.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers: [SearchService, AuthService, PostService],
+  providers: [SearchService, AuthService, PostService, DeleteService],
   imports: [
     CommonModule,
     RouterOutlet,
