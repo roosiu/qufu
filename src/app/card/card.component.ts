@@ -3,6 +3,7 @@ import { SearchService } from '../services/search.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatModule } from '../mat/mat.module';
+import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-card',
   standalone: true,
@@ -45,5 +46,30 @@ export class CardComponent implements OnInit {
         }
       });
     });
+  }
+  public recipecount: any;
+  public pageSize: number = 10;
+  public currentPage: number = 0;
+  public from: number = 0;
+  getPaginatorData(event: PageEvent) {
+    if (event.pageIndex == 0) {
+      this.from = event.pageIndex;
+      this.pageSize = event.pageSize;
+    } else {
+      this.from = event.pageIndex * event.pageSize;
+      this.pageSize = event.pageSize;
+    }
+    // this.searchService
+    //   .getJsonData(
+    //     '?commentsByRecipeId=' +
+    //       this.id +
+    //       '&from=' +
+    //       this.from +
+    //       '&quantity=' +
+    //       this.pageSize
+    //   )
+    //   .subscribe((data) => {
+    //     this.comments = data;
+    //   });
   }
 }

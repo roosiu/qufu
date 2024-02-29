@@ -132,28 +132,48 @@ export class CommentsComponent implements OnInit {
 
     if (this.id) {
       this.searchService
-        .getJsonData('?commentsByRecipeId=' + this.id)
+        .getJsonData('?commentsCount=' + this.id)
+        .subscribe((data) => {
+          this.commentscount = data[0].total_count;
+        });
+      this.searchService
+        .getJsonData(
+          '?commentsByRecipeId=' +
+            this.id +
+            '&from=' +
+            this.currentPage +
+            '&quantity=' +
+            this.pageSize
+        )
         .subscribe((data) => {
           this.comments = data;
         });
     }
   }
-  public pageSize = 10;
-  public currentPage = 0;
-  getPaginatorData(event: PageEvent) {
-    const commentElements: NodeListOf<Element> =
-      this.el.nativeElement.querySelectorAll('.comment');
-    // Ukrywamy wszystkie elementy z klasą "comment"
-    commentElements.forEach((element) => {
-      this.renderer.setStyle(element, 'display', 'none');
-    });
 
-    for (
-      let i = event.pageIndex * event.pageSize;
-      i < (event.pageIndex + 1) * event.pageSize && i < commentElements.length;
-      i++
-    ) {
-      this.renderer.setStyle(commentElements[i], 'display', 'block');
+  public commentscount: any;
+  public pageSize: number = 10;
+  public currentPage: number = 0;
+  public from: number = 0;
+  getPaginatorData(event: PageEvent) {
+    if (event.pageIndex == 0) {
+      this.from = event.pageIndex;
+      this.pageSize = event.pageSize;
+    } else {
+      this.from = event.pageIndex * event.pageSize;
+      this.pageSize = event.pageSize;
     }
+    this.searchService
+      .getJsonData(
+        '?commentsByRecipeId=' +
+          this.id +
+          '&from=' +
+          this.from +
+          '&quantity=' +
+          this.pageSize
+      )
+      .subscribe((data) => {
+        this.comments = data;
+      });
   }
 }

@@ -32,6 +32,10 @@
     font-size: 0.9em !important;
     padding-top: 8px !important;
   }
+
+  .recipe-paginator {
+    width: 100%;
+  }
 }
 
 .card:hover {
@@ -102,4 +106,9 @@
 
 .no-recipes {
   margin: 30px;
+  min-height: calc(100vh - 300px);
+}
+
+.recipe-paginator {
+  width: 80%;
 }
