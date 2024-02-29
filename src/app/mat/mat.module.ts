@@ -17,6 +17,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTabsModule } from '@angular/material/tabs';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -37,6 +41,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
+    MatPaginatorModule,
   ],
   exports: [
     MatCardModule,
@@ -55,6 +60,30 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
+    MatPaginatorModule,
   ],
 })
-export class MatModule {}
+export class MatModule {
+  constructor(private paginator: MatPaginatorIntl) {
+    paginator.itemsPerPageLabel = 'Ilość wpisów na stronie';
+    paginator.nextPageLabel = 'Następna strona';
+    paginator.lastPageLabel = 'Poprzednia strona';
+    paginator.getRangeLabel = this.getCustomRangeLabel.bind(this);
+  }
+
+  getCustomRangeLabel(page: number, pageSize: number, length: number): string {
+    if (length === 0 || pageSize === 0) {
+      return `0 z ${length}`;
+    }
+
+    length = Math.max(length, 0);
+
+    const startIndex = page * pageSize;
+    const endIndex =
+      startIndex < length
+        ? Math.min(startIndex + pageSize, length)
+        : startIndex + pageSize;
+
+    return `${startIndex + 1} - ${endIndex} z ${length}`;
+  }
+}

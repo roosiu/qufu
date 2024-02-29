@@ -17,6 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-comments',
   standalone: true,
@@ -47,7 +48,9 @@ export class CommentsComponent implements OnInit {
     private postService: PostService,
     private _snackBar: MatSnackBar,
     private location: Location,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private renderer: Renderer2,
+    private el: ElementRef
   ) {
     this.newComment = new FormControl('', [Validators.maxLength(450)]);
     this.starRate = new FormControl('', [Validators.required]);
@@ -133,6 +136,24 @@ export class CommentsComponent implements OnInit {
         .subscribe((data) => {
           this.comments = data;
         });
+    }
+  }
+  public pageSize = 10;
+  public currentPage = 0;
+  getPaginatorData(event: PageEvent) {
+    const commentElements: NodeListOf<Element> =
+      this.el.nativeElement.querySelectorAll('.comment');
+    // Ukrywamy wszystkie elementy z klasą "comment"
+    commentElements.forEach((element) => {
+      this.renderer.setStyle(element, 'display', 'none');
+    });
+
+    for (
+      let i = event.pageIndex * event.pageSize;
+      i < (event.pageIndex + 1) * event.pageSize && i < commentElements.length;
+      i++
+    ) {
+      this.renderer.setStyle(commentElements[i], 'display', 'block');
     }
   }
 }
