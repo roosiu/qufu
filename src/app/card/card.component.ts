@@ -24,6 +24,7 @@ export class CardComponent implements OnInit {
     this.filteredRecipes = this.recipes;
   }
   @Input() showOption: any;
+
   ngOnInit(): void {
     this.searchService.setcookStep(0);
     this.activatedRoute.paramMap.subscribe((params) => {
@@ -34,20 +35,34 @@ export class CardComponent implements OnInit {
       this.searchService.getSearchString().subscribe((text) => {
         this.searched = text;
       });
-      this.searchService.getJsonData('').subscribe((data) => {
-        this.recipes = data;
 
-        if (this.showOption === 'new') {
-          this.filteredRecipes = this.recipes;
-        } else {
-          this.filteredRecipes = this.recipes.filter((recipe) =>
-            recipe.title.toLowerCase().includes(this.searched.toLowerCase())
-          );
-        }
-      });
+      if (this.showOption === 'new') {
+        this.searchService.getJsonData('?option=new').subscribe((data) => {
+          this.filteredRecipes = data;
+        });
+      } else {
+        this.searchService
+          .getJsonData(
+            '?search=' +
+              inputText +
+              '&from=' +
+              this.currentPage +
+              '&quantity=' +
+              this.pageSize
+          )
+          .subscribe((data) => {
+            this.filteredRecipes = data;
+          });
+
+        this.searchService
+          .getJsonData('?search=' + inputText)
+          .subscribe((data) => {
+            this.searchcount = data[0].count;
+          });
+      }
     });
   }
-  public recipecount: any;
+  public searchcount: any;
   public pageSize: number = 10;
   public currentPage: number = 0;
   public from: number = 0;
@@ -59,17 +74,18 @@ export class CardComponent implements OnInit {
       this.from = event.pageIndex * event.pageSize;
       this.pageSize = event.pageSize;
     }
-    // this.searchService
-    //   .getJsonData(
-    //     '?commentsByRecipeId=' +
-    //       this.id +
-    //       '&from=' +
-    //       this.from +
-    //       '&quantity=' +
-    //       this.pageSize
-    //   )
-    //   .subscribe((data) => {
-    //     this.comments = data;
-    //   });
+
+    this.searchService
+      .getJsonData(
+        '?search=' +
+          this.searched +
+          '&from=' +
+          this.from +
+          '&quantity=' +
+          this.pageSize
+      )
+      .subscribe((data) => {
+        this.filteredRecipes = data;
+      });
   }
 }

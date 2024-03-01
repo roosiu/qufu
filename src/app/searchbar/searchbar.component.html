@@ -1,8 +1,10 @@
 <div (click)="searchInput.focus()" class="search-bar">
-  <input #searchInput [(ngModel)]="inputText" class="search-input" type="text" placeholder="Szukaj w QuFu..."
-    (keyup.enter)="searchButtonClick.click()" />
-</div>
-
-<button #searchButtonClick [routerLink]="['/search', inputText]" [disabled]="!inputText" class="search-button">
-  <mat-icon>search</mat-icon>
-</button>
+  <input #searchInput [formControl]="inputText" class="search-input" type="text" placeholder="Szukaj w QuFu..."
+    (keyup.enter)="searchButtonClick.click()" minlength="3" />
+  <div [class.visible]="inputText.invalid && inputText.touched" class="error-message">
+    Minimum 3 znaki wymagane.
+  </div>
+  <button #searchButtonClick [routerLink]="['/search', inputText.value]"
+    [disabled]="!inputText.value || inputText.invalid || !inputText.touched" class="search-button">
+    <mat-icon>search</mat-icon>
+  </button>
