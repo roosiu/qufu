@@ -1,10 +1,10 @@
 <div (click)="searchInput.focus()" class="search-bar">
   <input #searchInput [formControl]="inputText" class="search-input" type="text" placeholder="Szukaj w QuFu..."
     (keyup.enter)="searchButtonClick.click()" minlength="3" />
-  <div [class.visible]="inputText.invalid && inputText.touched" class="error-message">
+  <div [class.visible]="inputText.invalid" class="error-message">
     Minimum 3 znaki wymagane.
   </div>
   <button #searchButtonClick [routerLink]="['/search', inputText.value]"
-    [disabled]="!inputText.value || inputText.invalid || !inputText.touched" class="search-button">
+    [disabled]="inputText.invalid || !inputText.value" class="search-button">
     <mat-icon>search</mat-icon>
   </button>
