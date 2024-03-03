@@ -1,0 +1,10 @@
+<div class="circular-timer">
+    <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" fill="none" [attr.stroke]="timerColor" stroke-width="9"></circle>
+        <circle cx="50" cy="50" r="45" fill="none" [attr.stroke]="backgroundColor" stroke-width="10"
+            [style.strokeDasharray]="circumference" [style.strokeDashoffset]="circumference * progress"></circle>
+        <text font-weight="bold" x="50" y="50" text-anchor="middle" [style.fill]="textColor" dominant-baseline="central"
+            font-size="25">{{
+            displayTime }}</text>
+    </svg>
+</div>

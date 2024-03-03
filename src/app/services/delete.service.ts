@@ -7,10 +7,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DeleteService {
+  /**
+   * Service resposible for deleting records in database
+   * @date 2024-03-03
+   */
   constructor(private http: HttpClient, private authService: AuthService) {}
   private apiUrl = 'https://pwksm.ovh/qufu/delete.php';
   private logged = new BehaviorSubject<boolean>(false);
 
+  /**
+   * Method deleting record in database;
+   * @date 2024-03-03
+   * @param { any } token - token from local data storage
+   * @param { string } name - name of user
+   * @param { number } id_to_delete - item id to delete
+   * @param { string } table - tabel name from database
+   */
   delete(
     token: any,
     name: string,

@@ -11,6 +11,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dialog.component.css',
 })
 export class DialogComponent {
+  /**
+   * Custom dialog component with info and close button
+   * @date 2024-03-03
+   * @param { * } parm1
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { title: string; body: string; button: string; icon: string }

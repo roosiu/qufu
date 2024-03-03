@@ -22,16 +22,20 @@ export class NavbarComponent implements OnInit {
   ) {}
   logged = false;
   name: any;
+
   ngOnInit(): void {
     this.authService.GetLogged().subscribe((bol: boolean) => {
       this.logged = bol;
-      this.name = localStorage.getItem('name');
+      this.name = this.authService.GetName();
     });
   }
 
+  /**
+   * Logout function remove all login data and show snackbar info
+   * @date 2024-03-03
+   */
   logout() {
-    localStorage.removeItem('name');
-    localStorage.removeItem('token');
+    this.authService.RemoveToken();
     this.authService.SetIsLogged(false);
     this.router.navigate(['']);
     this._snackBar.open('Wylogowano', 'OK', {
