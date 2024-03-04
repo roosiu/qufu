@@ -30,13 +30,27 @@ export class ProfileComponent implements OnInit {
   ) {}
   token: any;
   profile: any;
+  favorite: any;
   id_to_delete: number = 0;
   imgLocation = this.searchService.imgLocation;
+
+  /**
+   * A function that takes a URL and returns a safe style.
+   *
+   * @param {string} url - the URL to be sanitized
+   * @return {SafeStyle} the sanitized style for the URL
+   */
   safeImageUrl(url: string): SafeStyle {
     return this.sanitizer.bypassSecurityTrustStyle(`url(${url}.jpg)`);
   }
   errorMessage: string = '';
-  deleteComment(id_to_delete: number) {
+  /**
+   * Deletes a comment by ID.
+   *
+   * @param {number} id_to_delete - the ID of the comment to delete
+   * @return {void}
+   */
+  deleteComment(id_to_delete: number): void {
     const name = this.authService.GetName() || '';
     const token = this.authService.GetToken() || ''; // Assuming empty string as fallback
     let elementId = 'comment_' + id_to_delete;
@@ -73,7 +87,8 @@ export class ProfileComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.token = localStorage.getItem('token');
+    this.token = this.authService.GetToken();
+
     if (this.token) {
       this.searchService
         .getJsonData('?token=' + this.token)
@@ -84,6 +99,7 @@ export class ProfileComponent implements OnInit {
               .getJsonData('?comments=' + this.profile[0].id)
               .subscribe((data) => {
                 this.profile[0].comments = data;
+                this.favorite = this.profile[0].favorite.split(',');
               });
           } else {
             localStorage.removeItem('token');
@@ -99,5 +115,4 @@ export class ProfileComponent implements OnInit {
       this.authService.SetIsLogged(false);
     }
   }
-  panelOpenState = false;
 }

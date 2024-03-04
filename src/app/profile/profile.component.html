@@ -2,10 +2,7 @@
   <mat-card *ngIf="profile" class="box-standard box-profile">
     <div class="icon">
       <span class="material-symbols-outlined">
-        <button
-          matTooltip="Edycja dostępna wkrótce"
-          class="button-standard button-edit"
-        >
+        <button matTooltip="Edycja dostępna wkrótce" class="button-standard button-edit">
           Edytuj
         </button>
         account_circle
@@ -17,18 +14,21 @@
   </mat-card>
   <mat-card class="box-standard box-recipe">
     <mat-accordion>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
+      <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-title"> Ulubione </mat-panel-title>
           <mat-panel-description class="mat-expansion-panel-header-description">
-            Twoje ulubione przepisy {{ panelOpenState ? "open" : "closed" }}
+            <ng-container *ngIf="favorite">Ilość ulubionych przepisów: {{ favorite.length }}</ng-container>
             <mat-icon class="fav">favorite</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>I'm visible because I am open</p>
+        <ng-container *ngIf="profile">
+          @for (favoriteRecipe of favorite; track favoriteRecipe) {
+          <div class="div-favorite">
+            {{ favoriteRecipe }}
+          </div>
+          }
+        </ng-container>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -43,29 +43,22 @@
         <ng-container *ngIf="profile">
           @for (comment of profile[0].comments; track comment) {
           <div id="comment_{{ comment.id }}" class="div-comment">
-            <div
-              [routerLink]="['/id', comment.recipe_id]"
-              [style.backgroundImage]="
+            <div [routerLink]="['/id', comment.recipe_id]" [style.backgroundImage]="
                 safeImageUrl(imgLocation + comment.recipe_id)
-              "
-              class="list-img"
-            ></div>
+              " class="list-img"></div>
             <div class="list-text">
               <div class="list-date_time">
                 {{ comment.date_time | date : "d.MM.yyyy, H:mm" }}
               </div>
+              <div class="list-rating">
+                <app-star-rating [rating]="comment.rating"></app-star-rating>
+                <mat-icon (click)="deleteComment(comment.id)" matTooltip="Usuń wpis"
+                  class="deleteIcon">delete</mat-icon>
+              </div>
               <div class="list-comment">
                 {{ comment.comment }}
               </div>
-              <div class="list-rating">
-                <app-star-rating [rating]="comment.rating"></app-star-rating>
-                <mat-icon
-                  (click)="deleteComment(comment.id)"
-                  matTooltip="Usuń wpis"
-                  class="deleteIcon"
-                  >delete</mat-icon
-                >
-              </div>
+
             </div>
           </div>
           }
