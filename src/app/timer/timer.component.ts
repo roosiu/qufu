@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatModule } from '../mat/mat.module';
 
@@ -10,7 +10,7 @@ import { MatModule } from '../mat/mat.module';
   templateUrl: './timer.component.html',
   styleUrl: './timer.component.css',
 })
-export class TimerComponent implements OnInit {
+export class TimerComponent implements OnInit, OnDestroy {
   /**
    * Timer component for displaying a circular progress bar.
    * @param {number} totalTime - The total time in minutes.
@@ -35,7 +35,9 @@ export class TimerComponent implements OnInit {
     this.audio = new Audio();
     this.audio.src = 'assets/sounds/alarm.mp3';
     this.audio.load();
-    this.startTime = Date.now();
+  }
+  ngOnDestroy(): void {
+    this.stopTimer();
   }
   /**
    * Play the audio.
@@ -61,6 +63,7 @@ export class TimerComponent implements OnInit {
    * @return {void}
    */
   startTimer(): void {
+    this.startTime = Date.now();
     this.displayTime = '0:00';
     this.progress = 0;
     this.timerInterval = setInterval(() => {
@@ -69,6 +72,7 @@ export class TimerComponent implements OnInit {
       if (remainingTime <= 0) {
         // Assuming there's a method available in the class to play a sound
         this.play();
+        this.displayTime = '0:00';
       } else {
         const minutes = Math.floor(remainingTime / 60000);
         const seconds = Math.floor((remainingTime % 60000) / 1000);
@@ -101,6 +105,5 @@ export class TimerComponent implements OnInit {
     clearInterval(this.timerInterval);
     this.timerInterval = null;
     this.progress = 0;
-    this.startTime = Date.now();
   }
 }
