@@ -16,7 +16,6 @@ export const routes: Routes = [
   },
   { path: 'id/:inputText', component: RecipepageComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'best', component: TimerComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
   { path: '**', component: PagenotfoundComponent },
 ];

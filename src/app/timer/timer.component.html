@@ -1,10 +1,42 @@
 <div class="circular-timer">
-    <svg viewBox="0 0 100 100">
+    <svg *ngIf="timerInterval" viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" fill="none" [attr.stroke]="timerColor" stroke-width="9"></circle>
         <circle cx="50" cy="50" r="45" fill="none" [attr.stroke]="backgroundColor" stroke-width="10"
             [style.strokeDasharray]="circumference" [style.strokeDashoffset]="circumference * progress"></circle>
-        <text font-weight="bold" x="50" y="50" text-anchor="middle" [style.fill]="textColor" dominant-baseline="central"
-            font-size="25">{{
-            displayTime }}</text>
+
+        <line x1="95" y1="50" x2="100" y2="50" [attr.stroke]="textColor" stroke-linecap="round" stroke-width="1"></line>
+        <line x1="50" y1="5" x2="50" y2="0" [attr.stroke]="textColor" stroke-linecap="round" stroke-width="1"></line>
+        <line x1="5" y1="50" x2="0" y2="50" [attr.stroke]="textColor" stroke-linecap="round" stroke-width="1"></line>
+        <line x1="50" y1="95" x2="50" y2="100" [attr.stroke]="textColor" stroke-linecap="round" stroke-width="1"></line>
+
+        <line x1="83" y1="83" x2="84" y2="84" [attr.stroke]="textColor" stroke-linecap="round" stroke-width="1"></line>
+        <line x1="83" y1="17" x2="84" y2="16" [attr.stroke]="textColor" stroke-linecap="round" stroke-width="1"></line>
+        <line x1="17" y1="83" x2="16" y2="84" [attr.stroke]="textColor" stroke-linecap="round" stroke-width="1"></line>
+        <line x1="17" y1="17" x2="16" y2="16" [attr.stroke]="textColor" stroke-linecap="round" stroke-width="1"></line>
+
+        <circle cx="50" cy="50" r="47.5" fill="none" [attr.stroke]="textColor" stroke-width="1"></circle>
     </svg>
+
+
+    <div class="timer-section">
+        <mat-icon *ngIf="!timerInterval" [style]="{ color: textColor }">timer</mat-icon>
+        <div class="timer-label" [style.color]="textColor">Czas trwania:
+            <ng-container *ngIf="timerInterval"><br />{{totalTime}}</ng-container>min.
+        </div>
+        <div *ngIf="timerInterval" [style.color]="textColor" class="timer-text">{{ displayTime }}</div>
+        <div class="input-section" *ngIf="!timerInterval">
+            <button type="button" class="button-standard2 button button-left"
+                (click)="changeTime(-1)"><mat-icon>remove</mat-icon></button>
+            <button type="button" class="button-standard2 button button-right"
+                (click)="changeTime(1)"><mat-icon>add</mat-icon></button>
+            <input [style.color]="textColor" [readOnly]="timerInterval" min="1" max="3" maxlength="3" step="1"
+                type="number" name="time" [(ngModel)]="totalTime" (keyup.enter)="startTimer()">
+        </div>
+        <button *ngIf="!timerInterval" type="button" class="button-standard button" [disabled]="totalTime < 1"
+            (click)="startTimer()">
+            <mat-icon>play_arrow</mat-icon></button>
+        <button *ngIf="timerInterval" type="button" class="button-standard2 button" (click)="stopTimer()">
+            <mat-icon>stop</mat-icon></button>
+    </div>
+
 </div>

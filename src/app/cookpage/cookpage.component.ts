@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SearchService } from '../services/search.service';
 import { CommonModule } from '@angular/common';
+import { TimerComponent } from '../timer/timer.component';
 
 @Component({
   selector: 'app-cookpage',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TimerComponent],
   templateUrl: './cookpage.component.html',
   styleUrl: './cookpage.component.css',
 })

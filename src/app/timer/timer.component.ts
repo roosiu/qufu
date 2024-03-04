@@ -11,39 +11,96 @@ import { MatModule } from '../mat/mat.module';
   styleUrl: './timer.component.css',
 })
 export class TimerComponent implements OnInit {
-  @Input() totalTime: number = 60; // Total time in seconds
-  @Input() timerColor: string = 'var(--primary-color)'; // Timer color
-  @Input() backgroundColor: string = 'var(--background-color3)'; // background color
-  @Input() textColor: string = 'var(--secondary-color)'; // text color
+  /**
+   * Timer component for displaying a circular progress bar.
+   * @param {number} totalTime - The total time in minutes.
+   * @param {string} timerColor - The color of the timer.
+   * @param {string} backgroundColor - The color of the background.
+   * @param {string} textColor - The color of the text.
+   * @returns {void}
+   *
+   */
+  @Input() totalTime: number = 5;
+  @Input() timerColor: string = 'brown';
+  @Input() backgroundColor: string = 'white';
+  @Input() textColor: string = 'darkblue';
 
   public displayTime: string = '0:00';
   public progress: number = 1;
-  private timerInterval: any;
-  private startTime!: number;
+  public timerInterval: any;
+  public startTime!: number;
   public circumference: number = 2 * Math.PI * 45;
-
-  constructor() {}
-
-  ngOnInit(): void {
+  private audio: HTMLAudioElement;
+  constructor() {
+    this.audio = new Audio();
+    this.audio.src = 'assets/sounds/alarm.mp3';
+    this.audio.load();
     this.startTime = Date.now();
-    // this.startTimer();
   }
+  /**
+   * Play the audio.
+   *
+   * @return {void}
+   */
+  play(): void {
+    this.audio.play();
+  }
+  /**
+   * stop the audio
+   *
+   * @return {void}
+   */
+  stop(): void {
+    this.audio.pause();
+  }
+  ngOnInit(): void {}
 
-  private startTimer(): void {
+  /**
+   * Starts a timer and updates the display and progress at regular intervals.
+   *
+   * @return {void}
+   */
+  startTimer(): void {
+    this.displayTime = '0:00';
+    this.progress = 0;
     this.timerInterval = setInterval(() => {
       const elapsedTime = Date.now() - this.startTime;
-      const remainingTime = this.totalTime * 1000 - elapsedTime;
-
+      const remainingTime = this.totalTime * 60 * 1000 - elapsedTime;
       if (remainingTime <= 0) {
-        clearInterval(this.timerInterval);
-        this.displayTime = '0:00';
-        this.progress = 0;
+        // Assuming there's a method available in the class to play a sound
+        this.play();
       } else {
         const minutes = Math.floor(remainingTime / 60000);
         const seconds = Math.floor((remainingTime % 60000) / 1000);
         this.displayTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        this.progress = remainingTime / (this.totalTime * 1000);
+        this.progress = remainingTime / (this.totalTime * 60 * 1000);
       }
     }, 1000);
+  }
+
+  /**
+   * Change the time based on the given value.
+   *
+   * @param {number} value - the value to change the time by
+   * @return {void}
+   */
+  changeTime(value: number): void {
+    if (value < 0) {
+      if (this.totalTime > 1) {
+        this.totalTime -= 1;
+      }
+    } else {
+      this.totalTime += 1;
+    }
+  }
+  /**
+   * Stop the timer and reset the progress and start time.
+   */
+  stopTimer() {
+    this.stop();
+    clearInterval(this.timerInterval);
+    this.timerInterval = null;
+    this.progress = 0;
+    this.startTime = Date.now();
   }
 }

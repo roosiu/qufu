@@ -30,10 +30,16 @@
     </div>
   </div>
   <div class="foodpage__img" *ngIf="recipe.steps[cookStep - 1].icon">
-    <ng-container *ngFor="let material of recipe.steps[cookStep - 1].material.split(',')">
-      <img *ngIf="material" class="foodpage__img-material" src="{{ imgLocation }}{{ material }}.png" />
-    </ng-container>
+    <ng-container *ngIf="recipe.steps[cookStep - 1].material">
+      <ng-container *ngFor="let material of recipe.steps[cookStep - 1].material.split(',')">
+        <app-timer *ngIf="material.startsWith('timer(') && material.endsWith(')')" [totalTime]="+material.slice(6, -1)"
+          [backgroundColor]="'var(--background-color3)'" [textColor]="'var(--secondary-color)'"
+          [timerColor]="'var(--primary-color)'"></app-timer>
 
+        <img *ngIf="material" class="foodpage__img-material"
+          src="{{ imgLocation }}{{ material.startsWith('timer(') && material.endsWith(')') ? 'timer' : material }}.png" />
+      </ng-container>
+    </ng-container>
     <img class="foodpage__img-job" src="{{ imgLocation }}{{
         recipe &&
           recipe.steps[cookStep - 1].icon &&

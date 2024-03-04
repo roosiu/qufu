@@ -14,6 +14,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
+  /**
+   * Constructor for initializing search service, authentication service, router, and snack bar.
+   *
+   * @param {SearchService} searchService - the search service to be initialized
+   * @param {AuthService} authService - the authentication service to be initialized
+   * @param {Router} router - the router to be initialized
+   * @param {MatSnackBar} _snackBar - the snack bar to be initialized
+   */
   constructor(
     private searchService: SearchService,
     private authService: AuthService,
@@ -32,7 +40,8 @@ export class NavbarComponent implements OnInit {
 
   /**
    * Logout function remove all login data and show snackbar info
-   * @date 2024-03-03
+   * @returns void
+   *
    */
   logout() {
     this.authService.RemoveToken();
