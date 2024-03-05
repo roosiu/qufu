@@ -10,6 +10,7 @@ export class AuthService {
   /**
    * Service responsible for authentication-related functionality.
    */
+  private RegisterloginUrl = 'https://pwksm.ovh/qufu/register.php';
   private loginUrl = 'https://pwksm.ovh/qufu/login.php';
   private updateProfileUrl = 'https://pwksm.ovh/qufu/updateProfile.php';
   private getProfileUrl = 'https://pwksm.ovh/qufu/getProfile.php';
@@ -33,6 +34,24 @@ export class AuthService {
     };
     // send POST to server
     return this.http.post<any>(this.loginUrl, loginData);
+  }
+  /**
+   * register - new user.
+   *
+   * @param {string} email - The user's email.
+   * @param {string} password - The user's password.
+   * @param {string} name - The user's name.
+   * @return {Observable<any>} description of return value
+   */
+  register(email: string, password: string, name: string): Observable<any> {
+    // Tworzenie obiektu z danymi logowania
+    const registerData = {
+      email: email,
+      password: password,
+      name: name,
+    };
+    // send POST to server
+    return this.http.post<any>(this.RegisterloginUrl, registerData);
   }
 
   /**

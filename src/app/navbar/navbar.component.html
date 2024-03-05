@@ -1,39 +1,45 @@
 <nav class="navbar">
-    <div class="navbar-logo">
-        <img [routerLink]="['/']" src="assets/images/logo_t.svg" alt="QuFu Logo" />
+  <div class="navbar-logo">
+    <img [routerLink]="['/']" src="assets/images/logo_t.svg" alt="QuFu Logo" />
+  </div>
+  <div class="navbar-actions">
+    <div class="menu">
+      <button class="button" [routerLink]="['/']">
+        <span class="material-symbols-outlined"> home</span> Start
+      </button>
+      <button matTooltip="Dostępne wkrótce" class="button">
+        <span class="material-symbols-outlined"> trending_up </span> Top
+        przepisy
+      </button>
     </div>
-    <div class="navbar-actions">
-        <div class="menu">
-            <button class="button" [routerLink]="['/']"><span class="material-symbols-outlined">
-                    home</span> Start</button>
-            <button matTooltip="Dostępne wkrótce" class="button"><span class="material-symbols-outlined">
-                    trending_up
-                </span> Top przepisy</button>
-        </div>
-    </div>
-    <div class="navbar-logpanel">
-        <ng-container *ngIf="!logged; else profile">
-            <button class="signup">Rejestracja
-            </button>
-            <button class="login" [routerLink]="['/login']">Loguj</button>
-        </ng-container>
-        <ng-template #profile>
-
-            <button matTooltip="Rozwiń menu" [matMenuTriggerFor]="menu" class="profile">
-                <mat-icon>account_circle</mat-icon>
-                {{name}}</button>
-            <mat-menu #menu="matMenu">
-                <button [routerLink]="['/profile']" matTooltip="Twój profil" mat-menu-item>
-                    <mat-icon>account_circle</mat-icon>
-                    <span>Profil</span>
-                </button>
-            </mat-menu>
-            <button matTooltip="Wyloguj" (click)="logout()" class="logout"><span class="material-symbols-outlined">
-                    logout
-                </span></button>
-
-        </ng-template>
-    </div>
-
-
+  </div>
+  <div class="navbar-logpanel">
+    <ng-container *ngIf="!logged; else profile">
+      <button class="signup" [routerLink]="['/register']">Rejestracja</button>
+      <button class="login" [routerLink]="['/login']">Loguj</button>
+    </ng-container>
+    <ng-template #profile>
+      <button
+        matTooltip="Rozwiń menu"
+        [matMenuTriggerFor]="menu"
+        class="profile"
+      >
+        <mat-icon>account_circle</mat-icon>
+        {{ name }}
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          [routerLink]="['/profile']"
+          matTooltip="Twój profil"
+          mat-menu-item
+        >
+          <mat-icon>account_circle</mat-icon>
+          <span>Profil</span>
+        </button>
+      </mat-menu>
+      <button matTooltip="Wyloguj" (click)="logout()" class="logout">
+        <span class="material-symbols-outlined"> logout </span>
+      </button>
+    </ng-template>
+  </div>
 </nav>

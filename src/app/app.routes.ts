@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginGuard } from './services/loginguard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { TimerComponent } from './timer/timer.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
   { path: '', component: HerosectionComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   },
   { path: 'id/:inputText', component: RecipepageComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
   { path: '**', component: PagenotfoundComponent },
 ];
