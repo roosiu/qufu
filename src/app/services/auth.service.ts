@@ -9,7 +9,8 @@ export class AuthService {
   /**
    * Service responsible for authentication-related functionality.
    */
-  private apiUrl = 'https://pwksm.ovh/qufu/login.php';
+  private loginUrl = 'https://pwksm.ovh/qufu/login.php';
+  private updateProfileUrl = 'https://pwksm.ovh/qufu/updateProfile.php';
   private logged = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient) {
     this.GetIsLoggedFromToken();
@@ -29,7 +30,7 @@ export class AuthService {
       password: password,
     };
     // send POST to server
-    return this.http.post<any>(this.apiUrl, loginData);
+    return this.http.post<any>(this.loginUrl, loginData);
   }
 
   /**
@@ -86,5 +87,30 @@ export class AuthService {
     }
     this.SetIsLogged(true);
     return true;
+  }
+
+  /**
+   * Update the profile with the provided position and value.
+   *
+   * @param {string} position - the position to update
+   * @param {string} value - the value to update
+   * @param {string} token - the token to use
+   * @param {string} name - the name to use
+   * @return {Observable<any>} the observable for the POST request
+   */
+  UpdateProfile(
+    position: string,
+    value: string,
+    token: string,
+    name: string
+  ): Observable<any> {
+    const loginData = {
+      position: position,
+      value: value,
+      token: token,
+      name: name,
+    };
+    // send POST to server
+    return this.http.post<any>(this.updateProfileUrl, loginData);
   }
 }

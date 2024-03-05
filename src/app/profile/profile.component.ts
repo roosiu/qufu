@@ -9,6 +9,7 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { DeleteService } from '../services/delete.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -30,6 +31,16 @@ export class ProfileComponent implements OnInit {
   ) {}
   token: any;
   profile: any;
+  /**
+   * favorite recipes.
+   * @param {any} title - title of the recipe
+   * @param {any} id - id of the recipe
+   *  @param {any} img - image of the recipe
+   * @param {any} time - time of the recipe
+   *  @param {any} difficulty - difficulty of the recipe
+   * @param {any} body - body of the recipe
+   *
+   */
   favorite: any;
   id_to_delete: number = 0;
   imgLocation = this.searchService.imgLocation;
@@ -86,6 +97,49 @@ export class ProfileComponent implements OnInit {
       },
     });
   }
+
+  deleteFavorite(id_to_delete: number): void {
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      data: {
+        title: 'Usunąć przepis z ulubionych?',
+        body: 'Jesteś pewny, że chcesz usunąć ten przepis z ulubionych?',
+        confirm: 'Usuń',
+        cancel: 'Anuluj',
+        icon: 'delete',
+      },
+    });
+    dialogRef.afterClosed().subscribe((dialogResult) => {
+      if (dialogResult) {
+        this.favorite = this.favorite.filter(
+          (fav: any) => fav.id !== id_to_delete
+        );
+        this.profile[0].favorite = this.favorite
+          .map((fav: { id: number }) => fav.id.toString())
+          .join(', ');
+
+        this.authService
+          .UpdateProfile(
+            'favorite',
+            this.profile[0].favorite,
+            this.authService.GetToken()!,
+            this.authService.GetName()!
+          )
+          .subscribe((response) => {
+            if (response.success) {
+              this._snackBar.open(
+                'Przepis został usunięty z ulubionych.',
+                'Ok',
+                {
+                  duration: 3000,
+                }
+              );
+            } else {
+              this._snackBar.open('Błąd:' + response.message, 'Ok');
+            }
+          });
+      }
+    });
+  }
   ngOnInit(): void {
     this.token = this.authService.GetToken();
 
@@ -100,6 +154,13 @@ export class ProfileComponent implements OnInit {
               .subscribe((data) => {
                 this.profile[0].comments = data;
                 this.favorite = this.profile[0].favorite.split(',');
+                this.favorite.forEach((fav: string) => {
+                  this.searchService
+                    .getJsonData('?id=' + fav)
+                    .subscribe((data) => {
+                      this.favorite[this.favorite.indexOf(fav)] = data;
+                    });
+                });
               });
           } else {
             localStorage.removeItem('token');

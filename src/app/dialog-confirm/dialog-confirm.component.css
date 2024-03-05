@@ -1,0 +1,20 @@
+.button-close {
+  padding: 15px;
+}
+
+h2 {
+  width: 100%;
+  background-color: var(--secondary-color);
+  color: var(--background-color4) !important;
+}
+
+mat-icon {
+  vertical-align: bottom;
+}
+
+mat-dialog-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}

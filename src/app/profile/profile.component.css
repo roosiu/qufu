@@ -112,7 +112,6 @@
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  justify-content: flex-start;
   padding: 5px 0;
   border-bottom: solid 1px var(--grey-color3);
 }
@@ -120,9 +119,46 @@
 .div-comment div {
   padding: 0 5px;
 }
+.div-comment:hover {
+  background-color: var(--background-color3);
+}
+.div-favorite {
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: solid 1px var(--grey-color3);
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
 
+.div-favorite:hover {
+  background-color: var(--background-color3);
+}
+.div-favorite__left {
+  display: flex;
+  align-items: center;
+}
+.div-favorite__right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.div-favorite__title {
+  font-weight: normal;
+  color: var(--secondary-color);
+  font-size: 1em;
+  margin-left: 10px;
+}
+.div-favorite__title:hover {
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
 .list-img {
-  width: 60px;
+  min-width: 60px;
   height: 60px;
   background-size: cover;
   background-position: center;
@@ -131,23 +167,37 @@
   cursor: pointer;
 }
 .list-text {
-  width: fit-content;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
 }
 .list-date_time {
   font-weight: bold;
 }
 .list-comment {
   font-size: 0.9em;
+  width: 100%;
 }
 
 .list-rating {
   color: var(--secondary-color);
-  float: right;
   font-size: 0.9em;
   display: flex;
+  align-items: stretch;
   flex-wrap: nowrap;
+  justify-content: flex-end;
+  width: 100%;
+}
+.deleteIcon {
+  color: var(--secondary-color);
+}
+.deleteIcon:hover {
+  cursor: pointer;
 }
 
-.list-rating .deleteIcon:hover {
-  cursor: pointer;
+mat-icon {
+  overflow: visible;
 }
