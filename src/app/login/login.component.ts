@@ -42,8 +42,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', response.token);
           this.authService.SetIsLogged(true);
           this.router.navigate(['']);
-          this._snackBar.open('Zalogowano', 'OK', {
+          this._snackBar.open('Zalogowano', '', {
             duration: 3000,
+            panelClass: 'custom-snackbar',
           });
         } else {
           // Logowanie nieudane - wyświetl komunikat błędu

@@ -31,16 +31,7 @@ export class ProfileComponent implements OnInit {
   ) {}
   token: any;
   profile: any;
-  /**
-   * favorite recipes.
-   * @param {any} title - title of the recipe
-   * @param {any} id - id of the recipe
-   *  @param {any} img - image of the recipe
-   * @param {any} time - time of the recipe
-   *  @param {any} difficulty - difficulty of the recipe
-   * @param {any} body - body of the recipe
-   *
-   */
+
   favorite: any;
   id_to_delete: number = 0;
   imgLocation = this.searchService.imgLocation;
@@ -66,7 +57,6 @@ export class ProfileComponent implements OnInit {
     const token = this.authService.GetToken() || ''; // Assuming empty string as fallback
     let elementId = 'comment_' + id_to_delete;
     let elementToRemove = document.getElementById(elementId);
-    console.log(elementId);
 
     this.deleteService.delete(token, name, id_to_delete, 'ratings').subscribe({
       next: (response) => {
@@ -74,20 +64,17 @@ export class ProfileComponent implements OnInit {
           if (elementToRemove) {
             elementToRemove.remove();
           }
-          const dialogRef = this.dialog.open(DialogComponent, {
-            data: {
-              title: 'Poszło!',
-              body: 'Wpis został Usunięty.',
-              button: 'Zamknij',
-              icon: 'success',
-            },
+          this._snackBar.open('Wpis został usunięty.', '', {
+            duration: 3000,
+            panelClass: 'custom-snackbar',
           });
           // dialogRef.afterClosed().subscribe(() => window.location.reload());
         } else {
           // Dodawanie nieudane - wyświetl komunikat błędu
           this.errorMessage = response.message;
-          this._snackBar.open('Błąd:' + response.message, 'Ok', {
+          this._snackBar.open('Błąd:' + response.message, '', {
             duration: 3000,
+            panelClass: 'custom-snackbar',
           });
         }
       },
@@ -126,15 +113,15 @@ export class ProfileComponent implements OnInit {
           )
           .subscribe((response) => {
             if (response.success) {
-              this._snackBar.open(
-                'Przepis został usunięty z ulubionych.',
-                'Ok',
-                {
-                  duration: 3000,
-                }
-              );
+              this._snackBar.open('Przepis został usunięty z ulubionych.', '', {
+                duration: 3000,
+                panelClass: 'custom-snackbar',
+              });
             } else {
-              this._snackBar.open('Błąd:' + response.message, 'Ok');
+              this._snackBar.open('Błąd:' + response.message, '', {
+                duration: 3000,
+                panelClass: 'custom-snackbar',
+              });
             }
           });
       }
@@ -153,14 +140,16 @@ export class ProfileComponent implements OnInit {
               .getJsonData('?comments=' + this.profile[0].id)
               .subscribe((data) => {
                 this.profile[0].comments = data;
-                this.favorite = this.profile[0].favorite.split(',');
-                this.favorite.forEach((fav: string) => {
-                  this.searchService
-                    .getJsonData('?id=' + fav)
-                    .subscribe((data) => {
-                      this.favorite[this.favorite.indexOf(fav)] = data;
-                    });
-                });
+                if (this.profile[0].favorite) {
+                  this.favorite = this.profile[0].favorite.split(',');
+                  this.favorite.forEach((fav: string) => {
+                    this.searchService
+                      .getJsonData('?id=' + fav)
+                      .subscribe((data) => {
+                        this.favorite[this.favorite.indexOf(fav)] = data;
+                      });
+                  });
+                }
               });
           } else {
             localStorage.removeItem('token');

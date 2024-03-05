@@ -47,8 +47,9 @@ export class NavbarComponent implements OnInit {
     this.authService.RemoveToken();
     this.authService.SetIsLogged(false);
     this.router.navigate(['']);
-    this._snackBar.open('Wylogowano', 'OK', {
+    this._snackBar.open('Wylogowano', '', {
       duration: 3000,
+      panelClass: 'custom-snackbar',
     });
   }
 }

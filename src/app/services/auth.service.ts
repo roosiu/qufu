@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { SearchService } from './search.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,9 @@ export class AuthService {
    */
   private loginUrl = 'https://pwksm.ovh/qufu/login.php';
   private updateProfileUrl = 'https://pwksm.ovh/qufu/updateProfile.php';
+  private getProfileUrl = 'https://pwksm.ovh/qufu/getProfile.php';
   private logged = new BehaviorSubject<boolean>(false);
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private searchService: SearchService) {
     this.GetIsLoggedFromToken();
   }
 
@@ -112,5 +114,24 @@ export class AuthService {
     };
     // send POST to server
     return this.http.post<any>(this.updateProfileUrl, loginData);
+  }
+
+  GetFavorite(): Promise<string[]> {
+    return new Promise<string[]>((resolve, reject) => {
+      if (this.GetToken()) {
+        this.searchService.getJsonData('?token=' + this.GetToken()).subscribe(
+          (data) => {
+            // const favorite = data.map((item) => item.favorite);
+            const favorite = data[0].favorite.split(',');
+            resolve(favorite);
+          },
+          (error) => {
+            reject(error); // Handle error if needed
+          }
+        );
+      } else {
+        reject('No token available');
+      }
+    });
   }
 }
