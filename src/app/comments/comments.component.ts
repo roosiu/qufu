@@ -18,6 +18,7 @@ import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { PageEvent } from '@angular/material/paginator';
+import { IdenticonComponent } from '../identicon/identicon.component';
 @Component({
   selector: 'app-comments',
   standalone: true,
@@ -29,6 +30,7 @@ import { PageEvent } from '@angular/material/paginator';
     ReactiveFormsModule,
     RouterModule,
     StarRatingComponent,
+    IdenticonComponent,
   ],
 })
 export class CommentsComponent implements OnInit {

@@ -40,6 +40,7 @@ export class RecipepageComponent implements OnInit {
   isFavorite: boolean = false;
   favoriteRecipe: string[] = [];
   isLogged: boolean = this.authService.GetIsLoggedFromToken();
+  portions: string = '';
   ngOnInit(): void {
     /**
      * Check if recipe is favorite
@@ -74,7 +75,7 @@ export class RecipepageComponent implements OnInit {
       if (this.id) {
         this.searchService.getJsonData('?id=' + this.id).subscribe((data) => {
           this.recipe = data;
-
+          this.portions = this.recipe.portions;
           this.searchService
             .getJsonData('?ingredients=' + this.id)
             .subscribe((data) => {
