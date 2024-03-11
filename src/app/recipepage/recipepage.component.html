@@ -9,32 +9,18 @@
     <div class="title">
       {{ recipe.title }}
       <ng-container *ngIf="isLogged; else notLoggedFavorite">
-        <button
-          *ngIf="!isFavorite"
-          (click)="addFavorite()"
-          matTooltip="Dodaj do ulubionych"
-          type="button"
-          class="button-standard favorite"
-        >
+        <button *ngIf="!isFavorite" (click)="addFavorite()" matTooltip="Dodaj do ulubionych" type="button"
+          class="button-standard favorite">
           <mat-icon>favorite</mat-icon>
         </button>
-        <button
-          *ngIf="isFavorite"
-          (click)="deleteFavorite()"
-          matTooltip="Usuń z ulubionych"
-          type="button"
-          class="button-standard favorite are-favorite"
-        >
+        <button *ngIf="isFavorite" (click)="deleteFavorite()" matTooltip="Usuń z ulubionych" type="button"
+          class="button-standard favorite are-favorite">
           <mat-icon>favorite</mat-icon>
         </button>
       </ng-container>
       <ng-template #notLoggedFavorite>
-        <button
-          matTooltip="Musisz być zalogowany"
-          [routerLink]="['/login']"
-          type="button"
-          class="button-standard favorite notLogged-favorite"
-        >
+        <button matTooltip="Musisz być zalogowany" [routerLink]="['/login']" type="button"
+          class="button-standard favorite notLogged-favorite">
           <mat-icon>favorite</mat-icon>
         </button>
       </ng-template>
@@ -46,39 +32,50 @@
       <div class="diff-bar__label">
         Poziom trudności:
         <ng-container *ngIf="recipe.difficulty == 1"><b>łatwy</b></ng-container>
-        <ng-container *ngIf="recipe.difficulty == 2"
-          ><b>średni</b></ng-container
-        >
-        <ng-container *ngIf="recipe.difficulty == 3"
-          ><b>trudny</b></ng-container
-        >
+        <ng-container *ngIf="recipe.difficulty == 2"><b>średni</b></ng-container>
+        <ng-container *ngIf="recipe.difficulty == 3"><b>trudny</b></ng-container>
       </div>
       <div *ngIf="recipe.difficulty >= 1" class="easy"></div>
       <div *ngIf="recipe.difficulty >= 2" class="medium"></div>
       <div *ngIf="recipe.difficulty == 3" class="hard"></div>
     </div>
-    <div *ngIf="recipe.portions" class="portions">
-      <mat-form-field>
-        <mat-label>Ilość porcji:</mat-label>
-        <mat-select [(value)]="portions">
-          <mat-option value="{{ recipe.portions }}">{{
-            recipe.portions
-          }}</mat-option>
-          <mat-option value="{{ recipe.portions + 1 }}">{{
-            recipe.portions + 1
-          }}</mat-option>
-        </mat-select>
-        <mat-hint>Tu wybierz ilość porcji</mat-hint>
-      </mat-form-field>
+    <div class="portions_and_other">
+      <div class="share">
+        <button class="button-standard2 share_button" (click)="fbShare('https://qufu.pl/recipe/'+ recipe.id )"
+          matTooltip="Udostępuj na facebooku">
+          <mat-icon>facebook</mat-icon>
+        </button>
+        <button class="button-standard2 share_button" (click)="twitterShare('https://qufu.pl/recipe/'+ recipe.id )"
+          matTooltip="Udostępuj na twitterze"><mat-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path
+                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+            </svg></mat-icon>
+        </button>
+
+      </div>
+
+      <div *ngIf="recipe.portions" class="portions">
+        <mat-form-field>
+          <mat-label>Ilość porcji
+          </mat-label>
+          <!-- likwidacja buga w angularze incorrect use of <label for=FORM_ELEMENT>  -->
+          <select id="portions" style="display: none;"></select>
+          <!-- koniec likwidacji -->
+          <mat-select id="portions" [(value)]="portions">
+            <mat-option *ngFor="let multiplier of [0.5, 1, 1.5, 2, 2.5, 3]" (click)="multiplierPortions = multiplier"
+              value="{{ recipe.portions * multiplier }}">{{ recipe.portions * multiplier }}</mat-option>
+          </mat-select>
+          <mat-hint>Tu wybierz ilość porcji</mat-hint>
+        </mat-form-field>
+      </div>
     </div>
     <div class="ingredients">
       <div class="ingredients-text">Składniki</div>
       <ul>
         <li *ngFor="let ingredient of recipe.ingredients">
           <span>{{ ingredient[0] }}</span>
-          <span *ngIf="ingredient[1] > 0"
-            >{{ ingredient[1] }} {{ ingredient[2] }}</span
-          >
+          <span *ngIf="ingredient[1] > 0">{{ ingredient[1] * multiplierPortions }} {{ ingredient[2] }}</span>
         </li>
       </ul>
     </div>
@@ -94,12 +91,9 @@
       </button>
     </div>
   </div>
-  <div
-    class="recipepage__img"
-    [ngStyle]="{
+  <div class="recipepage__img" [ngStyle]="{
       'background-image': 'url(' + imgLocation + recipe.img + ')'
-    }"
-  ></div>
+    }"></div>
 </div>
 <app-cookpage [recipe]="recipe" *ngIf="cookStep"></app-cookpage>
 <app-comments [id]="id" *ngIf="!cookStep"></app-comments>

@@ -40,7 +40,8 @@ export class RecipepageComponent implements OnInit {
   isFavorite: boolean = false;
   favoriteRecipe: string[] = [];
   isLogged: boolean = this.authService.GetIsLoggedFromToken();
-  portions: string = '';
+  portions: number = 0;
+  multiplierPortions: number = 1;
   ngOnInit(): void {
     /**
      * Check if recipe is favorite
@@ -96,7 +97,16 @@ export class RecipepageComponent implements OnInit {
     });
   }
 
-  ///
+  fbShare(url: string) {
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u=' + url,
+      'facebook-share-dialog',
+      'width=626,height=436'
+    );
+  }
+  twitterShare(url: string) {
+    window.open('https://twitter.com/intent/tweet?url=' + url);
+  }
   getClickedStart() {
     this.searchService.setcookStep(1);
   }
