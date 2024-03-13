@@ -14,15 +14,14 @@
     rgba(255, 255, 255, 1) 44%,
     rgba(255, 255, 255, 1) 100%
   );
-  flex-direction: column;
 }
 
-.register-box {
+.login-box {
   background-color: var(--primary-color);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("../../assets/images/fire.svg");
+  background-image: url("../../../assets/images/fire.svg");
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,6 +40,8 @@
   color: var(--background-color4);
   font-size: 1.3em;
   font-weight: 300;
+  padding-top: 15px;
+  padding-bottom: 30px;
 }
 .error {
   font-size: 16px;
@@ -57,7 +58,7 @@
 .button_div {
   display: flex;
   justify-content: center;
-  padding-top: 5px;
+  padding-top: 20px;
 }
 
 form {

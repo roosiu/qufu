@@ -6,9 +6,9 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { MatModule } from '../mat/mat.module';
+import { MatModule } from '../../mat/mat.module';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

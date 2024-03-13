@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MatModule } from '../mat/mat.module';
+import { MatModule } from '../../mat/mat.module';
 import {
   FormControl,
   FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogComponent } from '../../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

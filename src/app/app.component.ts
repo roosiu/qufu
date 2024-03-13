@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HerosectionComponent } from './herosection/herosection.component';
+import { HerosectionComponent } from './pages/herosection/herosection.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchService } from './services/search.service';
 import { SearchpageComponent } from './searchpage/searchpage.component';
