@@ -1,0 +1,22 @@
+<div class="editor">
+    <div class="title_author">
+        <mat-form-field class="title">
+            <mat-label>Tytuł</mat-label>
+            <input matInput type="text" [(ngModel)]="title">
+        </mat-form-field>
+        <mat-form-field class="author">
+            <mat-label>Autor</mat-label>
+            <input matInput type="text" [(ngModel)]="author">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Data</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <app-editor [html]="content"></app-editor>
+
+
+</div>

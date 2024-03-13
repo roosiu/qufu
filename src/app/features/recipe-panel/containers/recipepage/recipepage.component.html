@@ -1,0 +1,90 @@
+<div *ngIf="!cookStep" class="recipepage box-standard">
+  <div (click)="getClickedClose()" class="recipage__close">
+    <span class="material-symbols-outlined"> close </span>
+  </div>
+  <div class="recipepage__main">
+    <div class="rating">
+      <app-star-rating [rating]="recipe.rating"></app-star-rating>
+    </div>
+    <div class="title">
+      {{ recipe.title }}
+      <ng-container *ngIf="isLogged; else notLoggedFavorite">
+        <button *ngIf="!isFavorite" (click)="addFavorite()" matTooltip="Dodaj do ulubionych" type="button"
+          class="button-standard favorite">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button *ngIf="isFavorite" (click)="deleteFavorite()" matTooltip="Usuń z ulubionych" type="button"
+          class="button-standard favorite are-favorite">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </ng-container>
+      <ng-template #notLoggedFavorite>
+        <button matTooltip="Musisz być zalogowany" [routerLink]="['/login']" type="button"
+          class="button-standard favorite notLogged-favorite">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </ng-template>
+    </div>
+    <div class="body">
+      {{ recipe.body }}
+    </div>
+    <div class="diff-bar">
+      <div class="diff-bar__label">
+        Poziom trudności:
+        <ng-container *ngIf="recipe.difficulty == 1"><b>łatwy</b></ng-container>
+        <ng-container *ngIf="recipe.difficulty == 2"><b>średni</b></ng-container>
+        <ng-container *ngIf="recipe.difficulty == 3"><b>trudny</b></ng-container>
+      </div>
+      <div *ngIf="recipe.difficulty >= 1" class="easy"></div>
+      <div *ngIf="recipe.difficulty >= 2" class="medium"></div>
+      <div *ngIf="recipe.difficulty == 3" class="hard"></div>
+    </div>
+    <div class="portions_and_other">
+      <div class="share">
+        <app-share-button type="facebook"></app-share-button>
+        <app-share-button type="twitter"></app-share-button>
+
+      </div>
+
+      <div *ngIf="recipe.portions" class="portions">
+        <mat-form-field>
+          <mat-label>Ilość porcji
+          </mat-label>
+          <!-- likwidacja buga w angularze incorrect use of <label for=FORM_ELEMENT>  -->
+          <select id="portions" style="display: none;"></select>
+          <!-- koniec likwidacji -->
+          <mat-select id="portions" [(value)]="portions">
+            <mat-option *ngFor="let multiplier of [0.5, 1, 1.5, 2, 2.5, 3]" (click)="multiplierPortions = multiplier"
+              value="{{ recipe.portions * multiplier }}">{{ recipe.portions * multiplier }}</mat-option>
+          </mat-select>
+          <mat-hint>Tu wybierz ilość porcji</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="ingredients">
+      <div class="ingredients-text">Składniki</div>
+      <ul>
+        <li *ngFor="let ingredient of recipe.ingredients">
+          <span>{{ ingredient[0] }}</span>
+          <span *ngIf="ingredient[1] > 0">{{ ingredient[1] * multiplierPortions }} {{ ingredient[2] }}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="time">
+      <span class="material-symbols-outlined"> pace </span>
+      <div class="time__text">
+        Czas przygotowania
+        <div class="time__text__min">{{ recipe.time }} min</div>
+      </div>
+      <!-- <div class="steps">Ilość etapów: {{ recipe.steps.length }}</div> -->
+      <button class="button-standard button" (click)="getClickedStart()">
+        <img src="assets/images/start.svg" /> Rozpocznij
+      </button>
+    </div>
+  </div>
+  <div class="recipepage__img" [ngStyle]="{
+      'background-image': 'url(' + imgLocation + recipe.img + ')'
+    }"></div>
+</div>
+<app-cookpage [recipe]="recipe" *ngIf="cookStep"></app-cookpage>
+<app-comments [id]="id" *ngIf="!cookStep"></app-comments>

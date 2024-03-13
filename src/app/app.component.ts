@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HerosectionComponent } from './pages/herosection/herosection.component';
-import { FooterComponent } from './footer/footer.component';
-import { SearchService } from './services/search.service';
-import { SearchpageComponent } from './searchpage/searchpage.component';
-import { RecipepageComponent } from './recipepage/recipepage.component';
-import { CookpageComponent } from './cookpage/cookpage.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { HerosectionComponent } from './features/start-panel/containers/herosection/herosection.component';
+import { FooterComponent } from './core/components/footer/footer.component';
+import { SearchService } from './core/services/search.service';
+import { SearchpageComponent } from './features/search-panel/container/searchpage/searchpage.component';
+import { RecipepageComponent } from './features/recipe-panel/containers/recipepage/recipepage.component';
+import { CookpageComponent } from './features/recipe-panel/components/cookpage/cookpage.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SpinnerComponent } from './spinner/spinner.component';
-import { AuthService } from './services/auth.service';
-import { PostService } from './services/post.service';
-import { DeleteService } from './services/delete.service';
+import { SpinnerComponent } from './core/components/spinner/spinner.component';
+import { AuthService } from './core/services/auth.service';
+import { PostService } from './core/services/post.service';
+import { DeleteService } from './core/services/delete.service';
 
 @Component({
   selector: 'app-root',

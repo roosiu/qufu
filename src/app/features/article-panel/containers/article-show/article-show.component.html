@@ -1,0 +1,17 @@
+@if(article){
+<div class=" article">
+    <div class="title">
+        <h1>{{article.title}}</h1>
+    </div>
+    <div class="content">
+        <app-content-view [content]="article.content"></app-content-view>
+    </div>
+    <div class="footer">{{article.author}}</div>
+    <div class="addon">
+        <div class="tags">{{article.tags}}</div>
+        <app-share-button type="facebook"></app-share-button>
+        <app-share-button type="twitter"></app-share-button>
+    </div>
+</div>
+
+}
