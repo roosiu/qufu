@@ -8,15 +8,31 @@
             <mat-label>Autor</mat-label>
             <input matInput type="text" [(ngModel)]="author">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="date">
             <mat-label>Data</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input matInput [(ngModel)]="date" [matDatepicker]="picker">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
     </div>
+    <app-editor [html]="content" (newHTML)="onChangeContent($event)"></app-editor>
 
-    <app-editor [html]="content"></app-editor>
+
+    <mat-form-field class="tags-div">
+        <mat-label>Tagi</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Enter fruits">
+            @for (tag of tags.split(' '); track tag) {
+            <mat-chip-row [editable]="true" [aria-description]="'press enter to edit ' + tag">
+                {{tag}}
+                <button matChipRemove [attr.aria-label]="'remove ' + tag">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip-row>
+            }
+            <input placeholder="Nowy tag..." [matChipInputFor]="chipGrid" [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)" />
+        </mat-chip-grid>
+    </mat-form-field>
 
 
 </div>

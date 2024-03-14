@@ -3,11 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { SearchService } from '../../../../core/services/search.service';
 import { ShareButtonComponent } from '../../../shared-components/share-button/share-button.component';
 import { ContentViewComponent } from '../../components/content-view/content-view.component';
+import { MatModule } from '../../../../core/modules/mat.module';
 
 @Component({
   selector: 'app-article-show',
   standalone: true,
-  imports: [ShareButtonComponent, ContentViewComponent],
+  imports: [ShareButtonComponent, ContentViewComponent, MatModule],
   templateUrl: './article-show.component.html',
   styleUrl: './article-show.component.css',
 })

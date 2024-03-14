@@ -8,7 +8,11 @@
     </div>
     <div class="footer">{{article.author}}</div>
     <div class="addon">
-        <div class="tags">{{article.tags}}</div>
+        <div class="tags"><mat-chip-set class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                @for (tag of article.tags.split(' '); track tag) {
+                <mat-chip class="example-box" cdkDrag>{{tag}}</mat-chip>
+                }
+            </mat-chip-set></div>
         <app-share-button type="facebook"></app-share-button>
         <app-share-button type="twitter"></app-share-button>
     </div>
