@@ -33,7 +33,7 @@
                 " class="list-img"></div>
             </div>
             <div class="div-favorite__right">
-              <div class="div-favorite__title" [routerLink]="['/id', favoriteRecipe.id]">
+              <div class="div-favorite__title zoom-faster" [routerLink]="['/id', favoriteRecipe.id]">
                 {{ favoriteRecipe.title }}
               </div>
               <mat-icon (click)="deleteFavorite(favoriteRecipe.id)" matTooltip="Usuń z ulubionych"

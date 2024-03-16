@@ -39,7 +39,10 @@
             </mat-chip-grid>
         </mat-form-field>
         @if(id){
-        <button class="button-standard button" (click)="save()"><mat-icon>edit_square</mat-icon> Zaktualizuj</button>
+        <a [href]="'/article/'+id" target="_blank" class="button-standard2 button"><mat-icon>visibility</mat-icon></a>
+
+        <button class="button-standard button" (click)="save()"><mat-icon>edit_square</mat-icon>
+            Zaktualizuj</button>
         } @else {
         <button class="button-standard button" (click)="save()"><mat-icon>add</mat-icon> Dodaj</button>
         }

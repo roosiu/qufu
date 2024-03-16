@@ -1,5 +1,5 @@
 <ng-container *ngIf="filteredRecipes && filteredRecipes.length">
-  <mat-card [routerLink]="['/id', recipe.id]" *ngFor="let recipe of filteredRecipes" class="card">
+  <mat-card [routerLink]="['/id', recipe.id]" *ngFor="let recipe of filteredRecipes" class="card zoom-default">
     <div class="img-div" [ngStyle]="{
         'background-image': 'url(' + imgLocation + recipe.img + ')'
       }"></div>
