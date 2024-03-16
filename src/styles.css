@@ -115,3 +115,23 @@ body {
 .custom-snackbar {
   text-align: center;
 }
+.button-padding {
+  padding: 15px;
+}
+
+.zoom-background-img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.zoom-background-img:hover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-size: 110% auto;
+}

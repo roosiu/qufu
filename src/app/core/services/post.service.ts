@@ -16,8 +16,8 @@ export class PostService {
    *
    * @param {string} apiUrl - server side adress
    */
-  private apiUrl = 'https://pwksm.ovh/qufu/post.php';
-
+  private apiUrlToPostComment = 'https://pwksm.ovh/qufu/postComment.php';
+  private apiUrlToPostArticle = 'https://pwksm.ovh/qufu/postArticle.php';
   /**
    * Function to post comment or and rating in database
    * @date 2024-03-03
@@ -28,7 +28,7 @@ export class PostService {
    * @param { string } comment - comment
    * @returns { Observable<any> }
    */
-  post(
+  postComment(
     token: any,
     name: string,
     recipe_id: number,
@@ -45,6 +45,48 @@ export class PostService {
     /**
      *  sending post data to server
      */
-    return this.http.post<any>(this.apiUrl, postData);
+    return this.http.post<any>(this.apiUrlToPostComment, postData);
+  }
+
+  /**
+   *  sending post/update data to server
+   *
+   * @param {string} id - id of article if exist if not create new article in backend
+   * @param {any} token - token from local storage
+   * @param {string} name - name of user
+   * @param {string} title - title of article
+   * @param {string} author - author of article
+   * @param {Date} date -  date of article
+   * @param {string} content -  content of article
+   * @param {string} tags -  tags of article
+   * @param {string} img -  main img of article
+   * @return {Observable<any>} return value
+   */
+  postUpdateArticle(
+    id: string,
+    token: any,
+    name: string,
+    title: string,
+    author: string,
+    date: Date,
+    content: string,
+    tags: string,
+    img: string
+  ): Observable<any> {
+    const postData = {
+      id: id,
+      token: token,
+      name: name,
+      title: title,
+      author: author,
+      date: date,
+      content: content,
+      tags: tags,
+      img: img,
+    };
+    /**
+     *  sending post data to server
+     */
+    return this.http.post<any>(this.apiUrlToPostArticle, postData);
   }
 }

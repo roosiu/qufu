@@ -92,7 +92,7 @@ export class CommentsComponent implements OnInit {
     const token = this.authService.GetToken() || ''; // Assuming empty string as fallback
 
     this.postService
-      .post(
+      .postComment(
         token,
         this.name,
         this.id,

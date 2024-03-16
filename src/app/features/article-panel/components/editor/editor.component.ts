@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgxEditorModule, Editor, Toolbar, toHTML } from 'ngx-editor';
+import { NgxEditorModule, Editor, Toolbar } from 'ngx-editor';
 
 @Component({
   selector: 'app-editor',
@@ -41,7 +41,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   onChange() {
     if (this.html) {
-      this.newHTML.emit(toHTML(this.html));
+      this.newHTML.emit(this.html);
     }
   }
   ngOnInit(): void {}

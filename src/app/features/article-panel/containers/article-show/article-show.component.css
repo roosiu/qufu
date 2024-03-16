@@ -55,6 +55,12 @@ h3 {
 }
 .footer {
   padding-bottom: 40px;
+  padding: 30px;
+}
+
+.img_main {
+  min-width: 100%;
+  min-height: 400px;
 }
 
 @media only screen and (max-width: 600px) {

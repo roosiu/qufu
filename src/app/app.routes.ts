@@ -19,9 +19,10 @@ export const routes: Routes = [
   },
   { path: 'id/:inputText', component: RecipepageComponent },
   { path: 'article/:inputText', component: ArticleShowComponent },
-  { path: 'article/edit/:inputText', component: ArticleEditComponent },
+  { path: 'article-edit/:inputText', component: ArticleEditComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
+  { path: 'pagenotfound', component: PagenotfoundComponent },
   { path: '**', component: PagenotfoundComponent },
 ];

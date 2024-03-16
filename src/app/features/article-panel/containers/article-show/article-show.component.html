@@ -1,5 +1,11 @@
-@if(article){
+@if(article) {
 <div class=" article">
+
+    @if(article.image_path){
+    <div class="img_main zoom-background-img"
+        [ngStyle]="{'background-image': 'url(\'../../../../../assets/images/' + article.image_path + '\')'}">
+
+    </div> }
     <div class="title">
         <h1>{{article.title}}</h1>
     </div>
@@ -9,8 +15,12 @@
     <div class="footer">{{article.author}}</div>
     <div class="addon">
         <div class="tags"><mat-chip-set class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                @if(article.tags.length>1){
                 @for (tag of article.tags.split(' '); track tag) {
+                @if (tag.length>1) {
                 <mat-chip class="example-box" cdkDrag>{{tag}}</mat-chip>
+                }
+                }
                 }
             </mat-chip-set></div>
         <app-share-button type="facebook"></app-share-button>

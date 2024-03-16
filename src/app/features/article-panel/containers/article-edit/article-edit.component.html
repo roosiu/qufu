@@ -16,23 +16,33 @@
         </mat-form-field>
     </div>
     <app-editor [html]="content" (newHTML)="onChangeContent($event)"></app-editor>
+    <app-show-files (filesEvent)="onChangeFile($event)" [choseLocation]="false" title="Wybierz obrazek"
+        [choseFile]="true" [location]="'assets/images/'" [files]="img"></app-show-files>
+    <div class="tags-save-div">
+        <mat-form-field class="tags-div">
+            <mat-label>Tagi</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Enter fruits">
+                @if(tags.length>1){
+                @for (tag of tags.split(' '); track tag) {
+                @if(tag.length>1){
+                <mat-chip-row (removed)="removeTag(tag)" [aria-description]="'press enter to edit ' + tag">
+                    {{tag}}
+                    <button matChipRemove [attr.aria-label]="'Usuń ' + tag">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip-row>
+                }
+                }
+                }
+                <input placeholder="Nowy tag..." [matChipInputFor]="chipGrid" [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addTag($event)" />
+            </mat-chip-grid>
+        </mat-form-field>
+        @if(id){
+        <button class="button-standard button" (click)="save()"><mat-icon>edit_square</mat-icon> Zaktualizuj</button>
+        } @else {
+        <button class="button-standard button" (click)="save()"><mat-icon>add</mat-icon> Dodaj</button>
+        }
 
-
-    <mat-form-field class="tags-div">
-        <mat-label>Tagi</mat-label>
-        <mat-chip-grid #chipGrid aria-label="Enter fruits">
-            @for (tag of tags.split(' '); track tag) {
-            <mat-chip-row [editable]="true" [aria-description]="'press enter to edit ' + tag">
-                {{tag}}
-                <button matChipRemove [attr.aria-label]="'remove ' + tag">
-                    <mat-icon>cancel</mat-icon>
-                </button>
-            </mat-chip-row>
-            }
-            <input placeholder="Nowy tag..." [matChipInputFor]="chipGrid" [matChipInputAddOnBlur]="addOnBlur"
-                (matChipInputTokenEnd)="add($event)" />
-        </mat-chip-grid>
-    </mat-form-field>
-
-
+    </div>
 </div>

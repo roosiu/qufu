@@ -28,9 +28,16 @@ app-editor {
   width: 100%;
   gap: 15px;
 }
-.tags-div {
+.tags-save-div {
   padding: 20px;
   width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+}
+.tags-div {
+  width: 80%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -49,4 +56,8 @@ app-editor {
   .date {
     width: 100%;
   }
+}
+
+.button {
+  padding: 15px;
 }
