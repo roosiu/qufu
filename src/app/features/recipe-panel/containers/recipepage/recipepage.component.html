@@ -2,7 +2,7 @@
   <div (click)="getClickedClose()" class="recipage__close">
     <span class="material-symbols-outlined"> close </span>
   </div>
-  <div class="recipepage__main">
+  <div @fade class="recipepage__main">
     <div class="rating">
       <app-star-rating [rating]="recipe.rating"></app-star-rating>
     </div>
@@ -55,7 +55,8 @@
           <!-- koniec likwidacji -->
           <mat-select id="portions" [(value)]="portions">
             <mat-option *ngFor="let multiplier of [0.5, 1, 1.5, 2, 2.5, 3]" (click)="multiplierPortions = multiplier"
-              value="{{ recipe.portions * multiplier }}">{{ recipe.portions * multiplier }}</mat-option>
+              value="{{ recipe.portions * multiplier }}">{{ recipe.portions *
+              multiplier }}</mat-option>
           </mat-select>
           <mat-hint>Tu wybierz ilość porcji</mat-hint>
         </mat-form-field>
@@ -86,5 +87,5 @@
       'background-image': 'url(' + imgLocation + recipe.img + ')'
     }"></div>
 </div>
-<app-cookpage [recipe]="recipe" *ngIf="cookStep"></app-cookpage>
+<app-cookpage @fade [recipe]="recipe" *ngIf="cookStep"></app-cookpage>
 <app-comments [id]="id" *ngIf="!cookStep"></app-comments>

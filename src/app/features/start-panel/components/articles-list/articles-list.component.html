@@ -1,11 +1,11 @@
 @for(article of articles;track article) {
-<div [routerLink]="['/article', article.id]" class="box-standard article-div zoom-fast"
-    [ngStyle]="{'background-image': 'url(\'../../../../../assets/images/' + article.image_path + '\')'}">
+<mat-card [routerLink]="['/article', article.id]" class="box-standard article-div zoom-fast"
+    [ngStyle]="{'background-image': 'url(\'../../../../../assets/images/uploads/' + article.image_path + '\')'}">
 
 
     <div class="right-side">
         <div class="title">{{article.title}}</div>
         <div class="readmore">Czytaj więcej...</div>
     </div>
-</div>
+</mat-card>
 }

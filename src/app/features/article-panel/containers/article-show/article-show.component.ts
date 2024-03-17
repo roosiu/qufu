@@ -5,7 +5,8 @@ import { ShareButtonComponent } from '../../../shared-components/share-button/sh
 import { ContentViewComponent } from '../../components/content-view/content-view.component';
 import { MatModule } from '../../../../core/modules/mat.module';
 import { CommonModule } from '@angular/common';
-
+import { trigger } from '@angular/animations';
+import { fadeAnimationIn } from '../../../../core/animations/fade';
 @Component({
   selector: 'app-article-show',
   standalone: true,
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
     MatModule,
     CommonModule,
   ],
+  animations: [trigger('fade', [fadeAnimationIn])],
   templateUrl: './article-show.component.html',
   styleUrl: './article-show.component.css',
 })

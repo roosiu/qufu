@@ -1,9 +1,9 @@
 @if(article) {
-<div class=" article">
+<div @fade class=" article">
 
     @if(article.image_path){
     <div class="img_main zoom-background-img"
-        [ngStyle]="{'background-image': 'url(\'../../../../../assets/images/' + article.image_path + '\')'}">
+        [ngStyle]="{'background-image': 'url(\'../../../../../assets/images/uploads/' + article.image_path + '\')'}">
 
     </div> }
     <div class="title">

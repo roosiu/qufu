@@ -17,10 +17,19 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-color: #fff;
+  border: solid 1px rgba(23, 52, 146, 0.2);
+  border-radius: 10px;
+  transition: all 300ms;
+
+  overflow: hidden;
 }
 
 .article-div:hover {
   cursor: pointer;
+  user-select: none;
+  box-shadow: 0px 4px 6px 0px rgb(0, 0, 0, 0.1);
+  transition: all 300ms;
 }
 
 .right-side {
@@ -53,15 +62,31 @@
     rgba(53, 80, 112, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#355070",GradientType=1);
-  border-radius: 9px;
+  border-radius: 0 0 9px 0;
 }
 
 .title {
+  box-sizing: border-box;
   width: 57%;
   font-size: 24px;
   color: white;
   font-weight: light;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  padding: 0 15px;
+}
+@media only screen and (max-width: 1300px) {
+  .title {
+    font-size: 18px;
+  }
+  .readmore {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .title {
+    width: 100%;
+    font-size: 14px;
+  }
 }
 .readmore {
   box-sizing: border-box;

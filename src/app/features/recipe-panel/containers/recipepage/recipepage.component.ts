@@ -9,6 +9,11 @@ import { MatModule } from '../../../../core/modules/mat.module';
 import { AuthService } from '../../../../core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ShareButtonComponent } from '../../../shared-components/share-button/share-button.component';
+import { trigger } from '@angular/animations';
+import {
+  fadeAnimationIn,
+  fadeAnimationOut,
+} from '../../../../core/animations/fade';
 
 @Component({
   selector: 'app-recipepage',
@@ -22,6 +27,7 @@ import { ShareButtonComponent } from '../../../shared-components/share-button/sh
     RouterModule,
     ShareButtonComponent,
   ],
+  animations: [trigger('fade', [fadeAnimationIn, fadeAnimationOut])],
   templateUrl: './recipepage.component.html',
   styleUrl: './recipepage.component.css',
 })

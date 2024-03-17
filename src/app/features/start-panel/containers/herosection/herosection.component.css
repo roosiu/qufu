@@ -40,4 +40,7 @@
   .search-bar__div {
     flex-basis: 100%;
   }
+  .hero-section {
+    background-image: url("../../../../../assets/images/hero_bg_small.jpg");
+  }
 }

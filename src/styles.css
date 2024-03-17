@@ -41,7 +41,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  user-select: none;
   background-color: var(--primary-color);
   border-radius: 50px;
   color: #fff;
@@ -59,7 +59,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  user-select: none;
   background-color: var(--secondary-color);
   border-radius: 50px;
   color: #fff;
