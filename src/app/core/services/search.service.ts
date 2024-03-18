@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
+import { SearchUrls } from '../enums/urls';
 @Injectable({
   providedIn: 'root',
 })
@@ -55,11 +55,11 @@ export class SearchService {
    * @returns { Observable<any[]> }
    */
   getJsonData(text: string): Observable<any[]> {
-    return this.http.get<any>('https://pwksm.ovh/qufu/' + text);
+    return this.http.get<any>(SearchUrls.URL_JSON_DATA + text);
   }
 
   recipes: any[] = [];
-  imgLocation: string = 'https://pwksm.ovh/qufu/assets/images/';
+  imgLocation: string = SearchUrls.IMAGE_URL;
 
   private cookStep = new BehaviorSubject<any>(null);
 

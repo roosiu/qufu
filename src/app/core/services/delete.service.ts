@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-
+import { DeleteUrls } from '../enums/urls';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +12,7 @@ export class DeleteService {
    * @date 2024-03-03
    */
   constructor(private http: HttpClient, private authService: AuthService) {}
-  private apiUrl = 'https://pwksm.ovh/qufu/delete.php';
+  private apiUrl = DeleteUrls.DELETE_URL;
   private logged = new BehaviorSubject<boolean>(false);
 
   /**

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SearchService } from './search.service';
-
+import { AuthUrls } from '../enums/urls';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,10 +10,10 @@ export class AuthService {
   /**
    * Service responsible for authentication-related functionality.
    */
-  private RegisterloginUrl = 'https://pwksm.ovh/qufu/register.php';
-  private loginUrl = 'https://pwksm.ovh/qufu/login.php';
-  private updateProfileUrl = 'https://pwksm.ovh/qufu/updateProfile.php';
-  private getProfileUrl = 'https://pwksm.ovh/qufu/getProfile.php';
+  private RegisterloginUrl = AuthUrls.REGISTER_URL_LOGIN;
+  private loginUrl = AuthUrls.LOGIN_URL;
+  private updateProfileUrl = AuthUrls.UPDATE_PROFILE_URL;
+  private getProfileUrl = AuthUrls.GET_PROFILE_URL;
   private logged = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient, private searchService: SearchService) {
     this.GetIsLoggedFromToken();

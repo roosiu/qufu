@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { PostUrls } from '../enums/urls';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,8 +17,8 @@ export class PostService {
    *
    * @param {string} apiUrl - server side adress
    */
-  private apiUrlToPostComment = 'https://pwksm.ovh/qufu/postComment.php';
-  private apiUrlToPostArticle = 'https://pwksm.ovh/qufu/postArticle.php';
+  private apiUrlToPostComment = PostUrls.URL_TO_POST_COMMENT;
+  private apiUrlToPostArticle = PostUrls.URL_TO_POST_ARTICLE;
   /**
    * Function to post comment or and rating in database
    * @date 2024-03-03
