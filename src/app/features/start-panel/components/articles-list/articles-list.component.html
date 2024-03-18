@@ -1,6 +1,6 @@
 @for(article of articles;track article) {
 <mat-card [routerLink]="['/article', article.id]" class="box-standard article-div zoom-fast"
-    [ngStyle]="{'background-image': 'url(\'../../../../../assets/images/uploads/' + article.image_path + '\')'}">
+    [ngStyle]="{'background-image': 'url(\''+assetsLocation+'images/uploads/articles/'+ article.image_path + '\')'}">
 
 
     <div class="right-side">

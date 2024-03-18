@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { trigger } from '@angular/animations';
 import { fadeAnimationIn } from '../../../../core/animations/fade';
 import { BackButtonComponent } from '../../../shared-components/back-button/back-button.component';
+import { GetFilesUrls } from '../../../../core/enums/urls';
 @Component({
   selector: 'app-article-show',
   standalone: true,
@@ -30,6 +31,7 @@ export class ArticleShowComponent implements OnInit {
   ) {}
   id: any;
   article: any;
+  assetsLocation = GetFilesUrls.MAIN_FILES_URL;
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
       const inputText: any = params.get('inputText');

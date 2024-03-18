@@ -16,8 +16,8 @@
         </mat-form-field>
     </div>
     <app-editor [html]="content" (newHTML)="onChangeContent($event)"></app-editor>
-    <app-show-files (filesEvent)="onChangeFile($event)" [choseLocation]="false" title="Wybierz obrazek"
-        [choseFile]="true" [location]="'assets/images/uploads/'" [files]="img"></app-show-files>
+    <app-show-files (filesEvent)="onChangeFile($event)" title="Wybierz główny obrazek" type="images"
+        [location]="'images/uploads/articles/'" [files]="img"></app-show-files>
     <div class="tags-save-div">
         <mat-form-field class="tags-div">
             <mat-label>Tagi</mat-label>

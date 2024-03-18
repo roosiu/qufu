@@ -3,6 +3,7 @@ import { SearchService } from '../../../../core/services/search.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatModule } from '../../../../core/modules/mat.module';
+import { GetFilesUrls } from '../../../../core/enums/urls';
 
 @Component({
   selector: 'app-articles-list',
@@ -12,6 +13,7 @@ import { MatModule } from '../../../../core/modules/mat.module';
   styleUrl: './articles-list.component.css',
 })
 export class ArticlesListComponent {
+  assetsLocation = GetFilesUrls.MAIN_FILES_URL;
   articles: Array<any> = [];
   constructor(private searchService: SearchService) {
     this.searchService

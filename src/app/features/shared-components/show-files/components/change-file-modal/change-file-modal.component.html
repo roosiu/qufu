@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Wybierz plik:</h2>
+<mat-dialog-content class="mat-typography">
+    @if(data.type=='images') {
+    @for(file of filesData; track file){
+
+    <div class="image-container">
+        <div class="image-desc">{{file.name}}</div>
+        <img [mat-dialog-close]="file.name" src="{{mainUrl}}{{this.data.location}}{{file.name}}" class="image zoom-fast"
+            alt="{{file.name}}">
+    </div>
+    }
+    }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close="clear"><mat-icon>clear</mat-icon>Wyczyść</button>
+    <button mat-button [mat-dialog-close]="">Anuluj</button>
+</mat-dialog-actions>

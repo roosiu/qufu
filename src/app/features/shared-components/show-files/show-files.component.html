@@ -1,17 +1,20 @@
-@if(files) {<img src="{{location}}{{files}}" alt="{{files}}">}
-<div class="input-container">
+@if(files) {
+@if(type=='images') {
+<div class="img-div">
     <div class="title">{{title}}</div>
-    @if(choseFile){
-    @if(choseLocation){
-    <mat-form-field class="location">
-        <mat-label>Lokacja pliku</mat-label>
-        <input id="location" matInput type="text" [ngModel]="location">
-    </mat-form-field>
-    }
-    <mat-form-field class="file">
-        <mat-label>Nazwa pliku</mat-label>
-        <input id="input" matInput type="text" [ngModel]="files">
-    </mat-form-field>
-    <button class="button-standard2 button-padding" (click)="onSubmit()">Zmień plik</button>
-    }
+    <div class="desc">{{files}}</div>
+    <button class="button-standard2 button-padding button" (click)="changeFile()">
+        <mat-icon>folder_open</mat-icon> &nbsp;Zmień plik</button>
+    <img src="{{mainLocation}}{{location}}{{files}}" alt="{{files}}">
 </div>
+}
+} @else {
+<div class="noimg-div">
+    <div class="title">{{title}}</div>
+    <div class="desc">Brak pliku</div>
+    <button class="button-standard2 button-padding button" matTooltip="Wybierz plik" (click)="changeFile()"><mat-icon>
+            add
+        </mat-icon></button>
+    <img src="../../../../assets/images/noimg.png" alt="noimg">
+</div>
+}
