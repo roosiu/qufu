@@ -7,6 +7,7 @@ import { MatModule } from '../../../../core/modules/mat.module';
 import { CommonModule } from '@angular/common';
 import { trigger } from '@angular/animations';
 import { fadeAnimationIn } from '../../../../core/animations/fade';
+import { BackButtonComponent } from '../../../shared-components/back-button/back-button.component';
 @Component({
   selector: 'app-article-show',
   standalone: true,
@@ -15,6 +16,7 @@ import { fadeAnimationIn } from '../../../../core/animations/fade';
     ContentViewComponent,
     MatModule,
     CommonModule,
+    BackButtonComponent,
   ],
   animations: [trigger('fade', [fadeAnimationIn])],
   templateUrl: './article-show.component.html',

@@ -6,6 +6,7 @@
 }
 
 .article {
+  position: relative;
   width: 70%;
   min-height: 600px;
   padding: 40px;
