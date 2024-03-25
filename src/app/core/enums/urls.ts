@@ -1,5 +1,5 @@
-const mainUrls = 'http://qufu.pl/';
-const backendUrls = 'http://qufu.pl/backend/';
+const mainUrls = 'https://piotrrosiak.pl/qufu/';
+const backendUrls = 'https://piotrrosiak.pl/qufu/backend/';
 export enum AuthUrls {
   REGISTER_URL_LOGIN = backendUrls + 'register.php',
   LOGIN_URL = backendUrls + 'login.php',

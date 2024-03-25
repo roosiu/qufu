@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { SearchService } from '../../../../core/services/search.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -14,6 +19,7 @@ import {
   fadeAnimationIn,
   fadeAnimationOut,
 } from '../../../../core/animations/fade';
+import { ExtraService } from '../../../../core/services/extra.service';
 
 @Component({
   selector: 'app-recipepage',
@@ -31,14 +37,18 @@ import {
   templateUrl: './recipepage.component.html',
   styleUrl: './recipepage.component.css',
 })
-export class RecipepageComponent implements OnInit {
+export class RecipepageComponent implements OnInit, AfterViewInit {
   constructor(
     private searchService: SearchService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private extraService: ExtraService
   ) {}
+  ngAfterViewInit(): void {
+    this.extraService.scrollToTop();
+  }
 
   id: any = '';
   steps: any;

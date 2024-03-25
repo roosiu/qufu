@@ -54,9 +54,15 @@
           <select id="portions" style="display: none;"></select>
           <!-- koniec likwidacji -->
           <mat-select id="portions" [(value)]="portions">
+            @if(recipe.portions%1!=0){
             <mat-option *ngFor="let multiplier of [0.5, 1, 1.5, 2, 2.5, 3]" (click)="multiplierPortions = multiplier"
               value="{{ recipe.portions * multiplier }}">{{ recipe.portions *
               multiplier }}</mat-option>
+            } @else {
+            <mat-option *ngFor="let multiplier of [1, 2, 3, 4, 5,6]" (click)="multiplierPortions = multiplier"
+              value="{{ recipe.portions * multiplier }}">{{ recipe.portions *
+              multiplier }}</mat-option>
+            }
           </mat-select>
           <mat-hint>Tu wybierz ilość porcji</mat-hint>
         </mat-form-field>

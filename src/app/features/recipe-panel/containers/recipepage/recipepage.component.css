@@ -42,7 +42,7 @@
   background-color: var(--primary-color-hover);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   :host {
     align-items: flex-start;
   }
@@ -60,6 +60,9 @@
     width: 100%;
     padding-top: 300px;
     border-radius: 0 0 0 0 !important;
+  }
+  ul {
+    font-size: 14px;
   }
 }
 
@@ -121,6 +124,8 @@ ul li:before {
   width: 0;
   white-space: nowrap;
   content: ". . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . "
     ". . . . . . . . . . . . . . . . . . . . "
     ". . . . . . . . . . . . . . . . . . . . "
     ". . . . . . . . . . . . . . . . . . . . ";
