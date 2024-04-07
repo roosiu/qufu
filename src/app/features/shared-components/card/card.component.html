@@ -1,12 +1,17 @@
-<ng-container *ngIf="filteredRecipes && filteredRecipes.length">
-  <mat-card [routerLink]="['/id', recipe.id]" *ngFor="let recipe of filteredRecipes" class="card zoom-default">
+@if (filteredRecipes && filteredRecipes.length){
+
+ <mat-card [routerLink]="['/id', recipe.id]" *ngFor="let recipe of filteredRecipes" class="card zoom-default">
     <div class="img-div" [ngStyle]="{
         'background-image': 'url(' + imgLocation + recipe.img + ')'
       }"></div>
     <div class="diff-bar">
       <div class="easy"></div>
-      <div *ngIf="recipe.difficulty>=2" class="medium"></div>
-      <div *ngIf="recipe.difficulty==3" class="hard"></div>
+      @if (recipe.difficulty>=2) {
+      <div class="medium"></div>
+      }
+      @if (recipe.difficulty==3){
+      <div class="hard"></div>
+      }
     </div>
     <div class="title padding">{{ recipe.title }}</div>
     <div class="body padding"></div>
@@ -15,12 +20,12 @@
       {{ recipe.time }} min
     </div>
   </mat-card>
-</ng-container>
-<ng-container *ngIf="!filteredRecipes || !filteredRecipes.length">
+}
+@if (!filteredRecipes || !filteredRecipes.length){
   <div class="no-recipes">Brak przepisów do wyświetlenia.</div>
-</ng-container>
-<ng-container *ngIf="searchcount>0">
+}
+@if (searchcount>0){
   <mat-paginator class="recipe-paginator" [length]="searchcount" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
     aria-label="Strona" #paginator [pageIndex]="currentPage" (page)="getPaginatorData($event)">
   </mat-paginator>
-</ng-container>
+}

@@ -5,34 +5,39 @@
         Oceny i komentarze
       </mat-panel-title>
       <mat-panel-description class="mat-expansion-panel-header-description">
-        <ng-container *ngIf="comments">Ilość ocen i wpisów: {{ commentscount }}</ng-container>
+        @if(comments) {
+          Ilość ocen i wpisów: {{ commentscount }}
+        }
         <mat-icon class="reviews">mark_unread_chat_alt</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
-
-    <form *ngIf="logged; else notLogged" [formGroup]="commentForm" class="comments-form">
+@if(logged) {
+    <form [formGroup]="commentForm" class="comments-form">
       <mat-form-field class="comments-form-full-width">
         <mat-label>Wpisz komentarz:</mat-label>
         <textarea matInput formControlName="newComment" maxlength="500" cdkTextareaAutosize cdkAutosizeMinRows="2"
           cdkAutosizeMaxRows="4" placeholder="Tu wpisz treść..."></textarea>
-
-        <mat-error *ngIf="newComment && newComment.hasError('maxlength')">
+@if(newComment && newComment.hasError('maxlength')) {
+        <mat-error >
           Maksymalna ilość znaków to 450.
         </mat-error>
+}
         <mat-hint align="end">{{ newComment.value.length }} / 450</mat-hint>
       </mat-form-field>
       <div class="comments-form-button-div">
         <!-- ocenianie  -->
         <div class="star-section zoom-faster">
           Twoja ocena:
-
-          <ng-container *ngFor="let star of [1, 2, 3, 4, 5, 6]">
+          @for (star of [1,2,3,4,5,6];track star){
             <mat-icon (click)="getStar(star)" class="new-stars" id="start{{ star }}">star_outline</mat-icon>
-          </ng-container>
+          }
+
           <input class="inputStar" formControlName="starRate" type="number" min="1" max="6" readonly />
-          <mat-error *ngIf="starRate && starRate.hasError('required')">
+          @if(starRate && starRate.hasError('required')){
+          <mat-error>
             Wymagana ocena
           </mat-error>
+          }
         </div>
         <!-- koniec oceniania  -->
         <button [disabled]="
@@ -41,17 +46,15 @@
           Dodaj <mat-icon>maps_ugc</mat-icon>
         </button>
       </div>
-    </form>
-    <ng-template #notLogged>
+    </form>} @else {
       <div class="notLogged">
         Musisz być zalogowany, aby dokonać wpisu...
         <a [routerLink]="['/login']" matTooltip="Przejdź do logowania" mat-menu-item>
           <span>Zaloguj</span>
         </a>
       </div>
-    </ng-template>
-
-    <div *ngFor="let comment of comments">
+}
+@for(comment of comments; track comment) {
       <div class="comment">
         <div class="iden-div">
           <app-identicon [text]="comment.name" [size]="50"></app-identicon>
@@ -66,11 +69,12 @@
           <p>{{ comment.comment }}</p>
         </div>
       </div>
-    </div>
-    <ng-container *ngIf="comments && commentscount > 0">
+}
+    @if(comments && commentscount >0) {
       <mat-paginator [length]="commentscount" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Strona"
         #paginator [pageIndex]="currentPage" (page)="getPaginatorData($event)">
       </mat-paginator>
-    </ng-container>
+    }
+
   </mat-expansion-panel>
 </mat-accordion>

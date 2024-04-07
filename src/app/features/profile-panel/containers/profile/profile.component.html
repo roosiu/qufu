@@ -1,5 +1,6 @@
 <div class="box-primary">
-  <mat-card *ngIf="profile" class="box-standard box-profile">
+  @if (profile){
+  <mat-card class="box-standard box-profile">
     <div class="icon">
       <span class="material-symbols-outlined">
         <button matTooltip="Edycja dostępna wkrótce" class="button-standard button-edit">
@@ -12,19 +13,23 @@
     <div class="name">{{ profile[0].name }}</div>
     <div class="email">{{ profile[0].email }}</div>
   </mat-card>
+  }
   <mat-card class="box-standard box-recipe">
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title class="panel-title"> Ulubione </mat-panel-title>
           <mat-panel-description class="mat-expansion-panel-header-description">
-            <ng-container *ngIf="favorite; else emptyFavorite">Ilość ulubionych przepisów: {{ favorite.length
-              }}</ng-container>
-            <ng-template #emptyFavorite>Nie masz jeszcze ulubionych</ng-template>
+            @if (favorite){
+            Ilość ulubionych przepisów: {{ favorite.length }}
+            } @else {
+            Nie masz jeszcze ulubionych
+            }
             <mat-icon class="fav">favorite</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <ng-container *ngIf="favorite">
+        @if (favorite){
+
           @for (favoriteRecipe of favorite; track favoriteRecipe) {
           <div class="div-favorite">
             <div class="div-favorite__left">
@@ -41,7 +46,7 @@
             </div>
           </div>
           }
-        </ng-container>
+        }
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -53,7 +58,7 @@
             <mat-icon class="reviews">mark_unread_chat_alt</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <ng-container *ngIf="profile">
+        @if (profile){
           @for (comment of profile[0].comments; track comment) {
           <div id="comment_{{ comment.id }}" class="div-comment">
             <div [routerLink]="['/id', comment.recipe_id]" [style.backgroundImage]="
@@ -74,7 +79,7 @@
             </div>
           </div>
           }
-        </ng-container>
+        }
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>

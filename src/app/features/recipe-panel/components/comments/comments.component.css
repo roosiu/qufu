@@ -86,6 +86,7 @@ mat-accordion {
 }
 
 .notLogged a {
+  width: min-content;
   text-decoration: none;
   font-weight: bold;
   color: var(--primary-color-hover);
