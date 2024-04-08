@@ -8,22 +8,25 @@
     </div>
     <div class="title">
       {{ recipe.title }}
-      <ng-container *ngIf="isLogged; else notLoggedFavorite">
-        <button *ngIf="!isFavorite" (click)="addFavorite()" matTooltip="Dodaj do ulubionych" type="button"
+      @if(isLogged) {
+
+
+        @if (!isFavorite){
+        <button (click)="addFavorite()" matTooltip="Dodaj do ulubionych" type="button"
           class="button-standard favorite">
           <mat-icon>favorite</mat-icon>
         </button>
+        }
         <button *ngIf="isFavorite" (click)="deleteFavorite()" matTooltip="Usuń z ulubionych" type="button"
           class="button-standard favorite are-favorite">
           <mat-icon>favorite</mat-icon>
         </button>
-      </ng-container>
-      <ng-template #notLoggedFavorite>
+      } @else {
         <button matTooltip="Musisz być zalogowany" [routerLink]="['/login']" type="button"
           class="button-standard favorite notLogged-favorite">
           <mat-icon>favorite</mat-icon>
         </button>
-      </ng-template>
+      }
     </div>
     <div class="body">
       {{ recipe.body }}
@@ -31,13 +34,24 @@
     <div class="diff-bar">
       <div class="diff-bar__label">
         Poziom trudności:
-        <ng-container *ngIf="recipe.difficulty == 1"><b>łatwy</b></ng-container>
-        <ng-container *ngIf="recipe.difficulty == 2"><b>średni</b></ng-container>
-        <ng-container *ngIf="recipe.difficulty == 3"><b>trudny</b></ng-container>
+        @if (recipe.difficulty==1) {
+        łatwy
+        }@else if (recipe.difficulty==2) {
+        średni
+        }@else if (recipe.difficulty==3) {
+        trudny
+        }
       </div>
-      <div *ngIf="recipe.difficulty >= 1" class="easy"></div>
-      <div *ngIf="recipe.difficulty >= 2" class="medium"></div>
-      <div *ngIf="recipe.difficulty == 3" class="hard"></div>
+      @if (recipe.difficulty >= 1) {
+      <div class="easy"></div>
+      }
+      @if (recipe.difficulty >= 2) {
+      <div class="medium"></div>
+      }
+      @if (recipe.difficulty == 3) {
+      <div class="hard"></div>
+      }
+
     </div>
     <div class="portions_and_other">
       <div class="share">
@@ -71,10 +85,14 @@
     <div class="ingredients">
       <div class="ingredients-text">Składniki</div>
       <ul>
-        <li *ngFor="let ingredient of recipe.ingredients">
+        @for (ingredient of recipe.ingredients; track ingredient) {
+        <li>
           <span>{{ ingredient[0] }}</span>
-          <span *ngIf="ingredient[1] > 0">{{ ingredient[1] * multiplierPortions }} {{ ingredient[2] }}</span>
+          @if (ingredient[1] > 0) {
+          <span>{{ ingredient[1] * multiplierPortions }} {{ ingredient[2] }}</span>
+          }
         </li>
+        }
       </ul>
     </div>
     <div class="time">
@@ -93,5 +111,8 @@
       'background-image': 'url(' + imgLocation + recipe.img + ')'
     }"></div>
 </div>
-<app-cookpage @fade [recipe]="recipe" *ngIf="cookStep"></app-cookpage>
-<app-comments [id]="id" *ngIf="!cookStep"></app-comments>
+@if (cookStep) {
+<app-cookpage @fade [recipe]="recipe"></app-cookpage>
+} @else {
+<app-comments [id]="id"></app-comments>
+}
