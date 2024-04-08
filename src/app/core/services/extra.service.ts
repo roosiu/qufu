@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ExtraService {
   constructor() {}
+
   scrollToTop() {
     window.scrollTo({
       top: 0,

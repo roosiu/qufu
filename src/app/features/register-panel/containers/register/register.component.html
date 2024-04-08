@@ -1,12 +1,14 @@
-<mat-card
-  *ngIf="!isLogged; else alredyLoggedDiv"
-  class="box-standard register-box"
->
+@if (!isLogged){
+<mat-card class="box-standard register-box">
   <!-- <div class="logo"><img src="/assets/images/logo_t.svg" alt="logo" srcset=""></div> -->
   <div class="title">Zarejestruj się</div>
   <div class="title-lower">
-    <ng-container *ngIf="!errorMessage">Wypełnij pola</ng-container>
-    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    @if (!errorMessage)
+    {
+     Wypełnij pola
+    } @else {
+    <div class="error">{{ errorMessage }}</div>
+    }
   </div>
 
   <form (ngSubmit)="register()">
@@ -83,9 +85,8 @@
     </div>
   </form>
 </mat-card>
-
-<ng-template #alredyLoggedDiv>
+} @else {
   <div class="box-standard register-box">
     <div class="title">jesteś już zalogowany</div>
   </div>
-</ng-template>
+}

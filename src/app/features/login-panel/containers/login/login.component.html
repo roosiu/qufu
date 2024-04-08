@@ -1,9 +1,14 @@
-<mat-card *ngIf="!isLogged; else alredyLoggedDiv" class="box-standard login-box">
+@if (!isLogged){
+
+<mat-card class="box-standard login-box">
   <!-- <div class="logo"><img src="/assets/images/logo_t.svg" alt="logo" srcset=""></div> -->
   <div class="title">Zaloguj się</div>
   <div class="title-lower">
-    <ng-container *ngIf="!errorMessage">Wprowadź adres e-mail i hasło</ng-container>
-    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    @if (!errorMessage){
+      Wprowadź adres e-mail i hasło
+    } @else {
+    <div  class="error">{{ errorMessage }}</div>
+    }
   </div>
 
   <form (ngSubmit)="login()">
@@ -28,7 +33,9 @@
         <mat-error class="label">hasło jest <strong>wymagane</strong></mat-error>
         }
       </mat-form-field>
-      <div *ngIf="errorMessage" class="pass_rem">Zapomniałem hasła</div>
+      @if (errorMessage){
+        <div class="pass_rem">Zapomniałem hasła</div>
+      }
     </div>
     <div class="button_div">
       <button [disabled]="email.hasError('email') || password.hasError('required')" class="button-standard2 button"
@@ -39,9 +46,9 @@
     </div>
   </form>
 </mat-card>
-
-<ng-template #alredyLoggedDiv>
+} @else {
   <div class="box-standard login-box">
     <div class="title">jesteś już zalogowany</div>
   </div>
-</ng-template>
+}
+

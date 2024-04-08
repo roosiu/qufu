@@ -19,43 +19,43 @@ export class IdenticonComponent {
     const colorPattern = this.getMoreColor(this.textToColor(text));
     const textLength = text.length;
 
-    const variaton = Math.floor(text.charCodeAt(0) % 30);
-    const variaton2 = Math.floor(text.charCodeAt(0) % 100);
+    const variation = Math.floor(text.charCodeAt(0) % 30);
+    const variation2 = Math.floor(text.charCodeAt(0) % 100);
 
     ///triangles
-    svg += `<polygon points="${variaton2},0 ${
-      100 - variaton2
-    } ,0 50,${variaton}" fill="${colorPattern[2]}"/>`;
-    svg += `<polygon points="${variaton2},100 ${100 - variaton2},100 50,${
-      100 - variaton
+    svg += `<polygon points="${variation2},0 ${
+      100 - variation2
+    } ,0 50,${variation}" fill="${colorPattern[2]}"/>`;
+    svg += `<polygon points="${variation2},100 ${100 - variation2},100 50,${
+      100 - variation
     }" fill="${colorPattern[2]}"/>`;
     svg += `<polygon points="0,${
-      100 - variaton2
-    } 0,${variaton2} ${variaton},50" fill="${colorPattern[2]}"/>`;
-    svg += `<polygon points="100,${100 - variaton2} 100,${variaton2} ${
-      100 - variaton
+      100 - variation2
+    } 0,${variation2} ${variation},50" fill="${colorPattern[2]}"/>`;
+    svg += `<polygon points="100,${100 - variation2} 100,${variation2} ${
+      100 - variation
     },50" fill="${colorPattern[2]}"/>`;
     ///triangles2
-    svg += `<polygon points="${variaton2 * 3},0 ${100 - variaton2 * 3} ,0 50,${
-      variaton / 2
+    svg += `<polygon points="${variation2 * 3},0 ${100 - variation2 * 3} ,0 50,${
+      variation / 2
     }" fill="${colorPattern[1]}"/>`;
-    svg += `<polygon points="${variaton2 * 3},100 ${
-      100 - variaton2 * 3
-    },100 50,${100 - variaton / 2}" fill="${colorPattern[1]}"/>`;
-    svg += `<polygon points="0,${100 - variaton2 * 3} 0,${variaton2 * 3} ${
-      variaton / 2
+    svg += `<polygon points="${variation2 * 3},100 ${
+      100 - variation2 * 3
+    },100 50,${100 - variation / 2}" fill="${colorPattern[1]}"/>`;
+    svg += `<polygon points="0,${100 - variation2 * 3} 0,${variation2 * 3} ${
+      variation / 2
     },50" fill="${colorPattern[1]}"/>`;
-    svg += `<polygon points="100,${100 - variaton2 * 3} 100,${variaton2 * 3} ${
-      100 - variaton / 2
+    svg += `<polygon points="100,${100 - variation2 * 3} 100,${variation2 * 3} ${
+      100 - variation / 2
     },50" fill="${colorPattern[1]}"/>`;
 
     /// lines
     svg += `<line x1="0" y1="0" x2="100" y2="100" stroke="${
       colorPattern[0]
-    }" stroke-width="${(variaton * 2) / variaton2}" />`;
+    }" stroke-width="${(variation * 2) / variation2}" />`;
     svg += `<line x1="100" y1="0" x2="0" y2="100" stroke="${
       colorPattern[0]
-    }" stroke-width="${(variaton * 2) / variaton2}" />`;
+    }" stroke-width="${(variation * 2) / variation2}" />`;
 
     /// circle
     for (let i = 0; i < 3; i++) {

@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="navbar-logo">
-    <img [routerLink]="['/']" src="assets/images/logo_t.svg" alt="QuFu Logo" />
+    <img [routerLink]="['/']" ngSrc="assets/images/logo_t.svg" alt="QuFu Logo" height="79" width="139"/>
   </div>
   <div class="navbar-actions">
     <div class="menu">
@@ -14,16 +14,14 @@
     </div>
   </div>
   <div class="navbar-logpanel">
-    <ng-container *ngIf="!logged; else profile">
+      @if (!logged){
       <button class="signup" [routerLink]="['/register']">Rejestracja</button>
       <button class="login" [routerLink]="['/login']">Loguj</button>
-    </ng-container>
-    <ng-template #profile>
-      <button
+      } @else {
+        <button
         matTooltip="Rozwiń menu"
         [matMenuTriggerFor]="menu"
-        class="profile"
-      >
+        class="profile">
         <mat-icon>account_circle</mat-icon>
         {{ name }}
       </button>
@@ -40,6 +38,6 @@
       <button matTooltip="Wyloguj" (click)="logout()" class="logout">
         <span class="material-symbols-outlined"> logout </span>
       </button>
-    </ng-template>
+     }
   </div>
 </nav>

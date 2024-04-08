@@ -27,6 +27,5 @@ export class ChangeFileModalComponent implements OnInit {
     this.data.location +
     '&type=' +
     this.data.type;
-
   mainUrl = GetFilesUrls.MAIN_FILES_URL;
 }

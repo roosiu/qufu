@@ -9,13 +9,10 @@ export class LoginGuard implements CanActivate {
 
   canActivate() {
     const token = localStorage.getItem('token');
-
     const loggedIn = !!token;
-
     if (!loggedIn) {
       this.router.navigate(['/login']);
     }
-
     return loggedIn;
   }
 }

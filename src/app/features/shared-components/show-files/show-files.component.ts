@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatModule } from '../../../core/modules/mat.module';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GetFilesUrls } from '../../../core/enums/urls';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,7 +8,7 @@ import { ChangeFileModalComponent } from './components/change-file-modal/change-
 @Component({
   selector: 'app-show-files',
   standalone: true,
-  imports: [MatModule, CommonModule, FormsModule, ChangeFileModalComponent],
+  imports: [MatModule, CommonModule, FormsModule, ChangeFileModalComponent, NgOptimizedImage],
   templateUrl: './show-files.component.html',
   styleUrl: './show-files.component.css',
 })

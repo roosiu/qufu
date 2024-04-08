@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { MatModule } from '../../modules/mat.module';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, CommonModule, MatModule],
+  imports: [RouterModule, CommonModule, MatModule, NgOptimizedImage],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
