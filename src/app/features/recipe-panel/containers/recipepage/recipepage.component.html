@@ -1,4 +1,6 @@
-<div *ngIf="!cookStep" class="recipepage box-standard">
+@if (!cookStep)
+{
+<div class="recipepage box-standard">
   <div (click)="getClickedClose()" class="recipage__close">
     <span class="material-symbols-outlined"> close </span>
   </div>
@@ -8,24 +10,34 @@
     </div>
     <div class="title">
       {{ recipe.title }}
-      @if(isLogged) {
-
-
-        @if (!isFavorite){
-        <button (click)="addFavorite()" matTooltip="Dodaj do ulubionych" type="button"
-          class="button-standard favorite">
-          <mat-icon>favorite</mat-icon>
-        </button>
-        }
-        <button *ngIf="isFavorite" (click)="deleteFavorite()" matTooltip="Usuń z ulubionych" type="button"
-          class="button-standard favorite are-favorite">
-          <mat-icon>favorite</mat-icon>
-        </button>
+      @if(isLogged) { @if (!isFavorite){
+      <button
+        (click)="addFavorite()"
+        matTooltip="Dodaj do ulubionych"
+        type="button"
+        class="button-standard favorite"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
+      }
+      <button
+        *ngIf="isFavorite"
+        (click)="deleteFavorite()"
+        matTooltip="Usuń z ulubionych"
+        type="button"
+        class="button-standard favorite are-favorite"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
       } @else {
-        <button matTooltip="Musisz być zalogowany" [routerLink]="['/login']" type="button"
-          class="button-standard favorite notLogged-favorite">
-          <mat-icon>favorite</mat-icon>
-        </button>
+      <button
+        matTooltip="Musisz być zalogowany"
+        [routerLink]="['/login']"
+        type="button"
+        class="button-standard favorite notLogged-favorite"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
       }
     </div>
     <div class="body">
@@ -33,49 +45,47 @@
     </div>
     <div class="diff-bar">
       <div class="diff-bar__label">
-        Poziom trudności:
-        @if (recipe.difficulty==1) {
-        łatwy
-        }@else if (recipe.difficulty==2) {
-        średni
-        }@else if (recipe.difficulty==3) {
-        trudny
-        }
+        Poziom trudności: @if (recipe.difficulty==1) { łatwy }@else if
+        (recipe.difficulty==2) { średni }@else if (recipe.difficulty==3) {
+        trudny }
       </div>
       @if (recipe.difficulty >= 1) {
       <div class="easy"></div>
-      }
-      @if (recipe.difficulty >= 2) {
+      } @if (recipe.difficulty >= 2) {
       <div class="medium"></div>
-      }
-      @if (recipe.difficulty == 3) {
+      } @if (recipe.difficulty == 3) {
       <div class="hard"></div>
       }
-
     </div>
     <div class="portions_and_other">
       <div class="share">
         <app-share-button type="facebook"></app-share-button>
         <app-share-button type="twitter"></app-share-button>
-
       </div>
 
       <div *ngIf="recipe.portions" class="portions">
         <mat-form-field>
-          <mat-label>Ilość porcji
-          </mat-label>
+          <mat-label>Ilość porcji </mat-label>
           <!-- likwidacja buga w angularze incorrect use of <label for=FORM_ELEMENT>  -->
-          <select id="portions" style="display: none;"></select>
+          <select id="portions" style="display: none"></select>
           <!-- koniec likwidacji -->
           <mat-select id="portions" [(value)]="portions">
             @if(recipe.portions%1!=0){
-            <mat-option *ngFor="let multiplier of [0.5, 1, 1.5, 2, 2.5, 3]" (click)="multiplierPortions = multiplier"
-              value="{{ recipe.portions * multiplier }}">{{ recipe.portions *
-              multiplier }}</mat-option>
+              @for (multiplier of [1, 2, 3, 4, 5, 6]; track multiplier) {
+
+            <mat-option (click)="multiplierPortions = multiplier"
+              value="{{ recipe.portions * multiplier }}"
+              >{{ recipe.portions * multiplier }}</mat-option
+            >
+              }
             } @else {
-            <mat-option *ngFor="let multiplier of [1, 2, 3, 4, 5,6]" (click)="multiplierPortions = multiplier"
-              value="{{ recipe.portions * multiplier }}">{{ recipe.portions *
-              multiplier }}</mat-option>
+              @for (multiplier of [1, 2, 3, 4, 5, 6]; track multiplier) {
+
+            <mat-option
+              (click)="multiplierPortions = multiplier"
+              value="{{ recipe.portions * multiplier }}"
+              >{{ recipe.portions * multiplier }}</mat-option>
+              }
             }
           </mat-select>
           <mat-hint>Tu wybierz ilość porcji</mat-hint>
@@ -89,7 +99,9 @@
         <li>
           <span>{{ ingredient[0] }}</span>
           @if (ingredient[1] > 0) {
-          <span>{{ ingredient[1] * multiplierPortions }} {{ ingredient[2] }}</span>
+          <span
+            >{{ ingredient[1] * multiplierPortions }} {{ ingredient[2] }}</span
+          >
           }
         </li>
         }
@@ -102,15 +114,22 @@
         <div class="time__text__min">{{ recipe.time }} min</div>
       </div>
       <!-- <div class="steps">Ilość etapów: {{ recipe.steps.length }}</div> -->
-      <button class="button-standard button zoom-fast" (click)="getClickedStart()">
+      <button
+        class="button-standard button zoom-fast"
+        (click)="getClickedStart()"
+      >
         <img src="assets/images/start.svg" /> Rozpocznij
       </button>
     </div>
   </div>
-  <div class="recipepage__img" [ngStyle]="{
+  <div
+    class="recipepage__img"
+    [ngStyle]="{
       'background-image': 'url(' + imgLocation + recipe.img + ')'
-    }"></div>
+    }"
+  ></div>
 </div>
+}
 @if (cookStep) {
 <app-cookpage @fade [recipe]="recipe"></app-cookpage>
 } @else {
